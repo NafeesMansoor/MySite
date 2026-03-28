@@ -46,6 +46,25 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pubFilter, setPubFilter] = useState<'all' | 'journal' | 'conference' | 'book-chapter' | 'patent' | 'edited-book'>('all');
 
+  useEffect(() => {
+    // Dynamic canonical tag
+    const link = document.createElement('link');
+    link.rel = 'canonical';
+    link.href = window.location.origin + window.location.pathname;
+    
+    // Remove existing canonical if any
+    const existingCanonical = document.querySelector('link[rel="canonical"]');
+    if (existingCanonical) {
+      document.head.removeChild(existingCanonical);
+    }
+    
+    document.head.appendChild(link);
+    
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },

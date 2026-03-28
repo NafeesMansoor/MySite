@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.nafees.info/sitemap.xml
-Sitemap: https://nafees.mansoor.info/sitemap.xml
