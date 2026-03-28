@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-primary: #f8fafc; /* Light Slate */
+  --color-brand-accent: #818cf8; /* Indigo 400 */
+  --color-brand-bg: #020617; /* Slate 950 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-brand-bg;
+  }
+  
+  body {
+    @apply bg-brand-bg text-brand-primary font-sans antialiased selection:bg-brand-accent selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight text-brand-primary;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full border-2 border-brand-bg hover:bg-brand-accent transition-colors;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+}
+
+.brand-glow {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+}
+
+.brand-bg-glow {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+}
+
+.rail-text {
+  writing-mode: vertical-rl;
+  @apply text-[10px] uppercase tracking-[0.3em] font-bold opacity-30;
+}
+
+.section-padding {
+  @apply py-32 px-6 md:px-12 lg:px-24;
+}
+
+.container-max {
+  @apply max-w-7xl mx-auto;
+}
+
+.nav-link {
+  @apply text-xs uppercase tracking-widest font-medium opacity-60 hover:opacity-100 transition-all relative py-1;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-px bg-brand-accent transition-all duration-300;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  @apply w-full;
+}
+
+.nav-link.active {
+  @apply opacity-100;
+}
+
+.publication-card {
+  @apply border-b border-brand-primary/10 py-10 last:border-0 hover:bg-brand-accent/5 transition-all px-6 -mx-6 rounded-2xl;
+}
+
