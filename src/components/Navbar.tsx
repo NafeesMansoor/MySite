@@ -11,7 +11,6 @@ const NAV_ITEMS = [
     children: [
       { label: 'Academic Degrees', path: '/about/degrees' },
       { label: 'Research Interests', path: '/about/interests' },
-      { label: 'Newspaper Mentions', path: '/about/mentions' },
     ]
   },
   { 

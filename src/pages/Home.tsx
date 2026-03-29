@@ -29,10 +29,10 @@ import {
 import { PUBLICATIONS } from '../constants';
 
 const STATS = [
-  { label: 'Years Experience', value: '15+' },
   { label: 'Publications', value: '100+' },
   { label: 'Citations', value: '1400+' },
   { label: 'h index', value: '21' },
+  { label: 'Best Paper Awards', value: '7' },
 ];
 
 const InteractiveBackground = () => {
@@ -47,91 +47,114 @@ const InteractiveBackground = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-[#050505]">
-      {/* Animated Gradients */}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-[#020205]">
+      {/* Animated Mesh Gradients - Aura Style */}
+      <motion.div
+        animate={{
+          x: mouse.x - 500,
+          y: mouse.y - 500,
+          scale: [1, 1.2, 1],
+          rotate: [0, 90, 0],
+        }}
+        transition={{ 
+          x: { type: 'spring', damping: 50, stiffness: 30 },
+          y: { type: 'spring', damping: 50, stiffness: 30 },
+          scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+          rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+        }}
+        className="absolute w-[1000px] h-[1000px] rounded-full bg-indigo-500/15 blur-[160px] opacity-70 mix-blend-screen"
+      />
       <motion.div
         animate={{
           x: mouse.x - 400,
           y: mouse.y - 400,
+          scale: [1.2, 1, 1.2],
+          rotate: [360, 270, 360],
         }}
-        transition={{ type: 'spring', damping: 30, stiffness: 50 }}
-        className="absolute w-[800px] h-[800px] rounded-full bg-indigo-500/10 blur-[120px] opacity-60 mix-blend-screen"
+        transition={{ 
+          x: { type: 'spring', damping: 60, stiffness: 20 },
+          y: { type: 'spring', damping: 60, stiffness: 20 },
+          scale: { duration: 18, repeat: Infinity, ease: "easeInOut" },
+          rotate: { duration: 25, repeat: Infinity, ease: "linear" }
+        }}
+        className="absolute w-[800px] h-[800px] rounded-full bg-violet-600/15 blur-[140px] opacity-50 mix-blend-screen"
       />
       <motion.div
         animate={{
-          x: mouse.x - 300,
+          x: mouse.x - 600,
           y: mouse.y - 300,
         }}
-        transition={{ type: 'spring', damping: 40, stiffness: 40 }}
-        className="absolute w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[100px] opacity-40 mix-blend-screen"
+        transition={{ type: 'spring', damping: 70, stiffness: 15 }}
+        className="absolute w-[700px] h-[700px] rounded-full bg-indigo-600/10 blur-[120px] opacity-40 mix-blend-screen"
       />
       
-      {/* Grid Pattern */}
+      {/* Grid Pattern with Glow */}
       <div 
-        className="absolute inset-0 opacity-[0.15]"
+        className="absolute inset-0 opacity-[0.2]"
         style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(99,102,241,0.15) 1px, transparent 0)`,
+          backgroundSize: '60px 60px'
         }}
       />
 
       {/* Floating Particles */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight,
-              opacity: Math.random() * 0.5
+              x: Math.random() * 2000 - 500, 
+              y: Math.random() * 2000 - 500,
+              opacity: Math.random() * 0.3
             }}
             animate={{
-              y: [null, Math.random() * -100 - 50],
+              y: [null, Math.random() * -200 - 100],
               opacity: [null, 0]
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: Math.random() * 15 + 15,
               repeat: Infinity,
               ease: "linear",
               delay: Math.random() * 10
             }}
-            className="absolute w-1 h-1 bg-white rounded-full"
+            className="absolute w-1 h-1 bg-indigo-300/30 rounded-full blur-[1px]"
           />
         ))}
       </div>
 
       {/* Mesh Lines (SVG for better control) */}
-      <svg className="absolute inset-0 w-full h-full opacity-20">
+      <svg className="absolute inset-0 w-full h-full opacity-30">
         <defs>
           <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.2)" />
-            <stop offset="100%" stopColor="rgba(167, 139, 250, 0.2)" />
+            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.3)" />
+            <stop offset="50%" stopColor="rgba(167, 139, 250, 0.3)" />
+            <stop offset="100%" stopColor="rgba(139, 92, 246, 0.3)" />
           </linearGradient>
         </defs>
         <motion.path
           animate={{
             d: [
-              "M-100,200 Q200,100 500,400 T1200,200",
-              "M-100,300 Q300,200 600,500 T1200,300",
-              "M-100,200 Q200,100 500,400 T1200,200"
+              "M-200,300 Q400,150 800,500 T1400,300",
+              "M-200,400 Q500,250 900,600 T1400,400",
+              "M-200,300 Q400,150 800,500 T1400,300"
             ]
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
           stroke="url(#line-grad)"
-          strokeWidth="1"
+          strokeWidth="0.5"
           fill="none"
         />
         <motion.path
           animate={{
             d: [
-              "M1200,800 Q800,900 400,600 T-100,800",
-              "M1200,700 Q700,800 300,500 T-100,700",
-              "M1200,800 Q800,900 400,600 T-100,800"
+              "M1400,900 Q900,1000 500,700 T-200,900",
+              "M1400,800 Q800,900 400,600 T-200,800",
+              "M1400,900 Q900,1000 500,700 T-200,900"
             ]
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
           stroke="url(#line-grad)"
-          strokeWidth="1"
+          strokeWidth="0.5"
           fill="none"
         />
       </svg>
@@ -207,21 +230,24 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="text-2xl md:text-3xl font-medium tracking-tight flex flex-wrap gap-x-3"
             >
-              {"Academic - Researcher - Learner - Father".split(" ").map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ 
-                    delay: 0.4 + (i * 0.08),
-                    duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1]
-                  }}
-                  className={i % 2 === 0 ? "text-indigo-400" : "text-gray-400"}
-                >
-                  {word}
-                </motion.span>
-              ))}
+              {["Academic", "-", "Researcher", "-", "Learner", "-", "Father"].map((word, i) => {
+                const colors = ["text-indigo-400", "text-gray-600", "text-violet-400", "text-gray-600", "text-purple-400", "text-gray-600", "text-sky-400"];
+                return (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ 
+                      delay: 0.4 + (i * 0.08),
+                      duration: 0.8,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    className={colors[i]}
+                  >
+                    {word}
+                  </motion.span>
+                );
+              })}
             </motion.div>
           </div>
 
@@ -291,23 +317,26 @@ export default function Home() {
       <section className="bg-zinc-950/50 border-y border-white/10 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
-            {STATS.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center space-y-2"
-              >
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-                  {stat.value}
-                </div>
-                <div className="text-sm uppercase tracking-widest text-gray-500 font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            {STATS.map((stat, index) => {
+              const colors = ["text-indigo-400", "text-violet-400", "text-purple-400", "text-sky-400"];
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-center space-y-2"
+                >
+                  <div className={`text-4xl md:text-5xl font-bold tracking-tighter ${colors[index]}`}>
+                    {stat.value}
+                  </div>
+                  <div className="text-sm uppercase tracking-widest text-gray-500 font-medium">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
