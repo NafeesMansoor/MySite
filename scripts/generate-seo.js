@@ -47,7 +47,10 @@ Allow: /
 Sitemap: https://www.nafees.info/sitemap.xml
 Sitemap: https://nafees.mansoor.info/sitemap.xml`;
 
+const redirects = `/*    /index.html   200`;
+
 fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), sitemap);
 fs.writeFileSync(path.join(PUBLIC_DIR, 'robots.txt'), robots);
+fs.writeFileSync(path.join(PUBLIC_DIR, '_redirects'), redirects);
 
-console.log('SEO files generated successfully in /public');
+console.log('SEO and redirect files generated successfully in /public');
