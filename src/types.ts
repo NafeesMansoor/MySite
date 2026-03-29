@@ -49,8 +49,9 @@ export interface ProfessionalService {
 export interface NewspaperMention {
   id: string;
   title: string;
-  source: string;
+  source?: string;
   date: string;
   link?: string;
+  links?: { name: string; url: string }[];
   image?: string;
 }

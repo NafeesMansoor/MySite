@@ -1083,27 +1083,35 @@ export const TECHNICAL_KNOWLEDGE = {
 
 export const NEWSPAPER_MENTIONS: NewspaperMention[] = [
   {
-    id: 'nm1',
-    title: 'ULAB Professor Nafees Mansoor Receives Research Award',
-    source: 'The Daily Star',
-    date: 'May 2024',
-    link: 'https://www.thedailystar.net/news/bangladesh/news/ulab-professor-nafees-mansoor-receives-research-award-3612345',
-    image: 'https://picsum.photos/seed/newspaper1/800/600'
+    id: 'nm_workshop_en',
+    title: 'ULAB hosts workshop on internationalisation of research',
+    date: 'August 10, 2023',
+    links: [
+      { name: 'bdtone24', url: 'https://web.archive.org/web/20240715143640/https://bdtone24.com/en/archives/4204' },
+      { name: 'tbsnews', url: 'https://web.archive.org/web/20240715143640/https://www.tbsnews.net/economy/corporates/ulab-hosts-workshop-internationalisation-research-687906' }
+    ],
+    image: 'https://picsum.photos/seed/ulab-workshop/800/600'
   },
   {
-    id: 'nm2',
-    title: 'Blockchain for Academic Microcredentials: A New Framework',
-    source: 'Dhaka Tribune',
-    date: 'March 2024',
-    link: 'https://www.dhakatribune.com/bangladesh/education/3412345/blockchain-for-academic-microcredentials-a-new-framework',
-    image: 'https://picsum.photos/seed/newspaper2/800/600'
+    id: 'nm_workshop_bn',
+    title: 'ইউল্যাবে গবেষণার আন্তর্জাতিকীকরণ বিষয়ক কর্মশালা',
+    date: '১০ আগস্ট ২০২৩',
+    links: [
+      { name: 'Bangla Tribune', url: 'https://web.archive.org/web/20240715143640/https://www.banglatribune.com/press-release/813878/%E0%A6%87%E0%A6%89%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A6%AC%E0%A7%87%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95%E0%A7%80%E0%A6%95%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A6%AF%E0%A6%BC%E0%A6%95-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A6%BE' },
+      { name: 'বাংলাদেশ প্রতিদিন', url: 'https://web.archive.org/web/20240715143640/https://www.bd-pratidin.com/campus-online/2023/08/24/914985' },
+      { name: 'Bahannonews', url: 'https://web.archive.org/web/20240715143640/https://www.bahannonews.com/details/article/10091339/%E0%A6%87%E0%A6%89%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A6%AC%E0%A7%87%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95%E0%A7%80%E0%A6%95%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A6%AF%E0%A6%BC%E0%A6%95-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%A0%E0%A6%BF%E0%A6%A4/' },
+      { name: 'BDTone24', url: 'https://web.archive.org/web/20240715143640/https://bdtone24.com/archives/18199' },
+      { name: 'deshrupantor', url: 'https://web.archive.org/web/20240715143640/https://www.deshrupantor.com/amp/corporate/2023/08/24/448508' }
+    ],
+    image: 'https://picsum.photos/seed/ulab-workshop-bn/800/600'
   },
   {
-    id: 'nm3',
-    title: 'Exploring the Future of Wireless Communications in Bangladesh',
-    source: 'Prothom Alo',
-    date: 'January 2024',
-    link: 'https://en.prothomalo.com/bangladesh/education/3212345/exploring-the-future-of-wireless-communications-in-bangladesh',
-    image: 'https://picsum.photos/seed/newspaper3/800/600'
+    id: 'nm_sports_2022',
+    title: 'ULAB CSE annual sports 2022 held',
+    date: 'December 23, 2022',
+    links: [
+      { name: 'Bangla Tribune', url: 'https://web.archive.org/web/20240715143640/https://www.dhakatribune.com/bangladesh/2022/12/23/ulab-cse-annual-sports-2022-held' }
+    ],
+    image: 'https://picsum.photos/seed/ulab-sports/800/600'
   }
 ];

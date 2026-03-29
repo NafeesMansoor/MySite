@@ -43,19 +43,37 @@ export default function Mentions() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-4 left-6 right-6 flex justify-between items-end">
                   <div className="space-y-1">
-                    <div className="text-xs font-bold uppercase tracking-widest text-white/60">{mention.source}</div>
+                    <div className="text-xs font-bold uppercase tracking-widest text-white/60">
+                      {mention.source || (mention.links && mention.links.map(l => l.name).join(', '))}
+                    </div>
                     <div className="text-sm text-white/40 font-mono">{mention.date}</div>
                   </div>
-                  {mention.link && (
-                    <a 
-                      href={mention.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white/10 rounded-full hover:bg-white text-white hover:text-black transition-all"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
+                  <div className="flex gap-2">
+                    {mention.link && (
+                      <a 
+                        href={mention.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/10 rounded-full hover:bg-white text-white hover:text-black transition-all"
+                        title="View Source"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                    {mention.links && mention.links.map((link, i) => (
+                      <a 
+                        key={i}
+                        href={link.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/10 rounded-full hover:bg-white text-white hover:text-black transition-all flex items-center space-x-2 px-3"
+                        title={`View on ${link.name}`}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span className="text-[10px] font-bold uppercase tracking-tighter">{link.name}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="p-8 space-y-4">

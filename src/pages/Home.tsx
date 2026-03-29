@@ -35,61 +35,106 @@ const STATS = [
   { label: 'h index', value: '21' },
 ];
 
-const AbstractShape = () => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+const InteractiveBackground = () => {
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      setMouse({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
-    <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-[#050505]">
+      {/* Animated Gradients */}
       <motion.div
+        animate={{
+          x: mouse.x - 400,
+          y: mouse.y - 400,
+        }}
+        transition={{ type: 'spring', damping: 30, stiffness: 50 }}
+        className="absolute w-[800px] h-[800px] rounded-full bg-indigo-500/10 blur-[120px] opacity-60 mix-blend-screen"
+      />
+      <motion.div
+        animate={{
+          x: mouse.x - 300,
+          y: mouse.y - 300,
+        }}
+        transition={{ type: 'spring', damping: 40, stiffness: 40 }}
+        className="absolute w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[100px] opacity-40 mix-blend-screen"
+      />
+      
+      {/* Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.15]"
         style={{
-          x: springX,
-          y: springY,
-          translateX: '-50%',
-          translateY: '-50%',
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
         }}
-        className="absolute w-[600px] h-[600px] rounded-full bg-indigo-500/20 blur-[120px] opacity-50"
       />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ 
-          opacity: [0.1, 0.2, 0.1], 
-          scale: [1, 1.1, 1],
-          rotate: [0, 90, 180, 270, 360]
-        }}
-        transition={{ 
-          duration: 20, 
-          repeat: Infinity, 
-          ease: "linear" 
-        }}
-        className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-violet-500/10 to-transparent blur-3xl opacity-20"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ 
-          opacity: [0.05, 0.1, 0.05], 
-          scale: [1.2, 1, 1.2],
-          rotate: [360, 270, 180, 90, 0]
-        }}
-        transition={{ 
-          duration: 25, 
-          repeat: Infinity, 
-          ease: "linear" 
-        }}
-        className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-cyan-500/5 to-transparent blur-3xl opacity-10"
-      />
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ 
+              x: Math.random() * window.innerWidth, 
+              y: Math.random() * window.innerHeight,
+              opacity: Math.random() * 0.5
+            }}
+            animate={{
+              y: [null, Math.random() * -100 - 50],
+              opacity: [null, 0]
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+              delay: Math.random() * 10
+            }}
+            className="absolute w-1 h-1 bg-white rounded-full"
+          />
+        ))}
+      </div>
+
+      {/* Mesh Lines (SVG for better control) */}
+      <svg className="absolute inset-0 w-full h-full opacity-20">
+        <defs>
+          <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.2)" />
+            <stop offset="100%" stopColor="rgba(167, 139, 250, 0.2)" />
+          </linearGradient>
+        </defs>
+        <motion.path
+          animate={{
+            d: [
+              "M-100,200 Q200,100 500,400 T1200,200",
+              "M-100,300 Q300,200 600,500 T1200,300",
+              "M-100,200 Q200,100 500,400 T1200,200"
+            ]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          stroke="url(#line-grad)"
+          strokeWidth="1"
+          fill="none"
+        />
+        <motion.path
+          animate={{
+            d: [
+              "M1200,800 Q800,900 400,600 T-100,800",
+              "M1200,700 Q700,800 300,500 T-100,700",
+              "M1200,800 Q800,900 400,600 T-100,800"
+            ]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          stroke="url(#line-grad)"
+          strokeWidth="1"
+          fill="none"
+        />
+      </svg>
     </div>
   );
 };
@@ -136,7 +181,7 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <AbstractShape />
+      <InteractiveBackground />
       
       {/* Hero Section */}
       <section className="min-h-[80vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-20">
@@ -209,7 +254,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              href="https://scholar.google.com/citations?user=v_v_v_v_v_v_v" 
+              href="https://scholar.google.com/citations?user=5dt40PYAAAAJ&hl=en&oi=ao" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"

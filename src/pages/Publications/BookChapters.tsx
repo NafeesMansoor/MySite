@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ExternalLink, Filter, X } from 'lucide-react';
 import { PUBLICATIONS } from '../../constants';
+import ShareButtons from '../../components/ShareButtons';
 
 export default function BookChapters() {
   const [selectedYear, setSelectedYear] = useState<string>('All');
@@ -96,13 +97,18 @@ export default function BookChapters() {
                       <div className="text-xs text-gray-600 uppercase tracking-widest mb-1">Publisher</div>
                       <div className="text-sm text-gray-400 max-w-[250px] truncate">{pub.venue}</div>
                     </div>
-                    <a 
-                      href="#" 
-                      className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-2"
-                    >
-                      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" />
-                      <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">View</span>
-                    </a>
+                    <div className="flex flex-col items-end space-y-3">
+                      <a 
+                        href={pub.link || "#"} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-2"
+                      >
+                        <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" />
+                        <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">View</span>
+                      </a>
+                      <ShareButtons title={pub.title} url={pub.link || window.location.href} />
+                    </div>
                   </div>
                 </div>
               </motion.div>
