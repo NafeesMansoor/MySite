@@ -45,3 +45,12 @@ export interface ProfessionalService {
   organization: string;
   period: string;
 }
+
+export interface NewspaperMention {
+  id: string;
+  title: string;
+  source: string;
+  date: string;
+  link?: string;
+  image?: string;
+}

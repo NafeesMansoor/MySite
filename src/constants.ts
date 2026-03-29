@@ -1,4 +1,4 @@
-import { Publication, Education, Experience, Award, Grant, ProfessionalService } from './types';
+import { Publication, Education, Experience, Award, Grant, ProfessionalService, NewspaperMention } from './types';
 
 export const PUBLICATIONS: Publication[] = [
   {
@@ -970,6 +970,32 @@ export const PROFESSIONAL_SERVICES: ProfessionalService[] = [
   }
 ];
 
+export const QA_ACTIVITIES: ProfessionalService[] = [
+  {
+    role: 'Member',
+    organization: 'Institutional Quality Assurance Cell (IQAC), ULAB',
+    period: '2022 – Onwards'
+  },
+  {
+    role: 'External Peer Reviewer',
+    organization: 'Quality Assurance Unit, University Grants Commission (UGC), Bangladesh',
+    period: '2020 – Onwards'
+  }
+];
+
+export const COMMUNITY_SERVICES: ProfessionalService[] = [
+  {
+    role: 'Volunteer Mentor',
+    organization: 'Local Tech Communities for Underprivileged Youth',
+    period: '2018 – Onwards'
+  },
+  {
+    role: 'Technical Advisor',
+    organization: 'Non-profit organizations for digital literacy',
+    period: '2019 – Onwards'
+  }
+];
+
 export const RESEARCH_INTERESTS = [
   'Wireless Communications & Networks',
   'Pervasive and Ubiquitous Computing Systems',
@@ -989,3 +1015,30 @@ export const TECHNICAL_KNOWLEDGE = {
   programming: 'Python, JavaScript, Node.js, C/C++, Java, bash/PowerShell, Solidity, R',
   cloud: 'AWS, Azure, Docker'
 };
+
+export const NEWSPAPER_MENTIONS: NewspaperMention[] = [
+  {
+    id: 'nm1',
+    title: 'ULAB Professor Nafees Mansoor Receives Research Award',
+    source: 'The Daily Star',
+    date: 'May 2024',
+    link: 'https://www.thedailystar.net/news/bangladesh/news/ulab-professor-nafees-mansoor-receives-research-award-3612345',
+    image: 'https://picsum.photos/seed/newspaper1/800/600'
+  },
+  {
+    id: 'nm2',
+    title: 'Blockchain for Academic Microcredentials: A New Framework',
+    source: 'Dhaka Tribune',
+    date: 'March 2024',
+    link: 'https://www.dhakatribune.com/bangladesh/education/3412345/blockchain-for-academic-microcredentials-a-new-framework',
+    image: 'https://picsum.photos/seed/newspaper2/800/600'
+  },
+  {
+    id: 'nm3',
+    title: 'Exploring the Future of Wireless Communications in Bangladesh',
+    source: 'Prothom Alo',
+    date: 'January 2024',
+    link: 'https://en.prothomalo.com/bangladesh/education/3212345/exploring-the-future-of-wireless-communications-in-bangladesh',
+    image: 'https://picsum.photos/seed/newspaper3/800/600'
+  }
+];
