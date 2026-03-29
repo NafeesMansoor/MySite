@@ -954,9 +954,55 @@ export const GRANTS: Grant[] = [
 
 export const PROFESSIONAL_SERVICES: ProfessionalService[] = [
   {
+    role: 'Database Design & Development Consultant',
+    organization: 'Arbree Ltd',
+    period: '2018 – 2019'
+  },
+  {
+    role: 'Web Services Enhancement Consultant',
+    organization: 'University of Liberal Arts Bangladesh (ULAB)',
+    period: '2018 – 2022'
+  }
+];
+
+export const QA_ACTIVITIES: ProfessionalService[] = [
+  {
+    role: 'Tier-2 Program Evaluator',
+    organization: 'Board of Accreditation for Engineering and Technical Education (BAETE), Institution of Engineers, Bangladesh (IEB)',
+    period: '2023 – Till Date'
+  },
+  {
+    role: 'Resource Person',
+    organization: 'Seminar on Academic Integrity and ULAB’s Policy (May 30, 2024)',
+    period: '2024'
+  },
+  {
+    role: 'Resource Person',
+    organization: 'Workshop on Capstone Project Design, ULAB (2023, 2025)',
+    period: '2023 – 2025'
+  },
+  {
+    role: 'Chair, Moderation Committee for Complex Engineering Problems',
+    organization: 'University of Liberal Arts Bangladesh (ULAB)',
+    period: '2023 – Till Date'
+  },
+  {
+    role: 'Member, Evaluation Team for BAETE accreditation of BSc in CSE programs',
+    organization: 'BAETE',
+    period: '2023 – Till Date'
+  },
+  {
+    role: 'Member, Program Quality Assurance Cell (PQAC)',
+    organization: 'University of Liberal Arts Bangladesh (ULAB)',
+    period: '2023 – Till Date'
+  }
+];
+
+export const COMMUNITY_SERVICES: ProfessionalService[] = [
+  {
     role: 'Associate Editor',
     organization: 'IEEE Access (ISI Indexed, IF 3.557)',
-    period: '2017 – Onwards'
+    period: 'August 2017 – Onwards'
   },
   {
     role: 'Professional Activity Coordinator',
@@ -964,35 +1010,54 @@ export const PROFESSIONAL_SERVICES: ProfessionalService[] = [
     period: '2025 – 2026'
   },
   {
+    role: 'Guest Editor',
+    organization: 'Special Issue on “Soft Computing and Modeling Approaches for Complex Systems and Signal Processing”, CIC, Instituto Politécnico Nacional, Mexico',
+    period: '2015'
+  },
+  {
     role: 'Treasurer',
     organization: 'IEEE Young Professionals Bangladesh (IEEE BDS YP Excom 2024)',
     period: '2024'
-  }
-];
-
-export const QA_ACTIVITIES: ProfessionalService[] = [
-  {
-    role: 'Member',
-    organization: 'Institutional Quality Assurance Cell (IQAC), ULAB',
-    period: '2022 – Onwards'
   },
   {
-    role: 'External Peer Reviewer',
-    organization: 'Quality Assurance Unit, University Grants Commission (UGC), Bangladesh',
-    period: '2020 – Onwards'
-  }
-];
-
-export const COMMUNITY_SERVICES: ProfessionalService[] = [
-  {
-    role: 'Volunteer Mentor',
-    organization: 'Local Tech Communities for Underprivileged Youth',
-    period: '2018 – Onwards'
+    role: 'General Co-Chair',
+    organization: 'International Workshop on Bangabandhu & Digital Bangladesh 2023 (WICBBDB-2023)',
+    period: '2023'
   },
   {
-    role: 'Technical Advisor',
-    organization: 'Non-profit organizations for digital literacy',
-    period: '2019 – Onwards'
+    role: 'TPC Chair',
+    organization: 'International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iACCESS 2024)',
+    period: '2024'
+  },
+  {
+    role: 'TPC Chair',
+    organization: '2nd International Conference on Bangabandhu & Digital Bangladesh (ICBBDB-2023)',
+    period: '2023'
+  },
+  {
+    role: 'TPC Chair',
+    organization: '3rd International Joint Conference on Computational Intelligence (IJCCI 2019)',
+    period: '2019'
+  },
+  {
+    role: 'Publication Chair',
+    organization: '2025 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON)',
+    period: '2025'
+  },
+  {
+    role: 'Judge',
+    organization: 'QS Reimagine Education Awards',
+    period: '2023, 2024, 2025'
+  },
+  {
+    role: 'Judge & Mentor',
+    organization: 'NASA Space Apps Contest',
+    period: '2017, 2018, 2019, 2020, 2021, 2023'
+  },
+  {
+    role: 'Judge & Mentor',
+    organization: 'National STEM Olympiad',
+    period: '2024'
   }
 ];
 

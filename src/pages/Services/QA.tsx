@@ -5,10 +5,10 @@ import { QA_ACTIVITIES } from '../../constants';
 
 export default function QA() {
   useEffect(() => {
-    document.title = "Quality Assurance Activities | Nafees Mansoor";
+    document.title = "Quality Assurance Activities | Dr. Nafees Mansoor";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Quality assurance and academic standard activities undertaken by Dr. Nafees Mansoor.');
+      metaDescription.setAttribute('content', "Explore Dr. Nafees Mansoor's contributions to institutional and national quality assurance in higher education, including BAETE accreditation and PQAC roles.");
     }
   }, []);
 

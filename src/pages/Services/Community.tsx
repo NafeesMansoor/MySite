@@ -5,10 +5,10 @@ import { COMMUNITY_SERVICES } from '../../constants';
 
 export default function Community() {
   useEffect(() => {
-    document.title = "Community Service | Nafees Mansoor";
+    document.title = "Community Service | Dr. Nafees Mansoor";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Community service and social contributions of Dr. Nafees Mansoor.');
+      metaDescription.setAttribute('content', "Dr. Nafees Mansoor's community service and professional leadership roles in IEEE, international conferences, and global education awards.");
     }
   }, []);
 
@@ -21,10 +21,10 @@ export default function Community() {
       >
         <div className="space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">Service to the Community</h1>
-          <p className="text-gray-500 max-w-2xl">Volunteer work and community engagement efforts to promote digital literacy and technical education.</p>
+          <p className="text-gray-500 max-w-2xl">Professional leadership, editorial contributions, and community engagement efforts in the global academic and technical landscape.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {COMMUNITY_SERVICES.map((service, index) => (
             <motion.div
               key={index}
