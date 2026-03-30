@@ -27,6 +27,7 @@ import {
   FlaskConical
 } from 'lucide-react';
 import { PUBLICATIONS } from '../constants';
+import AnalyticsDashboard from '../components/AnalyticsDashboard';
 
 const STATS = [
   { label: 'Publications', value: '100+' },
@@ -312,6 +313,9 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
+
+      {/* Analytics Dashboard Section */}
+      <AnalyticsDashboard />
 
       {/* Stats Section */}
       <section className="bg-zinc-950/50 border-y border-white/10 py-24">
