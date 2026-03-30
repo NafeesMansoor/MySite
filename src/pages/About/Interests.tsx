@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Cpu, ShieldCheck, Code, Layers, Database, Globe, Terminal, Fingerprint, FlaskConical } from 'lucide-react';
 import { RESEARCH_INTERESTS } from '../../constants';
+import WordCloud from '../../components/WordCloud';
 
 const INTEREST_ICONS: Record<string, any> = {
   'Wireless Communications': Cpu,
@@ -58,6 +59,8 @@ export default function Interests() {
             );
           })}
         </div>
+
+        <WordCloud />
       </motion.div>
     </div>
   );
