@@ -41,6 +41,7 @@ const NAV_ITEMS = [
     ]
   },
   { id: 'awards', label: 'Awards', path: '/awards' },
+  { id: 'contact', label: 'Contact', path: '/contact' },
 ];
 
 export default function Navbar() {

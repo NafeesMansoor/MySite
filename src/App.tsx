@@ -14,6 +14,7 @@ import Proceedings from './pages/Publications/Proceedings';
 import BookChapters from './pages/Publications/BookChapters';
 import Patents from './pages/Publications/Patents';
 import Awards from './pages/Awards/Awards';
+import Contact from './pages/Contact';
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/publications/book-chapters" element={<BookChapters />} />
           <Route path="/publications/patent" element={<Patents />} />
           <Route path="/awards" element={<Awards />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
     </Router>
