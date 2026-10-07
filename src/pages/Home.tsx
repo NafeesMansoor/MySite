@@ -31,7 +31,7 @@ import AnalyticsDashboard from '../components/AnalyticsDashboard';
 
 const STATS = [
   { label: 'Publications', value: '100+' },
-  { label: 'Citations', value: '1400+' },
+  { label: 'Citations', value: '1550+' },
   { label: 'h index', value: '21' },
   { label: 'Best Paper Awards', value: '7' },
 ];
