@@ -26,13 +26,14 @@ npm run dev      # start the dev server at http://localhost:3000
 | Command           | Purpose                                                        |
 | ----------------- | -------------------------------------------------------------- |
 | `npm run dev`     | Start the local development server                             |
-| `npm run build`   | Regenerate SEO files and create the production build in `dist/` |
+| `npm run build`   | Validate data, regenerate SEO files, build to `dist/`, and prerender every page |
 | `npm run preview` | Serve the production build locally                             |
 | `npm run lint`    | Type-check the project (`tsc --noEmit`)                        |
 | `npm run clean`   | Remove `dist/`                                                 |
 | `npm run pubs:import` | Rebuild publication data from the curated list and the Scopus export |
 | `npm run pubs:validate` | Validate publication data (also runs as part of `build`)     |
 | `npm run pubs:check-links` | Check that every published DOI resolves (needs network)   |
+| `npm run seo:submit` | After a deployment, submit all page URLs to IndexNow (Bing, Yandex and others) |
 
 ## Project structure
 
@@ -81,6 +82,18 @@ To refresh from a new Scopus export:
 4. Run `npm run pubs:check-links`, then `npm run build`.
 
 To give a curated record an exact match, add its `doi` to `curated.json`.
+
+## Search engine optimisation
+
+- Every publication has its own page at `/publications/paper/<slug>` with the abstract, keywords,
+  `ScholarlyArticle` structured data and the `citation_*` tags read by Google Scholar.
+- `scripts/prerender.mjs` runs at the end of the build and writes a static HTML file for each page
+  (title, description, canonical URL, structured data and readable content), so crawlers and link
+  previews do not depend on JavaScript. Titles and descriptions of the section pages live in
+  `src/seo/routes.json`.
+- `public/sitemap.xml` and `public/robots.txt` are regenerated on every build and list each page
+  once, on the primary domain `https://www.nafees.info`.
+- `index.html` carries site-wide `Person` and `WebSite` structured data and the social sharing tags.
 
 ## Deployment
 

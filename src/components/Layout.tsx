@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
-import { WEB_OF_SCIENCE } from '../constants';
+import { SITE_URL, WEB_OF_SCIENCE_PROFILE_URL, setMeta } from '../seo/site';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,24 +10,38 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
+  // Canonical URL always points at the primary domain, whichever host served the page.
   useEffect(() => {
-    // Dynamic canonical tag
-    const link = document.createElement('link');
-    link.rel = 'canonical';
-    link.href = window.location.origin + location.pathname;
-    
-    // Remove existing canonical if any
-    const existingCanonical = document.querySelector('link[rel="canonical"]');
-    if (existingCanonical) {
-      document.head.removeChild(existingCanonical);
+    const url = SITE_URL + (location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, ''));
+    let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'canonical';
+      document.head.appendChild(link);
     }
-    
-    document.head.appendChild(link);
-    
-    return () => {
-      document.head.removeChild(link);
+    link.href = url;
+    setMeta('property', 'og:url', url);
+  }, [location.pathname]);
+
+  // Pages set the title and description; mirror them into the social sharing tags.
+  useEffect(() => {
+    const sync = () => {
+      setMeta('property', 'og:title', document.title);
+      setMeta('name', 'twitter:title', document.title);
+      const description = document.head.querySelector<HTMLMetaElement>('meta[name="description"]')?.content;
+      if (description) {
+        setMeta('property', 'og:description', description);
+        setMeta('name', 'twitter:description', description);
+      }
     };
-  }, [location]);
+    sync();
+    const observer = new MutationObserver(sync);
+    const title = document.head.querySelector('title');
+    const description = document.head.querySelector('meta[name="description"]');
+    if (title) observer.observe(title, { childList: true, characterData: true, subtree: true });
+    if (description) observer.observe(description, { attributes: true, attributeFilter: ['content'] });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white/20 selection:text-white">
@@ -59,7 +73,7 @@ export default function Layout({ children }: LayoutProps) {
                 <span>ResearchGate</span>
               </a>
               <a 
-                href={WEB_OF_SCIENCE.url} 
+                href={WEB_OF_SCIENCE_PROFILE_URL} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full border border-white/5 text-xs text-gray-400 hover:text-white transition-all flex items-center space-x-2"

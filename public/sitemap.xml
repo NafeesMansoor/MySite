@@ -1,185 +1,593 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.nafees.info</loc>
-    <lastmod>2026-10-08T18:01:49.085Z</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.nafees.info/</loc>
+    <lastmod>2026-10-08</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/about/degrees</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/about/interests</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/about/mentions</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/projects/funded</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/projects/awards</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/services/professional</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/services/qa</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/services/community</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/publications</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/publications/journals</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/publications/proceedings</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/publications/book-chapters</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/publications/patent</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.nafees.info/gnu-projects/fsm-designer</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://nafees.mansoor.info</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/about/degrees</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/a-portoble-insuloled-contoiner-for-sloring-ond-tronsporting-voccines</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/about/interests</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/bangabandhu-and-digital-bangladesh-first-international-conference-icbbdb-2021-dhaka-bangladesh-december</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/about/mentions</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/design-and-development-of-a-blockchain-enabled-decentralized-framework-for-academic-microcredentials</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/projects/funded</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/optimizing-network-bandwidth-slicing-identification-nadam-enhanced-cnn-and-vae-data-preprocessing</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/projects/awards</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/simulation-tools-for-cognitive-radio-network-a-survey</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/services/professional</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/comprehensive-smartphone-image-dataset-for-fish-species-identification-in-bangladesh-s-freshwater</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/services/qa</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/a-robust-routing-protocol-in-cognitive-unmanned-aerial-vehicular-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/services/community</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/transforming-agri-food-value-chains-in-bangladesh-a-practical-application-of-blockchain</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/publications</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/a-review-of-blockchain-approaches-for-kyc</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/publications/journals</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/a-fresh-look-at-routing-protocols-in-unmanned-aerial-vehicular-networks-a</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/publications/proceedings</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/a-computer-vision-based-system-for-recognition-and-classification-of-urdu-sign</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/publications/book-chapters</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/sf-lap-secure-m2m-communication-in-iiot-with-a-single-factor-lightweight</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/publications/patent</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/a-transparent-and-privacy-preserving-healthcare-platform-with-novel-smart-contract-for</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nafees.mansoor.info/gnu-projects/fsm-designer</loc>
-    <lastmod>2026-10-08T18:01:49.086Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nafees.info/publications/paper/prediction-approaches-for-smart-cultivation-a-comparative-study</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/chittron-an-automatic-bangla-image-captioning-system</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/rare-a-spectrum-aware-cross-layer-mac-protocol-for-cognitive-radio-ad</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/mobility-aware-medium-access-control-protocols-for-wireless-sensor-networks-a-survey</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/medium-access-control-protocol-for-cognitive-radio-ad-hoc-networks-a-survey</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/cmcs-a-cross-layer-mobility-aware-mac-protocol-for-cognitive-radio-sensor</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/clustering-analysis-in-wireless-sensor-networks-an-ambit-of-performance-metrics-and</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-survey-on-self-organized-cluster-based-wireless-sensor-network</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/cognitive-radio-ad-hoc-network-architectures-a-survey</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/multiple-description-discrete-cosine-transform-based-image-coding-using-dc-coefficient-relocation</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-comparative-analysis-of-ict-developments-in-developing-and-developed-countries</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/infrachain-a-sensor-enabled-bridge-management-application-using-blockchain</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/verifi-chain-a-credentials-verifier-using-blockchain-and-ipfs</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/mood-classification-of-bangla-songs-based-on-lyrics</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/development-of-a-blockchain-based-on-demand-lightweight-commodity-delivery-system</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/cloud-computing-an-overview-of-security-risk-assessment-models-and-frameworks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/development-of-a-monitoring-system-and-power-management-for-an-iot-based</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/sensor-searching-techniques-in-internet-of-things-a-survey-taxonomy-and-challenges</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/development-of-an-expert-system-oriented-service-support-helpdesk-management-system</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/deb-a-delay-and-energy-based-routing-protocol-for-cognitive-radio-ad</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/classification-of-bangla-compound-characters-using-a-hog-cnn-hybrid-model</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/construction-of-a-robust-clustering-algorithm-for-cognitive-radio-ad-hoc-network</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/jailbreakllm-an-effective-llama-model-designed-specifically-to-jailbreak-openai-gpt</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/teaching-and-learning-via-video-conferencing-platforms-issues-across-three-asian-countries</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/dr-fans-a-decentralized-micro-credential-verification-system-towards-higher-qualifications</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/design-and-development-of-a-blockchain-and-ipfs-based-credential-verifier-with</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-robust-routing-protocol-in-cognitive-unmanned-aerial-vehicular-networks-conference</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/blockchain-enhanced-academic-certificate-verification-a-decentralized-and-trustworthy-framework</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/credchain-academic-and-professional-certificate-verification-system-using-blockchain</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/bangla-e-commerce-sentiment-analysis-optimization-using-tokenization-and-tf-idf</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/automation-of-financial-aid-distribution-systems-using-consortium-blockchain</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/problems-in-video-conferencing-mediated-teaching-experiences-of-three-user-roles-of</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/soft-voting-ensemble-based-approach-for-diagnosing-diabetes-mellitus</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/blockchain-based-controller-recovery-and-sdn-packet-filtering-scheme-for-softwarized-uavs</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/impact-of-ai-in-healthcare-services-analysis-using-medical-synthetic-data</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/certiblock-the-exemplary-utilization-of-blockchain-for-the-rigorous-validation-of-academic</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-new-approach-to-financial-distribution-systems-leveraging-hyperledger-besu-and-consortium</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/rmt-a-lightweight-encryption-algorithm-for-blockchain-based-certificate-verification</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/enhancing-student-engagement-and-performance-evaluation-an-integrated-approach-for-quality-learning</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/wildsaver-advancing-wildlife-conservation-with-uavs-and-blockchain-technology</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/infrachain-a-sensor-enabled-roadway-management-application-using-blockchain-and-digital-twin</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-new-paradigm-in-blockchain-based-financial-aid-distribution</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/advancing-fish-species-identification-in-bangladesh-deep-learning-approaches-for-accurate-freshwater</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/learning-driven-spatio-temporal-feature-extraction-for-violence-detection-in-iot-environments</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/early-diagnosis-and-comparative-analysis-of-different-machine-learning-algorithms-for-myocardial</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/towards-secure-communication-in-cr-vanets-through-a-trust-based-routing-protocol</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/textmage-the-automated-bangla-caption-generator-based-on-deep-learning</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/an-iot-based-real-time-data-centric-monitoring-system-for-vaccine-cold</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/an-efficient-routing-protocol-for-secured-communication-in-cognitive-radio-sensor-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-spectrum-aware-mobility-pattern-based-routing-protocol-for-cr-vanets</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/patterns-of-flocking-in-autonomous-agents</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/evolutionary-search-in-the-parameter-spaces-of-the-honeybee-house-hunting-model</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/application-of-image-retrieval-for-aesthetic-evaluation-and-improvement-suggestion-of-isolated</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/classification-of-bangla-compound-characters-using-a-hog-cnn-hybrid-model-conference</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/sequence-classification-a-regression-based-generalization-of-two-stage-clustering</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-framework-for-event-anomaly-detection-in-cognitive-radio-based-smart-community</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-framework-for-dynamic-vehicle-pooling-and-ride-sharing-system</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-hybrid-deep-model-with-hog-features-for-bangla-handwritten-numeral-classification</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-novel-on-demand-routing-protocol-for-cluster-based-cognitive-radio-ad</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/cross-layer-mobility-aware-mac-protocol-for-cognitive-radio-sensor-network</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/dynamic-spectrum-allocation-for-cognitive-radio-ad-hoc-network</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-novel-node-joining-algorithm-for-spectrum-aware-cluster-based-cognitive-radio</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/construction-of-a-robust-clustering-algorithm-for-cognitive-radio-ad-hoc-network-conference</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/fault-tolerance-in-dynamic-cluster-based-wireless-sensor-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-stable-cluster-based-architecture-for-cognitive-radio-ad-hoc-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/cluster-modeling-for-cognitive-radio-ad-hoc-networks-using-graph-theory</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/spectrum-aware-cluster-based-architecture-for-cognitive-radio-ad-hoc-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/coad-a-cluster-based-adhoc-cognitive-radio-network-architecture-with-broadcasting-protocol</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-secured-dynamic-cluster-based-wireless-sensor-network</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/multiple-description-image-coding-a-low-complexity-approach-for-lossy-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/multiple-description-image-transmission-for-diversity-systems-over-unreliable-communication-networks</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/exploration-of-hyperledger-besu-in-designing-private-blockchain-based-financial-distribution-systems</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-real-time-sign-language-translator-on-jetson-nano-using-mediapipe-mobilenet</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/unlearning-for-clinical-deployment-scalable-data-erasure-in-medical-image-classification-models</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/blockchain-enabled-micro-credentials-a-hyperledger-besu-framework-for-academic-trust-and</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-reputation-based-consensus-mechanism-inspired-by-ant-colony-optimization-aco</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-multimodal-framework-for-misinformation-detection-in-bengali-using-large-language-models</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/decentralized-cross-border-financial-aid-distribution-utilizing-blockchain-based-tokenization</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-bio-inspired-reputation-based-consensus-mechanism-for-secure-and-scalable-permissioned</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/efficient-data-erasure-in-deep-learning-via-sparsity-and-stability-mechanisms</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/drivechain-scalable-and-effective-data-management-solution-to-blockchain-based-vanet-with</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-privacy-focused-multichain-based-blockchain-framework-for-transparent-and-efficient-technology</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/blockchain-based-controller-recovery-and-sdn-forwarding-device-rule-migration-for-uavs</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/a-collaborative-framework-for-evidence-grounded-misinformation-detection-in-bengali-using-retrieval</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/agrichain-blockchain-enabled-food-traceability</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/design-and-development-of-an-iot-based-smart-vaccine-carrier-and-real</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/deep-learning-approach-for-multi-label-detection-of-abusive-bangla-social-media</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/smart-health-with-medi2home-redefining-medicine-delivery-for-a-safer-tomorrow</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/aid-nexus-a-blockchain-based-financial-distribution-system</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nafees.info/publications/paper/early-prediction-of-chronic-kidney-disease-using-data-mining-techniques</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>

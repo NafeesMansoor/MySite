@@ -546,7 +546,7 @@
         "source": "IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)",
         "timesCited": 1,
         "siteId": null,
-        "note": "Not on the website, and the Web of Science entry shows no claimed authorship."
+        "note": "Not published on the website: Crossref (DOI 10.1109/aqtr49680.2020.9129943) lists the authors as R. Covaci, G. Harja and I. Nascu, so this entry appears to be attributed to the profile by mistake."
       },
       {
         "title": "A Spectrum Aware Mobility Pattern Based Routing Protocol for CR-VANETs",
@@ -676,8 +676,8 @@
         "year": 2015,
         "source": "International Seminar of Science and Applied Technology (ISSAT)",
         "timesCited": 2,
-        "siteId": null,
-        "note": "Same title as website record c6, but Web of Science gives a different venue and year (ISSAT, July 2015; the website lists ICAMMS 2014)."
+        "siteId": "c6",
+        "note": "Matched by title. Web of Science lists the venue as ISSAT, July 2015; the website lists ICAMMS 2014."
       },
       {
         "title": "Cross-Layer Mobility-Aware MAC Protocol for Cognitive Radio Sensor Network",

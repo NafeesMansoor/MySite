@@ -1,5 +1,7 @@
 export interface Publication {
   id: string;
+  // URL segment of the publication's own page (/publications/paper/<slug>); set by the importer.
+  slug: string;
   title: string;
   authors: string;
   venue: string;

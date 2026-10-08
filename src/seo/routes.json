@@ -1,0 +1,82 @@
+{
+  "/": {
+    "title": "Nafees Mansoor | Professor & Researcher",
+    "description": "Official website of Dr. Nafees Mansoor, Professor and Researcher specializing in Wireless Communications, Distributed Systems, and Security.",
+    "heading": "Nafees Mansoor"
+  },
+  "/about/degrees": {
+    "title": "Academic Degrees | Nafees Mansoor",
+    "description": "Educational background and academic qualifications of Dr. Nafees Mansoor.",
+    "heading": "Academic Degrees"
+  },
+  "/about/interests": {
+    "title": "Research Interests | Nafees Mansoor",
+    "description": "Key research areas and expertise of Dr. Nafees Mansoor, including wireless communications and distributed systems.",
+    "heading": "Research Interests"
+  },
+  "/about/mentions": {
+    "title": "Newspaper Mentions | Nafees Mansoor",
+    "description": "Media coverage and newspaper features highlighting the work and contributions of Dr. Nafees Mansoor.",
+    "heading": "Newspaper Mentions"
+  },
+  "/projects/funded": {
+    "title": "Funded Projects | Nafees Mansoor",
+    "description": "Overview of research projects funded by various organizations and institutions led by Dr. Nafees Mansoor.",
+    "heading": "Funded Projects"
+  },
+  "/projects/awards": {
+    "title": "Awards & Recognition | Nafees Mansoor",
+    "description": "Awards, honors, and research recognitions received by Dr. Nafees Mansoor.",
+    "heading": "Awards & Recognition"
+  },
+  "/services/professional": {
+    "title": "Professional Services | Dr. Nafees Mansoor",
+    "description": "Professional consultancy and administrative services provided by Dr. Nafees Mansoor, including database design and web services enhancement.",
+    "heading": "Professional & Administrative Services"
+  },
+  "/services/qa": {
+    "title": "Quality Assurance Activities | Dr. Nafees Mansoor",
+    "description": "Dr. Nafees Mansoor's contributions to institutional and national quality assurance in higher education.",
+    "heading": "Quality Assurance Activities"
+  },
+  "/services/community": {
+    "title": "Community Service | Dr. Nafees Mansoor",
+    "description": "Dr. Nafees Mansoor's community service and professional leadership roles in IEEE, international conferences, and global education awards.",
+    "heading": "Service to the Community"
+  },
+  "/publications": {
+    "title": "Publications | Nafees Mansoor",
+    "description": "Searchable list of journal articles, conference papers, book chapters, and patents by Dr. Nafees Mansoor, with abstracts, keywords, and DOI links.",
+    "heading": "Publications",
+    "types": ["journal", "conference", "book-chapter", "edited-book", "patent"]
+  },
+  "/publications/journals": {
+    "title": "Journal Publications | Nafees Mansoor",
+    "description": "Peer-reviewed research articles published in international journals by Dr. Nafees Mansoor.",
+    "heading": "Journal Publications",
+    "types": ["journal"]
+  },
+  "/publications/proceedings": {
+    "title": "Conference Proceedings | Nafees Mansoor",
+    "description": "Research papers presented at international conferences and symposia by Dr. Nafees Mansoor.",
+    "heading": "Conference Proceedings",
+    "types": ["conference"]
+  },
+  "/publications/book-chapters": {
+    "title": "Book Chapters | Nafees Mansoor",
+    "description": "Contributions to edited books and research monographs by Dr. Nafees Mansoor.",
+    "heading": "Book Chapters",
+    "types": ["book-chapter"]
+  },
+  "/publications/patent": {
+    "title": "Patents | Nafees Mansoor",
+    "description": "Intellectual property and innovations filed for patent protection by Dr. Nafees Mansoor.",
+    "heading": "Patents",
+    "types": ["patent"]
+  },
+  "/gnu-projects/fsm-designer": {
+    "title": "FSM Designer | Nafees Mansoor",
+    "description": "Draw finite state machines in the browser: DFA, NFA, PDA, and Turing machine diagrams with PNG, SVG, and LaTeX export.",
+    "heading": "FSM Designer"
+  }
+}

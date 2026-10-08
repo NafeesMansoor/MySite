@@ -8,11 +8,11 @@ const { records } = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'publications
 const curated = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'curated.json'), 'utf8'));
 
 const TYPES = ['journal', 'conference', 'book-chapter', 'patent', 'edited-book'];
-const REQUIRED = ['id', 'title', 'authors', 'venue', 'year', 'type'];
+const REQUIRED = ['id', 'slug', 'title', 'authors', 'venue', 'year', 'type'];
 const URL_FIELDS = ['link', 'scopusUrl'];
 const DOI_PATTERN = /^10\.\d{4,9}\/\S+$/;
 const errors = [];
-const seen = { id: new Map(), doi: new Map(), scopusEid: new Map(), wosAccession: new Map() };
+const seen = { id: new Map(), doi: new Map(), scopusEid: new Map(), wosAccession: new Map(), slug: new Map() };
 
 for (const record of records) {
   const label = record.id ?? JSON.stringify(record).slice(0, 60);
@@ -34,6 +34,8 @@ for (const record of records) {
     if (seen[field].has(record[field])) fail(`duplicate ${field} "${record[field]}" (also on ${seen[field].get(record[field])})`);
     seen[field].set(record[field], label);
   }
+  if ((record.indexed === 'ISI Indexed') !== Boolean(record.wosCoreCollection))
+    fail(`indexing label "${record.indexed}" disagrees with Web of Science Core Collection status — update curated.json`);
   for (const [field, value] of Object.entries(record)) {
     if (JSON.stringify(value).includes('�')) fail(`"${field}" contains a replacement character (encoding damage)`);
   }
