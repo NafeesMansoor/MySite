@@ -1,11 +1,10 @@
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, ExternalLink, Filter, Search, X } from 'lucide-react';
-import { PUBLICATIONS, SCOPUS_EXPORT_LABEL, WEB_OF_SCIENCE } from '../constants';
+import { motion } from 'motion/react';
+import { ArrowRight, ChevronLeft, ChevronRight, Filter, Search, X } from 'lucide-react';
+import { PUBLICATIONS } from '../constants';
 import { Publication } from '../types';
-import ShareButtons from './ShareButtons';
-import { SITE_URL, doiUrl, publicationJsonLd, publicationPath, setMeta, setPageJsonLd, typeLabel } from '../seo/site';
+import { SITE_URL, publicationJsonLd, publicationPath, setMeta, setPageJsonLd, typeLabel } from '../seo/site';
 
 type PublicationType = Publication['type'];
 type SortOrder = 'newest' | 'oldest' | 'cited' | 'title';
@@ -27,10 +26,10 @@ const SORT_LABELS: Record<SortOrder, string> = {
   title: 'Title A–Z',
 };
 
+const PAGE_SIZE = 10;
+
 // Topics offered in the filter: author keywords used by at least this many listed publications.
 const MIN_TOPIC_COUNT = 3;
-
-const wosUrl = (accession: string) => `https://www.webofscience.com/wos/woscc/full-record/${accession}`;
 
 const searchText = (pub: Publication) =>
   [
@@ -67,8 +66,14 @@ export const indexedBadge = (indexed: string) => (indexed.startsWith('ISI') ? BA
 const selectClass = 'bg-transparent text-sm text-gray-300 focus:outline-none cursor-pointer max-w-[14rem]';
 const pillClass =
   'flex items-center space-x-2 bg-zinc-900/50 border border-white/5 rounded-full px-4 py-2 focus-within:border-indigo-400/60';
-const linkClass =
-  'inline-flex items-center space-x-1.5 text-xs text-sky-400/80 hover:text-sky-300 underline-offset-4 hover:underline transition-colors';
+const pageButtonClass =
+  'min-w-10 h-10 px-3 inline-flex items-center justify-center rounded-full border text-sm transition-colors disabled:opacity-30 disabled:cursor-not-allowed';
+
+// Page numbers to show: first, last, and the pages around the current one.
+const pageWindow = (current: number, total: number) => {
+  const pages = new Set([1, total, current - 1, current, current + 1].filter((page) => page >= 1 && page <= total));
+  return [...pages].sort((a, b) => a - b);
+};
 
 export default function PublicationList({
   heading,
@@ -79,15 +84,47 @@ export default function PublicationList({
   venueLabel = 'Venue',
   emptyLabel = 'publications',
 }: PublicationListProps) {
+  // Search, filters, sort order and page live in the URL so that any view can be linked to.
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get('q') ?? '');
-  const [selectedYear, setSelectedYear] = useState('All');
-  const [selectedType, setSelectedType] = useState('All');
-  const [selectedIndexed, setSelectedIndexed] = useState('All');
-  const [selectedTopic, setSelectedTopic] = useState('All');
-  const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const query = searchParams.get('q') ?? '';
+  const selectedYear = searchParams.get('year') ?? 'All';
+  const selectedType = searchParams.get('type') ?? 'All';
+  const selectedIndexed = searchParams.get('indexed') ?? 'All';
+  const selectedTopic = searchParams.get('topic') ?? 'All';
+  const sortParam = searchParams.get('sort') as SortOrder | null;
+  const sortOrder: SortOrder = sortParam && sortParam in SORT_LABELS ? sortParam : 'newest';
   const searchId = useId();
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const setParam = (key: string, value: string, defaultValue: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (value === defaultValue) next.delete(key);
+    else next.set(key, value);
+    if (key !== 'page') next.delete('page');
+    setSearchParams(next, { replace: key !== 'page' });
+  };
+
+  // The search box keeps its own text and writes it to the URL shortly after typing stops, so
+  // fast typing is never lost. It follows the URL again when the query changes from elsewhere
+  // (links, Back, Clear filters).
+  const [searchInput, setSearchInput] = useState(query);
+  const pendingSearch = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (pendingSearch.current === null) setSearchInput(query);
+  }, [query]);
+  useEffect(() => () => {
+    if (pendingSearch.current !== null) clearTimeout(pendingSearch.current);
+  }, []);
+  const latestSetParam = useRef(setParam);
+  latestSetParam.current = setParam;
+  const onSearchChange = (value: string) => {
+    setSearchInput(value);
+    if (pendingSearch.current !== null) clearTimeout(pendingSearch.current);
+    pendingSearch.current = setTimeout(() => {
+      pendingSearch.current = null;
+      latestSetParam.current('q', value, '');
+    }, 200);
+  };
 
   const typeKey = types.join(',');
   const pubs = useMemo(() => PUBLICATIONS.filter((p) => types.includes(p.type)), [typeKey]);
@@ -109,16 +146,6 @@ export default function PublicationList({
     });
     return () => setPageJsonLd(null);
   }, [pageTitle, metaDescription, heading, pubs]);
-
-  // Keep the search term in the URL so that a search can be shared or bookmarked.
-  useEffect(() => {
-    const trimmed = query.trim();
-    if ((searchParams.get('q') ?? '') === trimmed) return;
-    const next = new URLSearchParams(searchParams);
-    if (trimmed) next.set('q', trimmed);
-    else next.delete('q');
-    setSearchParams(next, { replace: true });
-  }, [query]);
 
   const years = useMemo(
     () => Array.from(new Set<string>(pubs.map((p) => p.year.toString()))).sort((a, b) => b.localeCompare(a)),
@@ -145,7 +172,6 @@ export default function PublicationList({
       .map(([key, entry]) => ({ key, ...entry }));
   }, [pubs]);
   const hasCitations = useMemo(() => pubs.some((p) => p.citedBy !== undefined), [pubs]);
-  const hasMetadata = useMemo(() => pubs.some((p) => p.scopusEid), [pubs]);
 
   const results = useMemo(() => {
     const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -170,6 +196,11 @@ export default function PublicationList({
     }
   }, [pubs, haystacks, query, selectedYear, selectedType, selectedIndexed, selectedTopic, sortOrder]);
 
+  const pageCount = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
+  const page = Math.min(Math.max(1, Number(searchParams.get('page')) || 1), pageCount);
+  const firstIndex = (page - 1) * PAGE_SIZE;
+  const pageItems = results.slice(firstIndex, firstIndex + PAGE_SIZE);
+
   const isFiltered =
     query.trim() !== '' ||
     selectedYear !== 'All' ||
@@ -178,20 +209,15 @@ export default function PublicationList({
     selectedTopic !== 'All';
 
   const clearFilters = () => {
-    setQuery('');
-    setSelectedYear('All');
-    setSelectedType('All');
-    setSelectedIndexed('All');
-    setSelectedTopic('All');
+    const next = new URLSearchParams();
+    if (sortOrder !== 'newest') next.set('sort', sortOrder);
+    setSearchParams(next, { replace: true });
   };
 
-  const toggleAbstract = (id: string) =>
-    setExpanded((current) => {
-      const next = new Set(current);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+  const goToPage = (target: number) => {
+    setParam('page', String(target), '1');
+    listRef.current?.scrollIntoView({ block: 'start' });
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -211,8 +237,8 @@ export default function PublicationList({
               <input
                 id={searchId}
                 type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                value={searchInput}
+                onChange={(event) => onSearchChange(event.target.value)}
                 placeholder="Search by title, author, keyword, abstract, or DOI"
                 className="w-full bg-transparent text-sm text-gray-200 placeholder:text-gray-600 focus:outline-none"
               />
@@ -224,7 +250,7 @@ export default function PublicationList({
                 <select
                   aria-label="Filter by year"
                   value={selectedYear}
-                  onChange={(event) => setSelectedYear(event.target.value)}
+                  onChange={(event) => setParam('year', event.target.value, 'All')}
                   className={selectClass}
                 >
                   <option value="All" className="bg-zinc-900">All Years</option>
@@ -239,7 +265,7 @@ export default function PublicationList({
                   <select
                     aria-label="Filter by publication type"
                     value={selectedType}
-                    onChange={(event) => setSelectedType(event.target.value)}
+                    onChange={(event) => setParam('type', event.target.value, 'All')}
                     className={selectClass}
                   >
                     <option value="All" className="bg-zinc-900">All Types</option>
@@ -255,7 +281,7 @@ export default function PublicationList({
                   <select
                     aria-label="Filter by indexing"
                     value={selectedIndexed}
-                    onChange={(event) => setSelectedIndexed(event.target.value)}
+                    onChange={(event) => setParam('indexed', event.target.value, 'All')}
                     className={selectClass}
                   >
                     <option value="All" className="bg-zinc-900">All Indexing</option>
@@ -271,7 +297,7 @@ export default function PublicationList({
                   <select
                     aria-label="Filter by topic"
                     value={selectedTopic}
-                    onChange={(event) => setSelectedTopic(event.target.value)}
+                    onChange={(event) => setParam('topic', event.target.value, 'All')}
                     className={selectClass}
                   >
                     <option value="All" className="bg-zinc-900">All Topics</option>
@@ -288,7 +314,7 @@ export default function PublicationList({
                 <select
                   aria-label="Sort publications"
                   value={sortOrder}
-                  onChange={(event) => setSortOrder(event.target.value as SortOrder)}
+                  onChange={(event) => setParam('sort', event.target.value, 'newest')}
                   className={selectClass}
                 >
                   {(Object.keys(SORT_LABELS) as SortOrder[])
@@ -312,157 +338,51 @@ export default function PublicationList({
             </div>
 
             <p className="text-xs text-gray-500" role="status" aria-live="polite">
-              {isFiltered
-                ? `Showing ${results.length} of ${pubs.length} ${emptyLabel}`
-                : `${pubs.length} ${emptyLabel}`}
+              {results.length === 0
+                ? `No ${emptyLabel} match`
+                : `Showing ${firstIndex + 1}–${firstIndex + pageItems.length} of ${results.length} ${emptyLabel}`}
+              {isFiltered && results.length > 0 && ` (${pubs.length} in total)`}
             </p>
           </form>
         </div>
 
-        <div className="grid gap-6">
-          <AnimatePresence mode="popLayout">
-            {results.map((pub) => {
-              const isOpen = expanded.has(pub.id);
-              const abstractId = `abstract-${pub.id}`;
-              const articleUrl = pub.doi ? doiUrl(pub.doi) : pub.link;
-              return (
-                <motion.article
-                  key={pub.id}
-                  layout="position"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="group p-8 bg-zinc-900/50 border border-white/5 border-l-2 border-l-indigo-500/40 rounded-3xl hover:bg-zinc-900 hover:border-white/10 hover:border-l-indigo-400 transition-all"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="space-y-3 min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                        <span className="text-xs text-indigo-400 font-mono font-medium">{pub.year}</span>
-                        {types.length > 1 && <span className={BADGE.neutral}>{typeLabel(pub.type)}</span>}
-                        {pub.indexed && <span className={indexedBadge(pub.indexed)}>{pub.indexed}</span>}
-                        {pub.impactFactor && <span className={BADGE.impact}>IF: {pub.impactFactor}</span>}
-                        {pub.wosCoreCollection && (
-                          <span
-                            className={BADGE.wos}
-                            title={
-                              pub.wosTimesCited !== undefined
-                                ? `Web of Science Core Collection — cited ${pub.wosTimesCited} times (${WEB_OF_SCIENCE.preparedLabel})`
-                                : 'Web of Science Core Collection'
-                            }
-                          >
-                            Web of Science
-                          </span>
-                        )}
-                        {pub.openAccess && <span className={BADGE.openAccess}>Open Access</span>}
-                        {pub.citedBy !== undefined && pub.citedBy > 0 && (
-                          <span className={BADGE.cited} title={`Scopus citation count, ${SCOPUS_EXPORT_LABEL}`}>
-                            Cited by {pub.citedBy}
-                          </span>
-                        )}
-                      </div>
-                      <h2 className="text-xl font-bold text-white leading-tight">
-                        <Link
-                          to={publicationPath(pub)}
-                          className="hover:text-indigo-300 focus-visible:text-indigo-300 focus-visible:outline-none focus-visible:underline underline-offset-4 transition-colors"
-                        >
-                          {pub.title}
-                        </Link>
-                      </h2>
-                      <p className="text-sm text-gray-500 italic">{pub.authors}</p>
-                      <p className="text-sm text-gray-400 md:hidden">{pub.venue}</p>
-                    </div>
-                    <div className="flex items-center space-x-6 shrink-0">
-                      <div className="text-right hidden md:block">
-                        <div className="text-xs text-violet-400/70 uppercase tracking-widest mb-1">{venueLabel}</div>
-                        <div className="text-sm text-gray-400 max-w-[250px] line-clamp-3" title={pub.venue}>
-                          {pub.venue}
-                        </div>
-                      </div>
-                      <div className="flex flex-col items-end space-y-3">
-                        {articleUrl && (
-                          <a
-                            href={articleUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View article: ${pub.title} (opens the publisher page in a new tab)`}
-                            className="px-6 py-3 bg-indigo-500/10 hover:bg-indigo-500/20 rounded-full transition-all border border-indigo-500/30 group/link flex items-center space-x-2"
-                          >
-                            <ExternalLink className="w-4 h-4 text-indigo-300 group-hover/link:text-white transition-colors" aria-hidden="true" />
-                            <span className="text-sm font-medium text-indigo-200 group-hover/link:text-white transition-colors whitespace-nowrap">
-                              View article
-                            </span>
-                          </a>
-                        )}
-                        <ShareButtons title={pub.title} url={articleUrl || window.location.href} />
-                      </div>
-                    </div>
+        <div ref={listRef} className="grid gap-4 scroll-mt-24">
+          {pageItems.map((pub) => (
+            <article
+              key={pub.id}
+              className="group p-6 md:p-8 bg-zinc-900/50 border border-white/5 border-l-2 border-l-indigo-500/40 rounded-3xl hover:bg-zinc-900 hover:border-white/10 hover:border-l-indigo-400 transition-all"
+            >
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="space-y-3 min-w-0">
+                  <div className="flex items-center gap-x-3">
+                    <span className={BADGE.neutral}>{typeLabel(pub.type)}</span>
+                    <span className="text-xs text-indigo-400 font-mono font-medium">{pub.year}</span>
                   </div>
-
-                  {(pub.abstract || pub.doi || pub.scopusUrl || pub.authorKeywords || pub.wosCoreCollection) && (
-                    <div className="mt-6 pt-6 border-t border-white/5 space-y-4">
-                      {pub.authorKeywords && (
-                        <ul className="flex flex-wrap gap-2" aria-label="Author keywords">
-                          {pub.authorKeywords.map((keyword) => (
-                            <li key={keyword}>
-                              <button
-                                type="button"
-                                onClick={() => setQuery(keyword)}
-                                title={`Search for "${keyword}"`}
-                                className="text-xs text-gray-400 hover:text-indigo-200 bg-white/5 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-full px-3 py-1 transition-colors"
-                              >
-                                {keyword}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-
-                      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                        {pub.abstract && (
-                          <button
-                            type="button"
-                            onClick={() => toggleAbstract(pub.id)}
-                            aria-expanded={isOpen}
-                            aria-controls={abstractId}
-                            className="inline-flex items-center space-x-1.5 text-xs font-medium text-indigo-300 hover:text-indigo-200 transition-colors"
-                          >
-                            <ChevronDown
-                              className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-                              aria-hidden="true"
-                            />
-                            <span>{isOpen ? 'Hide abstract' : 'Show abstract'}</span>
-                          </button>
-                        )}
-                        {pub.doi && (
-                          <a href={doiUrl(pub.doi)} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                            <span>DOI: {pub.doi}</span>
-                          </a>
-                        )}
-                        {pub.scopusUrl && (
-                          <a href={pub.scopusUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                            <span>Scopus record</span>
-                          </a>
-                        )}
-                        {pub.wosCoreCollection && pub.wosAccession && (
-                          <a href={wosUrl(pub.wosAccession)} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                            <span>Web of Science record</span>
-                          </a>
-                        )}
-                      </div>
-
-                      {pub.abstract && (
-                        <div id={abstractId} hidden={!isOpen}>
-                          <h3 className="sr-only">Abstract</h3>
-                          <p className="text-sm text-gray-400 leading-relaxed max-w-4xl">{pub.abstract}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </motion.article>
-              );
-            })}
-          </AnimatePresence>
+                  <h2 className="text-xl font-bold text-white leading-tight">
+                    <Link
+                      to={publicationPath(pub)}
+                      className="hover:text-indigo-300 focus-visible:text-indigo-300 focus-visible:outline-none focus-visible:underline underline-offset-4 transition-colors"
+                    >
+                      {pub.title}
+                    </Link>
+                  </h2>
+                  <p className="text-sm text-gray-500 italic">{pub.authors}</p>
+                  <div>
+                    <div className="text-xs text-violet-400/70 uppercase tracking-widest mb-1">{venueLabel}</div>
+                    <div className="text-sm text-gray-400">{pub.venue}</div>
+                  </div>
+                </div>
+                <Link
+                  to={publicationPath(pub)}
+                  aria-label={`Details: ${pub.title}`}
+                  className="shrink-0 self-start md:self-center px-6 py-3 bg-indigo-500/10 hover:bg-indigo-500/20 rounded-full transition-all border border-indigo-500/30 flex items-center space-x-2 text-sm font-medium text-indigo-200 hover:text-white"
+                >
+                  <span>Details</span>
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+          ))}
 
           {results.length === 0 && (
             <div className="text-center py-20 text-gray-500 space-y-4">
@@ -480,23 +400,45 @@ export default function PublicationList({
           )}
         </div>
 
-        {hasMetadata && (
-          <p className="text-xs text-gray-600">
-            Abstracts, keywords, DOIs, and citation counts are taken from Scopus ({SCOPUS_EXPORT_LABEL}). Article links
-            lead to the publisher’s page, where access may require a subscription unless marked Open Access. Web of
-            Science status is taken from the{' '}
-            <a
-              href={WEB_OF_SCIENCE.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-gray-400 transition-colors"
+        {pageCount > 1 && (
+          <nav aria-label="Pagination" className="flex flex-wrap items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => goToPage(page - 1)}
+              disabled={page === 1}
+              aria-label="Previous page"
+              className={`${pageButtonClass} border-white/10 text-gray-300 hover:bg-white/10`}
             >
-              Web of Science researcher profile
-            </a>{' '}
-            ({WEB_OF_SCIENCE.preparedLabel}; h-index {WEB_OF_SCIENCE.allTime.hIndex},{' '}
-            {WEB_OF_SCIENCE.allTime.timesCited} citations, {WEB_OF_SCIENCE.allTime.coreCollectionPublications} Core
-            Collection publications).
-          </p>
+              <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+            </button>
+            {pageWindow(page, pageCount).map((number, index, all) => (
+              <span key={number} className="flex items-center gap-2">
+                {index > 0 && number - all[index - 1] > 1 && <span className="text-gray-600" aria-hidden="true">…</span>}
+                <button
+                  type="button"
+                  onClick={() => goToPage(number)}
+                  aria-label={`Page ${number}`}
+                  aria-current={number === page ? 'page' : undefined}
+                  className={`${pageButtonClass} ${
+                    number === page
+                      ? 'bg-indigo-500/20 border-indigo-500/40 text-white'
+                      : 'border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {number}
+                </button>
+              </span>
+            ))}
+            <button
+              type="button"
+              onClick={() => goToPage(page + 1)}
+              disabled={page === pageCount}
+              aria-label="Next page"
+              className={`${pageButtonClass} border-white/10 text-gray-300 hover:bg-white/10`}
+            >
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
+            </button>
+          </nav>
         )}
       </motion.div>
     </div>

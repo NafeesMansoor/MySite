@@ -38,6 +38,7 @@ for (const record of records) {
     fail(`indexing label "${record.indexed}" disagrees with Web of Science Core Collection status — update curated.json`);
   for (const [field, value] of Object.entries(record)) {
     if (JSON.stringify(value).includes('�')) fail(`"${field}" contains a replacement character (encoding damage)`);
+    if (/GMT[+-]\d{4}/.test(JSON.stringify(value))) fail(`"${field}" contains a raw date string (spreadsheet cell read as a date)`);
   }
 }
 

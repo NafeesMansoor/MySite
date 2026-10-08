@@ -43,8 +43,14 @@ export const normalizeDoi = (doi) =>
     .toLowerCase();
 
 // Scopus exports occasionally replace typographic apostrophes with U+FFFD.
-const clean = (value) => {
+// Excel silently turns some text cells into dates (an issue of "10 October", a conference date
+// of "19 August 2020"). Such a value is only trusted where a date is what the column holds.
+const clean = (value, { allowDate = false } = {}) => {
   if (value === null || value === undefined) return undefined;
+  if (value instanceof Date) {
+    if (!allowDate) return undefined;
+    return value.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  }
   const text = String(value).replace(/(\p{L})�(\p{L})/gu, '$1’$2').replace(/\s+/g, ' ').trim();
   return text === '' ? undefined : text;
 };
@@ -105,7 +111,7 @@ const toScopusRecord = (row) => {
       articleNumber: clean(row['Art. No.']),
       pages: pageStart ? (pageEnd && pageEnd !== pageStart ? `${pageStart}–${pageEnd}` : pageStart) : undefined,
       conferenceName: clean(row['Conference name']),
-      conferenceDate: clean(row['Conference date']),
+      conferenceDate: clean(row['Conference date'], { allowDate: true }),
       conferenceLocation: clean(row['Conference location']),
       issn: clean(row['ISSN']),
       isbn: splitList(row['ISBN']),
