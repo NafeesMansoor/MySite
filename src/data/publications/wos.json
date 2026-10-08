@@ -1,7 +1,7 @@
 {
   "source": "resource/NafeesMansoor_Web_of_Science_Researcher_CV_20261008.pdf",
-  "preparedOn": "2026-10-08",
-  "preparedLabel": "8 October 2026",
+  "preparedOn": "2026-10-09",
+  "preparedLabel": "9 October 2026",
   "profile": {
     "researcherId": "M-2554-2016",
     "url": "https://www.webofscience.com/wos/author/rid/M-2554-2016",
@@ -422,5 +422,335 @@
       "accessionNumber": "WOS:000673738100001",
       "timesCited": 38
     }
-  ]
+  ],
+  "coreCollection": {
+    "source": "resource/My publications - Web of Science Researcher Profiles.pdf",
+    "preparedOn": "2026-10-09",
+    "records": [
+      {
+        "title": "Design and Development of a Blockchain-Enabled Decentralized Framework for Academic Microcredentials",
+        "published": "Jan 9, 2026",
+        "year": 2026,
+        "source": "IET Software",
+        "timesCited": 3
+      },
+      {
+        "title": "Optimizing network bandwidth slicing identification: NADAM-enhanced CNN and VAE data preprocessing for enhanced interpretability",
+        "published": "Oct 21, 2025",
+        "year": 2025,
+        "source": "Plos One",
+        "timesCited": 1
+      },
+      {
+        "title": "Comprehensive smartphone image dataset for fish species identification in Bangladesh's freshwater ecosystems",
+        "published": "Aug 1, 2025",
+        "year": 2025,
+        "source": "Data in Brief",
+        "timesCited": 0
+      },
+      {
+        "title": "Simulation Tools for Cognitive Radio Network: A Survey",
+        "published": "Jan 1, 2025",
+        "year": 2025,
+        "source": "IEEE Access",
+        "timesCited": 6
+      },
+      {
+        "title": "Teaching and Learning via Video Conferencing Platforms: Issues Across Three Asian Countries",
+        "published": "Jan 1, 2025",
+        "year": 2025,
+        "source": "PROCEEDINGS OF THE 12TH EUROPEAN CONFERENCE ON E-LEARNING (ECEL)",
+        "timesCited": 0
+      },
+      {
+        "title": "Blockchain-Based Controller Recovery and SDN Forwarding Device Rule Migration for UAVs",
+        "published": "Jan 1, 2025",
+        "year": 2025,
+        "source": "Lecture Notes in Networks and Systems",
+        "timesCited": 1
+      },
+      {
+        "title": "Transforming agri-food value chains in Bangladesh: A practical application of blockchain for traceability and fair pricing",
+        "published": "Nov 15, 2024",
+        "year": 2024,
+        "source": "Heliyon",
+        "timesCited": 5
+      },
+      {
+        "title": "A Robust Routing Protocol in Cognitive Unmanned Aerial Vehicular Networks",
+        "published": "Oct 1, 2024",
+        "year": 2024,
+        "source": "Sensors",
+        "timesCited": 3
+      },
+      {
+        "title": "A Review of Blockchain Approaches for KYC",
+        "published": "Jan 1, 2023",
+        "year": 2023,
+        "source": "IEEE Access",
+        "timesCited": 13
+      },
+      {
+        "title": "A Fresh Look at Routing Protocols in Unmanned Aerial Vehicular Networks: A Survey",
+        "published": "Jan 1, 2023",
+        "year": 2023,
+        "source": "IEEE Access",
+        "timesCited": 37
+      },
+      {
+        "title": "SF-LAP: Secure M2M Communication in IIoT with a Single-Factor Lightweight Authentication Protocol",
+        "published": "Nov 10, 2022",
+        "year": 2022,
+        "source": "Journal of Sensors",
+        "timesCited": 11
+      },
+      {
+        "title": "Learning-driven Spatio-temporal Feature Extraction for Violence Detection in IoT Environments",
+        "published": "Oct 20, 2021",
+        "year": 2021,
+        "source": "Proceedings of the International Conference on ICT Convergence",
+        "timesCited": 2
+      },
+      {
+        "title": "Towards Secure Communication in CR-VANETs Through a Trust-Based Routing Protocol",
+        "published": "May 10, 2021",
+        "year": 2021,
+        "source": "Proceedings of the IEEE Conference on Computer Communications Workshops (INFOCOM WKSHPS)",
+        "timesCited": 6
+      },
+      {
+        "title": "Prediction Approaches for Smart Cultivation: A Comparative Study",
+        "published": "Apr 9, 2021",
+        "year": 2021,
+        "source": "Complexity",
+        "timesCited": 10
+      },
+      {
+        "title": "A Transparent and Privacy-Preserving Healthcare Platform With Novel Smart Contract for Smart Cities",
+        "published": "Jan 1, 2021",
+        "year": 2021,
+        "source": "IEEE Access",
+        "timesCited": 38
+      },
+      {
+        "title": "An Efficient Routing Protocol for Secured Communication in Cognitive Radio Sensor Networks",
+        "published": "Jun 5, 2020",
+        "year": 2020,
+        "source": "IEEE Region 10 Symposium (TENSYMP)",
+        "timesCited": 2
+      },
+      {
+        "title": "Autonomous Maze Solving Robot",
+        "published": "May 21, 2020",
+        "year": 2020,
+        "source": "IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)",
+        "timesCited": 1,
+        "siteId": null,
+        "note": "Not on the website, and the Web of Science entry shows no claimed authorship."
+      },
+      {
+        "title": "A Spectrum Aware Mobility Pattern Based Routing Protocol for CR-VANETs",
+        "published": "Jan 1, 2020",
+        "year": 2020,
+        "source": "IEEE Wireless Communications and Networking Conference (WCNC)",
+        "timesCited": 8
+      },
+      {
+        "title": "Chittron: An Automatic Bangla Image Captioning System",
+        "published": "Jan 1, 2019",
+        "year": 2019,
+        "source": "Procedia Computer Science",
+        "timesCited": 15
+      },
+      {
+        "title": "Patterns of Flocking in Autonomous Agents",
+        "published": "Mar 1, 2018",
+        "year": 2018,
+        "source": "International Conference on Intelligent Autonomous Systems (ICoIAS)",
+        "timesCited": 3
+      },
+      {
+        "title": "Evolutionary search in the parameter spaces of the honeybee house-hunting model",
+        "published": "Mar 1, 2018",
+        "year": 2018,
+        "source": "International Conference on Intelligent Autonomous Systems (ICoIAS)",
+        "timesCited": 0
+      },
+      {
+        "title": "Mobility-aware medium access control protocols for wireless sensor networks: A survey",
+        "published": "Feb 15, 2018",
+        "year": 2018,
+        "source": "Journal of Network and Computer Applications",
+        "timesCited": 41
+      },
+      {
+        "title": "RARE: A Spectrum Aware Cross-Layer MAC Protocol for Cognitive Radio Ad-Hoc Networks",
+        "published": "Jan 1, 2018",
+        "year": 2018,
+        "source": "IEEE Access",
+        "timesCited": 27
+      },
+      {
+        "title": "Medium Access Control Protocols for Cognitive Radio Ad Hoc Networks: A Survey",
+        "published": "Sep 16, 2017",
+        "year": 2017,
+        "source": "Sensors",
+        "timesCited": 20,
+        "siteId": "j7"
+      },
+      {
+        "title": "Application of image retrieval for aesthetic evaluation and improvement suggestion of isolated Bangla handwritten characters",
+        "published": "Sep 12, 2017",
+        "year": 2017,
+        "source": "Proceedings of the IEEE International Conference on Signal and Image Processing Applications",
+        "timesCited": 0
+      },
+      {
+        "title": "A hybrid deep model with HOG features for Bangla handwritten numeral classification",
+        "published": "Dec 20, 2016",
+        "year": 2016,
+        "source": "International Conference on Electrical and Computer Engineering (ICECE)",
+        "timesCited": 21
+      },
+      {
+        "title": "A Framework for Event Anomaly Detection in Cognitive Radio Based Smart Community",
+        "published": "Dec 12, 2016",
+        "year": 2016,
+        "source": "International Workshop on Computational Intelligence (IWCI)",
+        "timesCited": 0
+      },
+      {
+        "title": "Sequence Classification: A Regression Based Generalization of Two-stage Clustering",
+        "published": "Dec 12, 2016",
+        "year": 2016,
+        "source": "International Workshop on Computational Intelligence (IWCI)",
+        "timesCited": 0
+      },
+      {
+        "title": "A Framework for Dynamic Vehicle Pooling and Ride-Sharing System",
+        "published": "Dec 12, 2016",
+        "year": 2016,
+        "source": "International Workshop on Computational Intelligence (IWCI)",
+        "timesCited": 6
+      },
+      {
+        "title": "A Novel On-Demand Routing Protocol For Cluster-Based Cognitive Radio Ad-Hoc Network",
+        "published": "Nov 22, 2016",
+        "year": 2016,
+        "source": "IEEE Region 10 Conference - TENCON",
+        "timesCited": 5
+      },
+      {
+        "title": "Clustering Analysis in Wireless Sensor Networks: The Ambit of Performance Metrics and Schemes Taxonomy",
+        "published": "Jul 22, 2016",
+        "year": 2016,
+        "source": "International Journal of Distributed Sensor Networks",
+        "timesCited": 54,
+        "siteId": "j5"
+      },
+      {
+        "title": "CMCS: a cross-layer mobility-aware MAC protocol for cognitive radio sensor networks",
+        "published": "Jul 7, 2016",
+        "year": 2016,
+        "source": "Eurasip Journal on Wireless Communications and Networking",
+        "timesCited": 17,
+        "siteId": "j6"
+      },
+      {
+        "title": "Dynamic Spectrum Allocation for Cognitive Radio Ad hoc Network",
+        "published": "Dec 17, 2015",
+        "year": 2015,
+        "source": "International Conference on Advances in Electrical Engineering (ICAEE)",
+        "timesCited": 5
+      },
+      {
+        "title": "A SURVEY ON SELF-ORGANIZED CLUSTER-BASED WIRELESS SENSOR NETWORK",
+        "published": "Sep 1, 2015",
+        "year": 2015,
+        "source": "Jurnal Teknologi (Sciences & Engineering)",
+        "timesCited": 1
+      },
+      {
+        "title": "Cluster Modelling for Cognitive Radio Ad-hoc Networks Using Graph Theory",
+        "published": "Jul 26, 2015",
+        "year": 2015,
+        "source": "International Seminar of Science and Applied Technology (ISSAT)",
+        "timesCited": 2,
+        "siteId": null,
+        "note": "Same title as website record c6, but Web of Science gives a different venue and year (ISSAT, July 2015; the website lists ICAMMS 2014)."
+      },
+      {
+        "title": "Cross-Layer Mobility-Aware MAC Protocol for Cognitive Radio Sensor Network",
+        "published": "Jun 15, 2015",
+        "year": 2015,
+        "source": "INTERNATIONAL CONFERENCE ON INFORMATICS, ELECTRONICS & VISION ICIEV 15",
+        "timesCited": 1
+      },
+      {
+        "title": "A Novel Node Joining Alogoritm For Spectrum Aware Cluster-Based Cognitive Radio Ad-Hoc Networks",
+        "published": "May 31, 2015",
+        "year": 2015,
+        "source": "Proceedings of the Asian Control Conference (ASCC)",
+        "timesCited": 0,
+        "siteId": "c10"
+      },
+      {
+        "title": "Cognitive Radio Ad-Hoc Network Architectures: A Survey",
+        "published": "Apr 1, 2015",
+        "year": 2015,
+        "source": "Wireless Personal Communications",
+        "timesCited": 28
+      },
+      {
+        "title": "Fault Tolerance in Dynamic Cluster-Based Wireless Sensor Networks",
+        "published": "Jan 13, 2015",
+        "year": 2015,
+        "source": "International Bhurban Conference on Applied Sciences and Technology (IBCAST)",
+        "timesCited": 1
+      },
+      {
+        "title": "A Stable Cluster-Based Architecture For Cognitive Radio Ad-Hoc Networks",
+        "published": "Oct 22, 2014",
+        "year": 2014,
+        "source": "IEEE Region 10 Conference - TENCON",
+        "timesCited": 2
+      },
+      {
+        "title": "Spectrum Aware Cluster-Based Architecture For Cognitive Radio Ad-Hoc Networks",
+        "published": "Dec 19, 2013",
+        "year": 2013,
+        "source": "International Conference on Advances in Electrical Engineering (ICAEE)",
+        "timesCited": 10
+      },
+      {
+        "title": "CoAd: A Cluster Based Adhoc Cognitive Radio Networks Architecture With Broadcasting Protocol",
+        "published": "May 17, 2013",
+        "year": 2013,
+        "source": "International Conference on Informatics, Electronics and Vision (ICIEV)",
+        "timesCited": 1,
+        "siteId": "c4"
+      },
+      {
+        "title": "Multiple description discrete cosine transform-based image coding using DC coefficient relocation and AC coefficient interpolation",
+        "published": "Apr 1, 2013",
+        "year": 2013,
+        "source": "Journal of Electronic Imaging",
+        "timesCited": 0
+      },
+      {
+        "title": "Multiple Description Image Coding: A Low Complexity Approach for Lossy Networks",
+        "published": "Nov 19, 2008",
+        "year": 2008,
+        "source": "IEEE Region 10 Conference - TENCON",
+        "timesCited": 0
+      },
+      {
+        "title": "Multiple description image transmission for diversity systems over unreliable communication networks",
+        "published": "Dec 27, 2007",
+        "year": 2007,
+        "source": "Proceedings of International Conference on Computer and Information Technology (Iccit)",
+        "timesCited": 6
+      }
+    ]
+  }
 }

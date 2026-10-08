@@ -521,7 +521,7 @@ export default function PublicationList({
             </a>{' '}
             ({WEB_OF_SCIENCE.preparedLabel}; h-index {WEB_OF_SCIENCE.allTime.hIndex},{' '}
             {WEB_OF_SCIENCE.allTime.timesCited} citations, {WEB_OF_SCIENCE.allTime.coreCollectionPublications} Core
-            Collection publications) and is shown for publications from {WEB_OF_SCIENCE.lastFiveYears.range}.
+            Collection publications).
           </p>
         )}
       </motion.div>

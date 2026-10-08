@@ -248,6 +248,25 @@ for (const entry of [...wos.records].sort((a, b) => Number(isCore(a)) - Number(i
   record.wosCoreCollection = isCore(entry);
 }
 
+// The all-time Core Collection list has no DOIs or accession numbers, so it is matched by an
+// explicit "siteId" or an identical normalized title. Entries with "siteId": null are left for review.
+const coreUnmatched = [];
+for (const entry of wos.coreCollection.records) {
+  const sameTitle = (candidate) => normalizeTitle(candidate.title) === normalizeTitle(entry.title);
+  const record =
+    entry.siteId === null
+      ? undefined
+      : entry.siteId
+        ? records.find((candidate) => candidate.id === entry.siteId)
+        : records.find((candidate) => candidate.wosCoreCollection && sameTitle(candidate)) ?? records.find(sameTitle);
+  if (!record) {
+    coreUnmatched.push(entry);
+    continue;
+  }
+  record.wosCoreCollection = true;
+  record.wosTimesCited = entry.timesCited;
+}
+
 const output = {
   source: path.basename(config.workbook),
   scopusExportLabel: config.scopusExportLabel,
@@ -296,21 +315,29 @@ ${scopusOnly.map((r) => `| ${r.eid} | ${r.documentType} | ${r.year} | ${r.title}
 
 ## Web of Science
 
-From \`${wos.source}\` (prepared ${wos.preparedLabel}; lists publications from ${wos.recordsRange} only).
+- Researcher CV: \`${wos.source}\` — accession numbers and DOIs for publications from ${wos.recordsRange}.
+- Core Collection list: \`${wos.coreCollection.source}\` — all ${wos.coreCollection.records.length} Core Collection publications, all years.
 
 | | Count |
 | --- | --- |
-| Web of Science entries | ${wos.records.length} |
-| Website records with Web of Science data | ${records.filter((r) => r.wosCoreCollection !== undefined).length} |
-| …of which in the Core Collection | ${records.filter((r) => r.wosCoreCollection).length} |
-| Entries not found on the website | ${wosUnmatched.length} |
+| Core Collection publications in Web of Science | ${wos.coreCollection.records.length} |
+| …matched to a website record | ${wos.coreCollection.records.length - coreUnmatched.length} |
+| …not matched | ${coreUnmatched.length} |
+| Website records with any Web of Science data | ${records.filter((r) => r.wosCoreCollection !== undefined).length} |
+| CV entries not found on the website | ${wosUnmatched.length} |
 | DOIs taken from Web of Science | ${wosDoiAdded.length}${wosDoiAdded.length ? ` (${wosDoiAdded.join(', ')})` : ''} |
 
-${wosUnmatched.map((entry) => `- Not on the website: ${entry.title} (${entry.published})`).join('\n')}
+### Core Collection publications not matched to the website
 
-Marked "ISI Indexed" on the website, published ${wos.records.reduce((min, e) => Math.min(min, e.year), 9999) + 1} or later, but without a Core Collection entry in this CV:
+${coreUnmatched.map((entry) => `- ${entry.title} (${entry.published}, ${entry.source})${entry.note ? ` — ${entry.note}` : ''}`).join('\n') || '_None._'}
 
-${records.filter((r) => r.indexed === 'ISI Indexed' && !r.wosCoreCollection && r.year > wos.records.reduce((min, e) => Math.min(min, e.year), 9999)).map((r) => `- **${r.id}** (${r.year}) ${r.title}${r.wosCoreCollection === false ? ' — listed, not in Core Collection' : ' — not listed'}`).join('\n') || '_None._'}
+### Marked "ISI Indexed" on the website but not in the Core Collection list
+
+${records.filter((r) => r.indexed === 'ISI Indexed' && !r.wosCoreCollection).map((r) => `- **${r.id}** (${r.year}, ${r.type}) ${r.title}`).join('\n') || '_None._'}
+
+### In the Core Collection list but not marked "ISI Indexed" on the website
+
+${records.filter((r) => r.wosCoreCollection && r.indexed !== 'ISI Indexed').map((r) => `- **${r.id}** (${r.year}, ${r.type}) ${r.title} — currently "${r.indexed ?? 'no label'}"`).join('\n') || '_None._'}
 
 ## DOIs withheld
 
