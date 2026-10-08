@@ -18,7 +18,7 @@ const NAV_ITEMS = [
     label: 'Projects & Awards', 
     children: [
       { label: 'Funded Projects', path: '/projects/funded' },
-      { label: 'Research Awards', path: '/projects/awards' },
+      { label: 'Awards & Recognition', path: '/projects/awards' },
     ]
   },
   { 
@@ -41,7 +41,13 @@ const NAV_ITEMS = [
       { label: 'Patent', path: '/publications/patent' },
     ]
   },
-  { id: 'awards', label: 'Awards', path: '/awards' },
+  { 
+    id: 'gnu', 
+    label: 'GNU Projects', 
+    children: [
+      { label: 'FSM Designer', path: '/gnu-projects/fsm-designer' },
+    ]
+  },
 ];
 
 export default function Navbar() {
