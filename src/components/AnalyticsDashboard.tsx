@@ -24,7 +24,7 @@ import {
   ArrowDownRight
 } from 'lucide-react';
 import citationsRaw from '../data/citations.txt?raw';
-import publicationsRaw from '../data/publications.txt?raw';
+import { PUBLICATIONS } from '../constants';
 
 // Register ChartJS components
 ChartJS.register(
@@ -48,19 +48,8 @@ const AnalyticsDashboard = () => {
   const allData = useMemo(() => {
     // Parse publications per year
     const pubCounts: Record<number, number> = {};
-    const lines = publicationsRaw.split('\n');
-    
-    lines.forEach(line => {
-      const trimmed = line.trim();
-      // Look for lines that look like publication entries: [N] ... Year
-      if (trimmed.startsWith('[') && trimmed.includes(']')) {
-        // Find the year in this line - usually the first 4-digit year starting with 20
-        const yearMatch = trimmed.match(/\b(20\d{2})\b/);
-        if (yearMatch) {
-          const year = parseInt(yearMatch[1], 10);
-          pubCounts[year] = (pubCounts[year] || 0) + 1;
-        }
-      }
+    PUBLICATIONS.forEach(pub => {
+      pubCounts[pub.year] = (pubCounts[pub.year] || 0) + 1;
     });
 
     const parsed = citationsRaw

@@ -34,6 +34,7 @@ const NAV_ITEMS = [
     id: 'publications', 
     label: 'Publications', 
     children: [
+      { label: 'All Publications', path: '/publications' },
       { label: 'Journals', path: '/publications/journals' },
       { label: 'Proceedings', path: '/publications/proceedings' },
       { label: 'Book Chapters', path: '/publications/book-chapters' },

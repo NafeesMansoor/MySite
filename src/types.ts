@@ -8,6 +8,32 @@ export interface Publication {
   link?: string;
   impactFactor?: string;
   indexed?: string;
+  // 'curated' records are hand-maintained; 'scopus' records come from the Scopus export only.
+  origin?: 'curated' | 'scopus';
+  matchMethod?: 'manual' | 'doi' | 'title+type' | 'title';
+  // Metadata below is copied from the Scopus export and is absent when no record matched.
+  doi?: string;
+  scopusEid?: string;
+  scopusUrl?: string;
+  abstract?: string;
+  authorNames?: string[];
+  authorKeywords?: string[];
+  indexKeywords?: string[];
+  sourceTitle?: string;
+  publisher?: string;
+  volume?: string;
+  issue?: string;
+  articleNumber?: string;
+  pages?: string;
+  conferenceName?: string;
+  conferenceDate?: string;
+  conferenceLocation?: string;
+  issn?: string;
+  isbn?: string[];
+  documentType?: string;
+  scopusYear?: number;
+  openAccess?: boolean;
+  citedBy?: number;
 }
 
 export interface Education {

@@ -1,0 +1,16 @@
+{
+  "workbook": "resource/MY-PUB-SCOPUS-2026-SEPT.xlsx",
+  "scopusExportLabel": "September 2026",
+  "includeScopusOnly": true,
+  "unresolvedDois": ["10.1201/9781003267812-9"],
+  "matches": {
+    "j7": "2-s2.0-85029706680",
+    "j6": "2-s2.0-84978164649",
+    "j5": "2-s2.0-85009168062",
+    "bc11": "2-s2.0-105003860814",
+    "c10": "2-s2.0-84957632252",
+    "c4": "2-s2.0-84883443970",
+    "bc1": null,
+    "c18": null
+  }
+}

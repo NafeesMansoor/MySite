@@ -1,20 +1,94 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Nafees Mansoor — Personal Academic Website
 
-# Run and deploy your AI Studio app
+Source code for the personal academic website of Dr. Nafees Mansoor
+(<https://www.nafees.info>): profile, publications, funded projects, awards,
+and professional services.
 
-This contains everything you need to run your app locally.
+## Tech stack
 
-View your app in AI Studio: https://ai.studio/apps/05951291-89d3-4582-b8b5-2b052e98a3f8
+- [React 19](https://react.dev) + [TypeScript](https://www.typescriptlang.org)
+- [Vite 6](https://vite.dev) (static single-page application, no backend)
+- [Tailwind CSS 4](https://tailwindcss.com)
+- [React Router 7](https://reactrouter.com) for client-side routing
+- Chart.js / D3 for the analytics dashboard and word cloud
 
-## Run Locally
+## Getting started
 
-**Prerequisites:**  Node.js
+**Prerequisite:** Node.js 20 or newer.
 
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server at http://localhost:3000
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Scripts
+
+| Command           | Purpose                                                        |
+| ----------------- | -------------------------------------------------------------- |
+| `npm run dev`     | Start the local development server                             |
+| `npm run build`   | Regenerate SEO files and create the production build in `dist/` |
+| `npm run preview` | Serve the production build locally                             |
+| `npm run lint`    | Type-check the project (`tsc --noEmit`)                        |
+| `npm run clean`   | Remove `dist/`                                                 |
+| `npm run pubs:import` | Rebuild publication data from the curated list and the Scopus export |
+| `npm run pubs:validate` | Validate publication data (also runs as part of `build`)     |
+| `npm run pubs:check-links` | Check that every published DOI resolves (needs network)   |
+
+## Project structure
+
+```
+docs/               Generated publication match report
+public/             Static files (sitemap.xml, robots.txt, _redirects)
+resource/           Source workbooks (Scopus export)
+scripts/            Build-time scripts (SEO files, publication import and validation)
+src/
+  components/       Shared layout and UI components
+  pages/            Route pages (About, Projects, Services, Publications, Awards)
+  data/             Citation counts and publication data (see below)
+  constants.ts      Site content (education, awards, grants, services, …)
+  types.ts          Shared TypeScript types
+```
+
+## Publication data
+
+Publications live in `src/data/publications/`:
+
+| File                 | Role                                                                    |
+| -------------------- | ----------------------------------------------------------------------- |
+| `curated.json`       | Hand-maintained list (title, authors, venue, year, type, indexing). Edit this file to add or correct a publication. |
+| `import-config.json` | Path of the Scopus workbook, manual match decisions, and DOIs to withhold. |
+| `publications.json`  | **Generated** — the merged data the website reads. Do not edit by hand. |
+
+`npm run pubs:import` merges `curated.json` with the Scopus export in
+`resource/`. Curated fields are never overwritten; the workbook only adds
+metadata (abstract, keywords, DOI, Scopus link, citation count, and so on).
+Records are matched by DOI when the curated record has one, otherwise by
+normalized title; anything uncertain is listed in
+`docs/publication-match-report.md` instead of being guessed. Scopus rows that
+are not on the curated list are added as separate records
+(`"origin": "scopus"`).
+
+To refresh from a new Scopus export:
+
+1. Save the export in `resource/` and update `workbook` and
+   `scopusExportLabel` in `import-config.json`.
+2. Run `npm run pubs:import`.
+3. Read `docs/publication-match-report.md`. Resolve entries under
+   "Needs review" by adding `"<id>": "<EID>"` (or `null`) to `matches`,
+   then re-run the import.
+4. Run `npm run pubs:check-links`, then `npm run build`.
+
+To give a curated record an exact match, add its `doi` to `curated.json`.
+
+## Deployment
+
+`npm run build` outputs a static site to `dist/`, which can be served by any
+static host. `public/_redirects` rewrites all paths to `index.html` so that
+client-side routes resolve on hosts that support that file.
+
+## Development workflow
+
+1. Create a branch from `main`.
+2. Make focused changes; run `npm run lint` and `npm run build`.
+3. Review the diff, commit with a descriptive message, and push.
+4. Merge into `main` once the change has been verified.
