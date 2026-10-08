@@ -57,6 +57,7 @@ Publications live in `src/data/publications/`:
 | -------------------- | ----------------------------------------------------------------------- |
 | `curated.json`       | Hand-maintained list (title, authors, venue, year, type, indexing). Edit this file to add or correct a publication. |
 | `import-config.json` | Path of the Scopus workbook, manual match decisions, and DOIs to withhold. |
+| `wos.json`           | Web of Science profile metrics and records, transcribed from the researcher CV PDF in `resource/`. Update by hand when a new CV is exported. |
 | `publications.json`  | **Generated** — the merged data the website reads. Do not edit by hand. |
 
 `npm run pubs:import` merges `curated.json` with the Scopus export in

@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ExternalLink, Filter, Search, X } from 'lucide-react';
-import { PUBLICATIONS, SCOPUS_EXPORT_LABEL } from '../constants';
+import { PUBLICATIONS, SCOPUS_EXPORT_LABEL, WEB_OF_SCIENCE } from '../constants';
 import { Publication } from '../types';
 import ShareButtons from './ShareButtons';
 
@@ -38,6 +38,7 @@ const SORT_LABELS: Record<SortOrder, string> = {
 const MIN_TOPIC_COUNT = 3;
 
 const doiUrl = (doi: string) => `https://doi.org/${doi}`;
+const wosUrl = (accession: string) => `https://www.webofscience.com/wos/woscc/full-record/${accession}`;
 
 const searchText = (pub: Publication) =>
   [
@@ -51,6 +52,7 @@ const searchText = (pub: Publication) =>
     pub.authorKeywords?.join(' '),
     pub.indexKeywords?.join(' '),
     pub.doi,
+    pub.wosAccession,
     pub.year,
   ]
     .filter(Boolean)
@@ -371,6 +373,18 @@ export default function PublicationList({
                         {types.length > 1 && <span className={badgeClass}>{TYPE_LABELS[pub.type]}</span>}
                         {pub.indexed && <span className={badgeClass}>{pub.indexed}</span>}
                         {pub.impactFactor && <span className={badgeClass}>IF: {pub.impactFactor}</span>}
+                        {pub.wosCoreCollection && (
+                          <span
+                            className={badgeClass}
+                            title={
+                              pub.wosTimesCited !== undefined
+                                ? `Web of Science Core Collection — cited ${pub.wosTimesCited} times (${WEB_OF_SCIENCE.preparedLabel})`
+                                : 'Web of Science Core Collection'
+                            }
+                          >
+                            Web of Science
+                          </span>
+                        )}
                         {pub.openAccess && <span className={badgeClass}>Open Access</span>}
                         {pub.citedBy !== undefined && pub.citedBy > 0 && (
                           <span className={badgeClass} title={`Scopus citation count, ${SCOPUS_EXPORT_LABEL}`}>
@@ -411,7 +425,7 @@ export default function PublicationList({
                     </div>
                   </div>
 
-                  {(pub.abstract || pub.doi || pub.scopusUrl || pub.authorKeywords) && (
+                  {(pub.abstract || pub.doi || pub.scopusUrl || pub.authorKeywords || pub.wosCoreCollection) && (
                     <div className="mt-6 pt-6 border-t border-white/5 space-y-4">
                       {pub.authorKeywords && (
                         <ul className="flex flex-wrap gap-2" aria-label="Author keywords">
@@ -456,6 +470,11 @@ export default function PublicationList({
                             <span>Scopus record</span>
                           </a>
                         )}
+                        {pub.wosCoreCollection && pub.wosAccession && (
+                          <a href={wosUrl(pub.wosAccession)} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                            <span>Web of Science record</span>
+                          </a>
+                        )}
                       </div>
 
                       {pub.abstract && (
@@ -490,7 +509,19 @@ export default function PublicationList({
         {hasMetadata && (
           <p className="text-xs text-gray-600">
             Abstracts, keywords, DOIs, and citation counts are taken from Scopus ({SCOPUS_EXPORT_LABEL}). Article links
-            lead to the publisher’s page, where access may require a subscription unless marked Open Access.
+            lead to the publisher’s page, where access may require a subscription unless marked Open Access. Web of
+            Science status is taken from the{' '}
+            <a
+              href={WEB_OF_SCIENCE.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-gray-400 transition-colors"
+            >
+              Web of Science researcher profile
+            </a>{' '}
+            ({WEB_OF_SCIENCE.preparedLabel}; h-index {WEB_OF_SCIENCE.allTime.hIndex},{' '}
+            {WEB_OF_SCIENCE.allTime.timesCited} citations, {WEB_OF_SCIENCE.allTime.coreCollectionPublications} Core
+            Collection publications) and is shown for publications from {WEB_OF_SCIENCE.lastFiveYears.range}.
           </p>
         )}
       </motion.div>

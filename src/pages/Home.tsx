@@ -26,7 +26,7 @@ import {
   Fingerprint,
   FlaskConical
 } from 'lucide-react';
-import { PUBLICATIONS } from '../constants';
+import { PUBLICATIONS, WEB_OF_SCIENCE } from '../constants';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
 
 const STATS = [
@@ -288,6 +288,18 @@ export default function Home() {
             >
               <Search className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
               <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Google Scholar</span>
+            </motion.a>
+            <motion.a 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65 }}
+              href={WEB_OF_SCIENCE.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"
+            >
+              <BookOpen className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+              <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Web of Science</span>
             </motion.a>
             <motion.a 
               initial={{ opacity: 0, y: 10 }}

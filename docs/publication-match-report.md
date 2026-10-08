@@ -56,6 +56,26 @@ _None._
 | 2-s2.0-85188747915 | Conference paper | 2024 | Aid Nexus : A Blockchain-Based Financial Distribution System |
 | 2-s2.0-85120700616 | Conference paper | 2021 | Early Prediction of Chronic Kidney Disease Using Data Mining Techniques |
 
+## Web of Science
+
+From `resource/NafeesMansoor_Web_of_Science_Researcher_CV_20261008.pdf` (prepared 8 October 2026; lists publications from October 2021 – October 2026 only).
+
+| | Count |
+| --- | --- |
+| Web of Science entries | 45 |
+| Website records with Web of Science data | 44 |
+| …of which in the Core Collection | 13 |
+| Entries not found on the website | 0 |
+| DOIs taken from Web of Science | 1 (j14) |
+
+
+
+Marked "ISI Indexed" on the website, published 2022 or later, but without a Core Collection entry in this CV:
+
+- **c36** (2023) Certiblock: The Exemplary Utilization of Blockchain for the Rigorous Validation of Academic Certificates — listed, not in Core Collection
+- **c35** (2023) A New Approach to Financial Distribution Systems Leveraging Hyperledger-Besu and Consortium Blockchain — listed, not in Core Collection
+- **c34** (2023) RMT: A Lightweight Encryption Algorithm For Blockchain-Based Certificate Verification — listed, not in Core Collection
+
 ## DOIs withheld
 
 Listed in Scopus but not registered at doi.org (see `unresolvedDois` in the import config), so no link is shown.

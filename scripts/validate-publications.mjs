@@ -12,7 +12,7 @@ const REQUIRED = ['id', 'title', 'authors', 'venue', 'year', 'type'];
 const URL_FIELDS = ['link', 'scopusUrl'];
 const DOI_PATTERN = /^10\.\d{4,9}\/\S+$/;
 const errors = [];
-const seen = { id: new Map(), doi: new Map(), scopusEid: new Map() };
+const seen = { id: new Map(), doi: new Map(), scopusEid: new Map(), wosAccession: new Map() };
 
 for (const record of records) {
   const label = record.id ?? JSON.stringify(record).slice(0, 60);

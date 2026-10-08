@@ -34,6 +34,10 @@ export interface Publication {
   scopusYear?: number;
   openAccess?: boolean;
   citedBy?: number;
+  // From the Web of Science researcher CV; absent when the publication is not listed there.
+  wosAccession?: string;
+  wosCoreCollection?: boolean;
+  wosTimesCited?: number;
 }
 
 export interface Education {

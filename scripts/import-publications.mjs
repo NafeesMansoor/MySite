@@ -15,6 +15,8 @@ const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, 'src/data/publications');
 const config = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'import-config.json'), 'utf8'));
 const curated = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'curated.json'), 'utf8'));
+// Web of Science records transcribed from the researcher CV (covers the last five years only).
+const wos = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'wos.json'), 'utf8'));
 
 const unresolvedDois = new Set((config.unresolvedDois ?? []).map((doi) => doi.toLowerCase()));
 
@@ -224,6 +226,28 @@ if (config.includeScopusOnly) {
   }
 }
 
+// Attach Web of Science data by DOI, then by identical normalized title. A paper can have
+// several Web of Science entries; a Core Collection entry (accession "WOS:…") takes precedence.
+const isCore = (entry) => entry.accessionNumber?.startsWith('WOS:') ?? false;
+const wosUnmatched = [];
+const wosDoiAdded = [];
+for (const entry of [...wos.records].sort((a, b) => Number(isCore(a)) - Number(isCore(b)))) {
+  const record =
+    (entry.doi && records.find((candidate) => candidate.doi === entry.doi)) ||
+    records.find((candidate) => normalizeTitle(candidate.title) === normalizeTitle(entry.title));
+  if (!record) {
+    wosUnmatched.push(entry);
+    continue;
+  }
+  if (entry.doi && !record.doi && !unresolvedDois.has(entry.doi)) {
+    record.doi = entry.doi;
+    wosDoiAdded.push(record.id);
+  }
+  if (entry.accessionNumber) record.wosAccession = entry.accessionNumber;
+  if (entry.timesCited !== undefined) record.wosTimesCited = entry.timesCited;
+  record.wosCoreCollection = isCore(entry);
+}
+
 const output = {
   source: path.basename(config.workbook),
   scopusExportLabel: config.scopusExportLabel,
@@ -269,6 +293,24 @@ ${unmatched.map(line).join('\n')}
 | EID | Scopus type | Year | Title |
 | --- | --- | --- | --- |
 ${scopusOnly.map((r) => `| ${r.eid} | ${r.documentType} | ${r.year} | ${r.title} |`).join('\n')}
+
+## Web of Science
+
+From \`${wos.source}\` (prepared ${wos.preparedLabel}; lists publications from ${wos.recordsRange} only).
+
+| | Count |
+| --- | --- |
+| Web of Science entries | ${wos.records.length} |
+| Website records with Web of Science data | ${records.filter((r) => r.wosCoreCollection !== undefined).length} |
+| …of which in the Core Collection | ${records.filter((r) => r.wosCoreCollection).length} |
+| Entries not found on the website | ${wosUnmatched.length} |
+| DOIs taken from Web of Science | ${wosDoiAdded.length}${wosDoiAdded.length ? ` (${wosDoiAdded.join(', ')})` : ''} |
+
+${wosUnmatched.map((entry) => `- Not on the website: ${entry.title} (${entry.published})`).join('\n')}
+
+Marked "ISI Indexed" on the website, published ${wos.records.reduce((min, e) => Math.min(min, e.year), 9999) + 1} or later, but without a Core Collection entry in this CV:
+
+${records.filter((r) => r.indexed === 'ISI Indexed' && !r.wosCoreCollection && r.year > wos.records.reduce((min, e) => Math.min(min, e.year), 9999)).map((r) => `- **${r.id}** (${r.year}) ${r.title}${r.wosCoreCollection === false ? ' — listed, not in Core Collection' : ' — not listed'}`).join('\n') || '_None._'}
 
 ## DOIs withheld
 
