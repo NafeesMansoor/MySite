@@ -31,6 +31,12 @@ export const EDUCATIONS: Education[] = [
 
 export const EXPERIENCES: Experience[] = [
   {
+    role: 'Head of Department, Computer Science & Engineering',
+    institution: 'University of Liberal Arts Bangladesh (ULAB)',
+    period: '2026 – Onwards',
+    location: 'Dhaka, Bangladesh'
+  },
+  {
     role: 'Professor',
     institution: 'University of Liberal Arts Bangladesh (ULAB)',
     period: '2026 – Onwards',
@@ -238,9 +244,19 @@ export const COMMUNITY_SERVICES: ProfessionalService[] = [
     period: 'August 2017 – Onwards'
   },
   {
+    role: 'Publication Chair',
+    organization: '29th IEEE International Conference on Computer and Information Technology (ICCIT 2026)',
+    period: '2026'
+  },
+  {
+    role: 'TPC Chair',
+    organization: '2nd International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS 2026)',
+    period: '2026'
+  },
+  {
     role: 'Professional Activity Coordinator',
     organization: 'IEEE Bangladesh Section',
-    period: '2025 – 2026'
+    period: '2025 – 2027'
   },
   {
     role: 'Guest Editor',

@@ -26,8 +26,9 @@ import {
   Fingerprint,
   FlaskConical
 } from 'lucide-react';
-import { PUBLICATIONS, WEB_OF_SCIENCE } from '../constants';
+import { PUBLICATIONS } from '../constants';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
+import ProfileWall from '../components/ProfileWall';
 
 const STATS = [
   { label: 'Publications', value: '100+' },
@@ -252,68 +253,13 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="flex flex-wrap gap-4">
-            <motion.a 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              href="https://orcid.org/0000-0002-3408-237X" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"
-            >
-              <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" className="w-5 h-5 grayscale group-hover:grayscale-0 transition-all" alt="ORCID" />
-              <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">ORCID</span>
-            </motion.a>
-            <motion.a 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              href="https://www.researchgate.net/profile/Nafees_Mansoor" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"
-            >
-              <img src="https://www.researchgate.net/favicon.ico" className="w-5 h-5 grayscale group-hover:grayscale-0 transition-all" alt="ResearchGate" />
-              <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">ResearchGate</span>
-            </motion.a>
-            <motion.a 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              href="https://scholar.google.com/citations?user=5dt40PYAAAAJ&hl=en&oi=ao" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"
-            >
-              <Search className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Google Scholar</span>
-            </motion.a>
-            <motion.a 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
-              href={WEB_OF_SCIENCE.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"
-            >
-              <BookOpen className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Web of Science</span>
-            </motion.a>
-            <motion.a 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              href="https://www.linkedin.com/in/nafeesmansoor/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group flex items-center space-x-3"
-            >
-              <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">LinkedIn</span>
-            </motion.a>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <ProfileWall />
+          </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
