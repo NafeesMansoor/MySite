@@ -15,6 +15,8 @@ const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, 'src/data/publications');
 const config = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'import-config.json'), 'utf8'));
 const curated = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'curated.json'), 'utf8'));
+// Web of Science records transcribed from the researcher CV (covers the last five years only).
+const wos = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'wos.json'), 'utf8'));
 
 const unresolvedDois = new Set((config.unresolvedDois ?? []).map((doi) => doi.toLowerCase()));
 
@@ -224,6 +226,47 @@ if (config.includeScopusOnly) {
   }
 }
 
+// Attach Web of Science data by DOI, then by identical normalized title. A paper can have
+// several Web of Science entries; a Core Collection entry (accession "WOS:…") takes precedence.
+const isCore = (entry) => entry.accessionNumber?.startsWith('WOS:') ?? false;
+const wosUnmatched = [];
+const wosDoiAdded = [];
+for (const entry of [...wos.records].sort((a, b) => Number(isCore(a)) - Number(isCore(b)))) {
+  const record =
+    (entry.doi && records.find((candidate) => candidate.doi === entry.doi)) ||
+    records.find((candidate) => normalizeTitle(candidate.title) === normalizeTitle(entry.title));
+  if (!record) {
+    wosUnmatched.push(entry);
+    continue;
+  }
+  if (entry.doi && !record.doi && !unresolvedDois.has(entry.doi)) {
+    record.doi = entry.doi;
+    wosDoiAdded.push(record.id);
+  }
+  if (entry.accessionNumber) record.wosAccession = entry.accessionNumber;
+  if (entry.timesCited !== undefined) record.wosTimesCited = entry.timesCited;
+  record.wosCoreCollection = isCore(entry);
+}
+
+// The all-time Core Collection list has no DOIs or accession numbers, so it is matched by an
+// explicit "siteId" or an identical normalized title. Entries with "siteId": null are left for review.
+const coreUnmatched = [];
+for (const entry of wos.coreCollection.records) {
+  const sameTitle = (candidate) => normalizeTitle(candidate.title) === normalizeTitle(entry.title);
+  const record =
+    entry.siteId === null
+      ? undefined
+      : entry.siteId
+        ? records.find((candidate) => candidate.id === entry.siteId)
+        : records.find((candidate) => candidate.wosCoreCollection && sameTitle(candidate)) ?? records.find(sameTitle);
+  if (!record) {
+    coreUnmatched.push(entry);
+    continue;
+  }
+  record.wosCoreCollection = true;
+  record.wosTimesCited = entry.timesCited;
+}
+
 const output = {
   source: path.basename(config.workbook),
   scopusExportLabel: config.scopusExportLabel,
@@ -269,6 +312,32 @@ ${unmatched.map(line).join('\n')}
 | EID | Scopus type | Year | Title |
 | --- | --- | --- | --- |
 ${scopusOnly.map((r) => `| ${r.eid} | ${r.documentType} | ${r.year} | ${r.title} |`).join('\n')}
+
+## Web of Science
+
+- Researcher CV: \`${wos.source}\` — accession numbers and DOIs for publications from ${wos.recordsRange}.
+- Core Collection list: \`${wos.coreCollection.source}\` — all ${wos.coreCollection.records.length} Core Collection publications, all years.
+
+| | Count |
+| --- | --- |
+| Core Collection publications in Web of Science | ${wos.coreCollection.records.length} |
+| …matched to a website record | ${wos.coreCollection.records.length - coreUnmatched.length} |
+| …not matched | ${coreUnmatched.length} |
+| Website records with any Web of Science data | ${records.filter((r) => r.wosCoreCollection !== undefined).length} |
+| CV entries not found on the website | ${wosUnmatched.length} |
+| DOIs taken from Web of Science | ${wosDoiAdded.length}${wosDoiAdded.length ? ` (${wosDoiAdded.join(', ')})` : ''} |
+
+### Core Collection publications not matched to the website
+
+${coreUnmatched.map((entry) => `- ${entry.title} (${entry.published}, ${entry.source})${entry.note ? ` — ${entry.note}` : ''}`).join('\n') || '_None._'}
+
+### Marked "ISI Indexed" on the website but not in the Core Collection list
+
+${records.filter((r) => r.indexed === 'ISI Indexed' && !r.wosCoreCollection).map((r) => `- **${r.id}** (${r.year}, ${r.type}) ${r.title}`).join('\n') || '_None._'}
+
+### In the Core Collection list but not marked "ISI Indexed" on the website
+
+${records.filter((r) => r.wosCoreCollection && r.indexed !== 'ISI Indexed').map((r) => `- **${r.id}** (${r.year}, ${r.type}) ${r.title} — currently "${r.indexed ?? 'no label'}"`).join('\n') || '_None._'}
 
 ## DOIs withheld
 

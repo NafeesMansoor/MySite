@@ -83,7 +83,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "1.3",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001656869900001",
+      "wosTimesCited": 3,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1371/journal.pone.0333286",
@@ -148,7 +151,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "2.6",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001598166800035",
+      "wosTimesCited": 1,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/access.2025.3537498",
@@ -202,7 +208,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.557",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001492133300001",
+      "wosTimesCited": 6,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1016/j.dib.2025.111629",
@@ -257,7 +266,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "1.4",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001503573700003",
+      "wosTimesCited": 0,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.3390/s24196334",
@@ -332,7 +344,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.4",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001334122400001",
+      "wosTimesCited": 3,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1016/j.heliyon.2024.e40091",
@@ -379,7 +394,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.6",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001770563300001",
+      "wosTimesCited": 5,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/access.2023.3328536",
@@ -433,7 +451,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.367",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001102132600001",
+      "wosTimesCited": 13,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/access.2023.3290871",
@@ -494,7 +515,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.367",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001025453300001",
+      "wosTimesCited": 37,
+      "wosCoreCollection": true
     },
     {
       "id": "j14",
@@ -503,7 +527,9 @@
       "venue": "Mobile Information Systems, 2023",
       "year": 2023,
       "type": "journal",
-      "origin": "curated"
+      "origin": "curated",
+      "doi": "10.1155/2023/1060135",
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1155/2022/1309402",
@@ -555,7 +581,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "2.336",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:000888574800001",
+      "wosTimesCited": 11,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/access.2021.3089601",
@@ -613,7 +642,10 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.367",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:000673738100001",
+      "wosTimesCited": 38,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1155/2021/5534379",
@@ -669,7 +701,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "2.833",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 10
     },
     {
       "doi": "10.1016/j.procs.2019.06.100",
@@ -729,7 +763,9 @@
       "type": "journal",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title"
+      "matchMethod": "title",
+      "wosCoreCollection": true,
+      "wosTimesCited": 15
     },
     {
       "doi": "10.1109/access.2018.2807781",
@@ -783,7 +819,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.557",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 27
     },
     {
       "doi": "10.1016/j.jnca.2017.12.009",
@@ -836,7 +874,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "3.991",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 41
     },
     {
       "doi": "10.3390/s17092136",
@@ -897,7 +937,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "2.475",
       "origin": "curated",
-      "matchMethod": "manual"
+      "matchMethod": "manual",
+      "wosCoreCollection": true,
+      "wosTimesCited": 20
     },
     {
       "doi": "10.1186/s13638-016-0652-y",
@@ -959,7 +1001,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "2.407",
       "origin": "curated",
-      "matchMethod": "manual"
+      "matchMethod": "manual",
+      "wosCoreCollection": true,
+      "wosTimesCited": 17
     },
     {
       "doi": "10.1177/155014774979142",
@@ -1007,7 +1051,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "1.787",
       "origin": "curated",
-      "matchMethod": "manual"
+      "matchMethod": "manual",
+      "wosCoreCollection": true,
+      "wosTimesCited": 54
     },
     {
       "doi": "10.11113/jt.v76.4064",
@@ -1047,7 +1093,9 @@
       "type": "journal",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 1
     },
     {
       "doi": "10.1007/s11277-014-2175-3",
@@ -1105,7 +1153,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "1.2",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 28
     },
     {
       "doi": "10.1117/1.jei.22.2.023030",
@@ -1148,7 +1198,9 @@
       "indexed": "ISI Indexed",
       "impactFactor": "0.78",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "scopusEid": "2-s2.0-84873423255",
@@ -1247,7 +1299,10 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "manual"
+      "matchMethod": "manual",
+      "wosAccession": "INSPEC:26600180",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-5166-6_24",
@@ -1361,7 +1416,10 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title"
+      "matchMethod": "title",
+      "wosAccession": "INSPEC:24267459",
+      "wosTimesCited": 1,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-5166-6_48",
@@ -1419,7 +1477,10 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title"
+      "matchMethod": "title",
+      "wosAccession": "INSPEC:24267463",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "scopusEid": "2-s2.0-85169379819",
@@ -1670,7 +1731,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:27423741",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.34190/ecel.24.1.3731",
@@ -1737,7 +1801,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:001768022900028",
+      "wosTimesCited": 0,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/ecce64574.2025.11013113",
@@ -1797,7 +1864,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:26925614",
+      "wosTimesCited": 1,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/ecce64574.2025.11013795",
@@ -1855,7 +1925,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:26925684",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499565",
@@ -1911,7 +1984,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25004983",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499524",
@@ -1965,7 +2041,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25004968",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499520",
@@ -2024,7 +2103,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25005002",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499476",
@@ -2090,7 +2172,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25004965",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499448",
@@ -2145,7 +2230,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25004991",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499575",
@@ -2202,7 +2290,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25005054",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499577",
@@ -2262,7 +2353,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25005049",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499453",
@@ -2324,7 +2418,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25005005",
+      "wosTimesCited": 1,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499613",
@@ -2388,7 +2485,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25005011",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/iccit60459.2023.10441100",
@@ -2442,7 +2542,10 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:24768820",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/iccit60459.2023.10441085",
@@ -2496,7 +2599,10 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:24768407",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/wiecon-ece60392.2023.10456497",
@@ -2554,7 +2660,10 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:24885282",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-8346-9_19",
@@ -2615,7 +2724,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:25187150",
+      "wosTimesCited": 2,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-8346-9_39",
@@ -2679,7 +2791,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:24960556",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-8349-0_36",
@@ -2746,7 +2861,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:24960501",
+      "wosTimesCited": 2,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-8349-0_12",
@@ -2869,7 +2987,10 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "INSPEC:24960491",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/ictc52510.2021.9620892",
@@ -2933,7 +3054,10 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosAccession": "WOS:000790235800447",
+      "wosTimesCited": 2,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/r10-htc53172.2021.9641080",
@@ -3057,7 +3181,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 6
     },
     {
       "doi": "10.1109/dasa51403.2020.9317108",
@@ -3217,7 +3343,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 2
     },
     {
       "doi": "10.1109/wcnc45663.2020.9120760",
@@ -3275,7 +3403,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 8
     },
     {
       "doi": "10.1109/icoias.2018.8494115",
@@ -3328,7 +3458,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 3
     },
     {
       "doi": "10.1109/icoias.2018.8494150",
@@ -3386,7 +3518,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "doi": "10.1109/icsipa.2017.8120596",
@@ -3447,7 +3581,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "id": "c18",
@@ -3508,7 +3644,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "doi": "10.1109/iwci.2016.7860356",
@@ -3563,7 +3701,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "doi": "10.1109/iwci.2016.7860366",
@@ -3615,7 +3755,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 6
     },
     {
       "doi": "10.1109/icece.2016.7853957",
@@ -3662,7 +3804,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 21
     },
     {
       "doi": "10.1109/tencon.2016.7848079",
@@ -3724,7 +3868,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 5
     },
     {
       "doi": "10.1109/iciev.2015.7334039",
@@ -3774,7 +3920,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 1
     },
     {
       "doi": "10.1109/icaee.2015.7506825",
@@ -3828,7 +3976,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 5
     },
     {
       "doi": "10.1109/ascc.2015.7244895",
@@ -3868,7 +4018,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "manual"
+      "matchMethod": "manual",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "doi": "10.1007/978-3-319-24540-9_63",
@@ -3990,7 +4142,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 1
     },
     {
       "doi": "10.1109/tencon.2014.7022403",
@@ -4049,7 +4203,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 2
     },
     {
       "id": "c6",
@@ -4119,7 +4275,9 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 10
     },
     {
       "doi": "10.1109/iciev.2013.6572654",
@@ -4176,7 +4334,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "manual"
+      "matchMethod": "manual",
+      "wosCoreCollection": true,
+      "wosTimesCited": 1
     },
     {
       "doi": "10.1109/cicsyn.2012.49",
@@ -4303,7 +4463,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 0
     },
     {
       "doi": "10.1109/iccitechn.2007.4579397",
@@ -4364,7 +4526,9 @@
       "type": "conference",
       "indexed": "ISI Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "wosCoreCollection": true,
+      "wosTimesCited": 6
     },
     {
       "doi": "10.1201/9781003506218-13",
@@ -4775,7 +4939,10 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:28490159",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/becithcon69222.2025.11504283",
@@ -4960,7 +5127,10 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:27082930",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/iccit68739.2025.11491770",
@@ -5080,7 +5250,10 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "WOS:001598475000026",
+      "wosTimesCited": 1,
+      "wosCoreCollection": true
     },
     {
       "doi": "10.1109/wiecon-ece69386.2025.11526491",
@@ -5204,7 +5377,10 @@
       "year": 2024,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:24806212",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/sti64222.2024.10951133",
@@ -5258,7 +5434,10 @@
       "year": 2024,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:26564131",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1109/icict64387.2024.10839705",
@@ -5317,7 +5496,10 @@
       "year": 2024,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:26167210",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-9489-2_32",
@@ -5374,7 +5556,10 @@
       "year": 2024,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:25250595",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-981-99-8111-3_13",
@@ -5437,7 +5622,10 @@
       "year": 2024,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosAccession": "INSPEC:24806213",
+      "wosTimesCited": 0,
+      "wosCoreCollection": false
     },
     {
       "doi": "10.1007/978-3-030-90321-3_79",
@@ -5479,7 +5667,8 @@
       "year": 2021,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "wosCoreCollection": false
     }
   ]
 }

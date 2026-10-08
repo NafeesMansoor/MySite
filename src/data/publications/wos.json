@@ -1,0 +1,756 @@
+{
+  "source": "resource/NafeesMansoor_Web_of_Science_Researcher_CV_20261008.pdf",
+  "preparedOn": "2026-10-09",
+  "preparedLabel": "9 October 2026",
+  "profile": {
+    "researcherId": "M-2554-2016",
+    "url": "https://www.webofscience.com/wos/author/rid/M-2554-2016",
+    "allTime": {
+      "hIndex": 11,
+      "timesCited": 413,
+      "totalPublications": 110,
+      "coreCollectionPublications": 45,
+      "timesCitedByPatents": 2
+    },
+    "lastFiveYears": {
+      "range": "October 2021 – October 2026",
+      "hIndex": 5,
+      "timesCited": 120,
+      "totalPublications": 52,
+      "coreCollectionPublications": 13
+    }
+  },
+  "recordsRange": "October 2021 – October 2026",
+  "records": [
+    {
+      "title": "Design and Development of a Blockchain-Enabled Decentralized Framework for Academic Microcredentials",
+      "published": "Jan 2026",
+      "year": 2026,
+      "source": "IET Software",
+      "doi": "10.1049/sfw2/7326873",
+      "accessionNumber": "WOS:001656869900001",
+      "timesCited": 3
+    },
+    {
+      "title": "Decentralized Cross-Border Financial Aid Distribution Utilizing Blockchain- Based Tokenization",
+      "published": "Oct 2025",
+      "year": 2025,
+      "source": "IEEE Region 10 Conference - TENCON",
+      "doi": "10.1109/tencon66050.2025.11375041",
+      "accessionNumber": "INSPEC:28490159",
+      "timesCited": 0
+    },
+    {
+      "title": "Optimizing network bandwidth slicing identification: NADAM-enhanced CNN and VAE data preprocessing for enhanced interpretability",
+      "published": "Oct 2025",
+      "year": 2025,
+      "source": "Plos One",
+      "doi": "10.1371/journal.pone.0333286",
+      "accessionNumber": "WOS:001598166800035",
+      "timesCited": 1
+    },
+    {
+      "title": "Teaching and Learning via Video Conferencing Platforms: Issues Across Three Asian Countries",
+      "published": "Oct 2025",
+      "year": 2025,
+      "source": "PROCEEDINGS OF THE 12TH EUROPEAN CONFERENCE ON E-LEARNING (ECEL)",
+      "doi": "10.34190/ecel.24.1.3731",
+      "accessionNumber": "RC:160834667_S24",
+      "timesCited": 0
+    },
+    {
+      "title": "Comprehensive smartphone image dataset for fish species identification in Bangladesh's freshwater ecosystems",
+      "published": "Aug 2025",
+      "year": 2025,
+      "source": "Data in Brief",
+      "doi": "10.1016/j.dib.2025.111629",
+      "accessionNumber": "WOS:001503573700003",
+      "timesCited": 0
+    },
+    {
+      "title": "JailBreakLLM: An Effective LLaMa Model Designed Specifically to Jailbreak OpenAI GPT",
+      "published": "Jul 2025",
+      "year": 2025,
+      "source": "International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN)",
+      "doi": "10.1109/qpain66474.2025.11171650",
+      "accessionNumber": "INSPEC:27423741",
+      "timesCited": 0
+    },
+    {
+      "title": "DriveChain: Scalable and Effective Data Management Solution to Blockchain- Based VANET with Reputation Assurance Protocol",
+      "published": "Jul 2025",
+      "year": 2025,
+      "source": "Intelligent Sustainable Systems: Selected Papers of WorldS4, Volume 4. Lecture Notes in Networks and Systems (1180)",
+      "doi": "10.1007/978-981-97-9324-2_6",
+      "accessionNumber": "INSPEC:27082930",
+      "timesCited": 0
+    },
+    {
+      "title": "InfraChain: A Sensor Enabled Bridge Management Application Using Blockchain",
+      "published": "Apr 2025",
+      "year": 2025,
+      "source": "Intelligent Sustainable Systems: Selected Papers of WorldS4, Volume 2. Lecture Notes in Networks and Systems (1178)",
+      "doi": "10.1007/978-981-97-9559-8_18",
+      "accessionNumber": "INSPEC:26600180",
+      "timesCited": 0
+    },
+    {
+      "title": "Design and development of a blockchain and IPFS-based credential verifier with custom lightweight encryption for secure storage",
+      "published": "Feb 2025",
+      "year": 2025,
+      "source": "International Conference on Electrical, Computer and Communication Engineering (ECCE)",
+      "doi": "10.1109/ecce64574.2025.11013795",
+      "accessionNumber": "INSPEC:26925684",
+      "timesCited": 0
+    },
+    {
+      "title": "Dr. FANS: A Decentralized Micro-credential Verification System Towards Higher Qualifications",
+      "published": "Feb 2025",
+      "year": 2025,
+      "source": "International Conference on Electrical, Computer and Communication Engineering (ECCE)",
+      "doi": "10.1109/ecce64574.2025.11013113",
+      "accessionNumber": "INSPEC:26925614",
+      "timesCited": 1
+    },
+    {
+      "title": "Simulation Tools for Cognitive Radio Network: A Survey",
+      "published": "2025",
+      "year": 2025,
+      "source": "IEEE Access",
+      "doi": "10.1109/access.2025.3537498",
+      "accessionNumber": "WOS:001492133300001",
+      "timesCited": 6
+    },
+    {
+      "title": "Blockchain-Based Controller Recovery and SDN Forwarding Device Rule Migration for UAVs",
+      "published": "2025",
+      "year": 2025,
+      "source": "Lecture Notes in Networks and Systems",
+      "doi": "10.1007/978-3-031-81928-5_26",
+      "accessionNumber": "WOS:001598475000026",
+      "timesCited": 1
+    },
+    {
+      "title": "Teaching and Learning via Video Conferencing Platforms: Issues Across Three Asian Countries",
+      "published": "2025",
+      "year": 2025,
+      "source": "PROCEEDINGS OF THE 12TH EUROPEAN CONFERENCE ON E-LEARNING (ECEL)",
+      "accessionNumber": "WOS:001768022900028",
+      "timesCited": 0
+    },
+    {
+      "title": "Design and Development of an IoT Based Smart Vaccine Carrier and Real- Time Monitoring System",
+      "published": "Dec 2024",
+      "year": 2024,
+      "source": "International Conference on Sustainable Technologies for Industry 5.0 (STI)",
+      "doi": "10.1109/sti64222.2024.10951133",
+      "accessionNumber": "INSPEC:26564131",
+      "timesCited": 0
+    },
+    {
+      "title": "Transforming agri-food value chains in Bangladesh: A practical application of blockchain for traceability and fair pricing",
+      "published": "Nov 2024",
+      "year": 2024,
+      "source": "Heliyon",
+      "doi": "10.1016/j.heliyon.2024.e40091",
+      "accessionNumber": "WOS:001770563300001",
+      "timesCited": 5
+    },
+    {
+      "title": "Deep Learning Approach for Multi-Label Detection of Abusive Bangla Social Media Comments",
+      "published": "Oct 2024",
+      "year": 2024,
+      "source": "International Conference on Information and Communication Technology (ICICT)",
+      "doi": "10.1109/icict64387.2024.10839705",
+      "accessionNumber": "INSPEC:26167210",
+      "timesCited": 0
+    },
+    {
+      "title": "A Robust Routing Protocol in Cognitive Unmanned Aerial Vehicular Networks",
+      "published": "Oct 2024",
+      "year": 2024,
+      "source": "Sensors",
+      "doi": "10.3390/s24196334",
+      "accessionNumber": "WOS:001334122400001",
+      "timesCited": 3
+    },
+    {
+      "title": "Smart Health with Medi2Home: Redefining Medicine Delivery for a Safer Tomorrow",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "ICT: Smart Systems and Technologies: Proceedings of ICTCS. Lecture Notes in Networks and Systems (878)",
+      "doi": "10.1007/978-981-99-9489-2_32",
+      "accessionNumber": "INSPEC:25250595",
+      "timesCited": 0
+    },
+    {
+      "title": "Problems in video conferencing-mediated teaching: experiences of three user roles of a University in Bangladesh",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499575",
+      "accessionNumber": "INSPEC:25005054",
+      "timesCited": 0
+    },
+    {
+      "title": "Bangla E-Commerce Sentiment Analysis Optimization Using Tokenization and TF-IDF",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499476",
+      "accessionNumber": "INSPEC:25004965",
+      "timesCited": 0
+    },
+    {
+      "title": "Impact of AI in healthcare services: analysis using medical synthetic data",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499613",
+      "accessionNumber": "INSPEC:25005011",
+      "timesCited": 0
+    },
+    {
+      "title": "AgriChain: Blockchain-Enabled Food Traceability",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "Intelligent Sustainable Systems: Selected Papers of WorldS4. Lecture Notes in Networks and Systems (828)",
+      "doi": "10.1007/978-981-99-8111-3_12",
+      "accessionNumber": "INSPEC:24806212",
+      "timesCited": 0
+    },
+    {
+      "title": "CredChain: Academic and Professional Certificate Verification System using Blockchain",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499520",
+      "accessionNumber": "INSPEC:25005002",
+      "timesCited": 0
+    },
+    {
+      "title": "A Robust Routing Protocol in Cognitive Unmanned Aerial Vehicular Networks",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499565",
+      "accessionNumber": "INSPEC:25004983",
+      "timesCited": 0
+    },
+    {
+      "title": "Aid Nexus : A Blockchain-Based Financial Distribution System",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "Intelligent Sustainable Systems: Selected Papers of WorldS4. Lecture Notes in Networks and Systems (828)",
+      "doi": "10.1007/978-981-99-8111-3_13",
+      "accessionNumber": "INSPEC:24806213",
+      "timesCited": 0
+    },
+    {
+      "title": "Enhancing Student Engagement and Performance Evaluation: An Integrated Approach for Quality Learning Management System",
+      "published": "Mar 2024",
+      "year": 2024,
+      "source": "Proceedings of World Conference on Information Systems for Business Management: ISBM. Lecture Notes in Networks and Systems (833)",
+      "doi": "10.1007/978-981-99-8346-9_19",
+      "accessionNumber": "INSPEC:25187150",
+      "timesCited": 2
+    },
+    {
+      "title": "InfraChain: A Sensor-Enabled Roadway Management Application Using Blockchain and Digital Twin",
+      "published": "Feb 2024",
+      "year": 2024,
+      "source": "Proceedings of World Conference on Information Systems for Business Management: ISBM. Lecture Notes in Networks and Systems (834)",
+      "doi": "10.1007/978-981-99-8349-0_36",
+      "accessionNumber": "INSPEC:24960501",
+      "timesCited": 2
+    },
+    {
+      "title": "Advancing Fish Species Identification in Bangladesh: Deep Learning Approaches for Accurate Freshwater Fish Recognition",
+      "published": "Feb 2024",
+      "year": 2024,
+      "source": "Proceedings of World Conference on Information Systems for Business Management: ISBM. Lecture Notes in Networks and Systems (834)",
+      "doi": "10.1007/978-981-99-8349-0_10",
+      "accessionNumber": "INSPEC:24960491",
+      "timesCited": 0
+    },
+    {
+      "title": "WildSaver: Advancing Wildlife Conservation with UAVs and Blockchain Technology",
+      "published": "2024",
+      "year": 2024,
+      "source": "Proceedings of World Conference on Information Systems for Business Management: ISBM. Lecture Notes in Networks and Systems (833)",
+      "doi": "10.1007/978-981-99-8346-9_39",
+      "accessionNumber": "INSPEC:24960556",
+      "timesCited": 0
+    },
+    {
+      "title": "Blockchain-Based Controller Recovery and SDN Packet Filtering Scheme for Softwarized UAVs",
+      "published": "2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499453",
+      "accessionNumber": "INSPEC:25005005",
+      "timesCited": 1
+    },
+    {
+      "title": "Soft Voting Ensemble- Based Approach for Diagnosing Diabetes Mellitus",
+      "published": "2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499577",
+      "accessionNumber": "INSPEC:25005049",
+      "timesCited": 0
+    },
+    {
+      "title": "Blockchain-enhanced academic certificate verification: a decentralized and trustworthy framework",
+      "published": "2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499524",
+      "accessionNumber": "INSPEC:25004968",
+      "timesCited": 0
+    },
+    {
+      "title": "Automation of Financial Aid Distribution Systems Using Consortium Blockchain",
+      "published": "2024",
+      "year": 2024,
+      "source": "International Conference on Advances in Computing, Communication, Electrical, and Smart Systems (iCACCESS)",
+      "doi": "10.1109/icaccess61735.2024.10499448",
+      "accessionNumber": "INSPEC:25004991",
+      "timesCited": 0
+    },
+    {
+      "title": "Mood Classification of Bangla Songs Based on Lyrics",
+      "published": "Oct 2023",
+      "year": 2023,
+      "source": "Inventive Communication and Computational Technologies: Proceedings of ICICCT. Lecture Notes in Networks and Systems (757)",
+      "doi": "10.1007/978-981-99-5166-6_40",
+      "accessionNumber": "INSPEC:24267459",
+      "timesCited": 1
+    },
+    {
+      "title": "Development of a Blockchain-Based On-Demand Lightweight Commodity Delivery System",
+      "published": "Oct 2023",
+      "year": 2023,
+      "source": "Inventive Communication and Computational Technologies: Proceedings of ICICCT. Lecture Notes in Networks and Systems (757)",
+      "doi": "10.1007/978-981-99-5166-6_48",
+      "accessionNumber": "INSPEC:24267463",
+      "timesCited": 0
+    },
+    {
+      "title": "A Computer Vision-Based System for Recognition and Classification of Urdu Sign Language Dataset for Differently Abled People Using Artificial Intelligence",
+      "published": "Jun 2023",
+      "year": 2023,
+      "source": "Mobile Information Systems",
+      "doi": "10.1155/2023/1060135"
+    },
+    {
+      "title": "A New Approach to Financial Distribution Systems Leveraging Hyperledger- Besu and Consortium Blockchain",
+      "published": "2023",
+      "year": 2023,
+      "source": "International Conference on Computer and Information Technology (ICCIT)",
+      "doi": "10.1109/iccit60459.2023.10441085",
+      "accessionNumber": "INSPEC:24768407",
+      "timesCited": 0
+    },
+    {
+      "title": "A Fresh Look at Routing Protocols in Unmanned Aerial Vehicular Networks: A Survey",
+      "published": "2023",
+      "year": 2023,
+      "source": "IEEE Access",
+      "doi": "10.1109/access.2023.3290871",
+      "accessionNumber": "WOS:001025453300001",
+      "timesCited": 37
+    },
+    {
+      "title": "A Review of Blockchain Approaches for KYC",
+      "published": "2023",
+      "year": 2023,
+      "source": "IEEE Access",
+      "doi": "10.1109/access.2023.3328536",
+      "accessionNumber": "WOS:001102132600001",
+      "timesCited": 13
+    },
+    {
+      "title": "Certiblock: The Exemplary Utilization of Blockchain for the Rigorous Validation of Academic Certificates",
+      "published": "2023",
+      "year": 2023,
+      "source": "International Conference on Computer and Information Technology (ICCIT)",
+      "doi": "10.1109/iccit60459.2023.10441100",
+      "accessionNumber": "INSPEC:24768820",
+      "timesCited": 0
+    },
+    {
+      "title": "RMT: A Lightweight Encryption Algorithm For Blockchain-Based Certificate Verification",
+      "published": "2023",
+      "year": 2023,
+      "source": "IECON - Annual Conference of the IEEE Industrial Electronics Society",
+      "doi": "10.1109/wiecon-ece60392.2023.10456497",
+      "accessionNumber": "INSPEC:24885282",
+      "timesCited": 0
+    },
+    {
+      "title": "SF-LAP: Secure M2M Communication in IIoT with a Single-Factor Lightweight Authentication Protocol",
+      "published": "Nov 2022",
+      "year": 2022,
+      "source": "Journal of Sensors",
+      "doi": "10.1155/2022/1309402",
+      "accessionNumber": "WOS:000888574800001",
+      "timesCited": 11
+    },
+    {
+      "title": "Early Prediction of Chronic Kidney Disease Using Data Mining Techniques",
+      "published": "Nov 2021",
+      "year": 2021,
+      "source": "Lecture Notes in Networks and Systems",
+      "doi": "10.1007/978-3-030-90321-3_79"
+    },
+    {
+      "title": "Learning-driven Spatio-temporal Feature Extraction for Violence Detection in IoT Environments",
+      "published": "Oct 2021",
+      "year": 2021,
+      "source": "Proceedings of the International Conference on ICT Convergence",
+      "doi": "10.1109/ictc52510.2021.9620892",
+      "accessionNumber": "WOS:000790235800447",
+      "timesCited": 2
+    },
+    {
+      "title": "A Transparent and Privacy-Preserving Healthcare Platform With Novel Smart Contract for Smart Cities",
+      "published": "2021",
+      "year": 2021,
+      "source": "IEEE Access",
+      "doi": "10.1109/access.2021.3089601",
+      "accessionNumber": "WOS:000673738100001",
+      "timesCited": 38
+    }
+  ],
+  "coreCollection": {
+    "source": "resource/My publications - Web of Science Researcher Profiles.pdf",
+    "preparedOn": "2026-10-09",
+    "records": [
+      {
+        "title": "Design and Development of a Blockchain-Enabled Decentralized Framework for Academic Microcredentials",
+        "published": "Jan 9, 2026",
+        "year": 2026,
+        "source": "IET Software",
+        "timesCited": 3
+      },
+      {
+        "title": "Optimizing network bandwidth slicing identification: NADAM-enhanced CNN and VAE data preprocessing for enhanced interpretability",
+        "published": "Oct 21, 2025",
+        "year": 2025,
+        "source": "Plos One",
+        "timesCited": 1
+      },
+      {
+        "title": "Comprehensive smartphone image dataset for fish species identification in Bangladesh's freshwater ecosystems",
+        "published": "Aug 1, 2025",
+        "year": 2025,
+        "source": "Data in Brief",
+        "timesCited": 0
+      },
+      {
+        "title": "Simulation Tools for Cognitive Radio Network: A Survey",
+        "published": "Jan 1, 2025",
+        "year": 2025,
+        "source": "IEEE Access",
+        "timesCited": 6
+      },
+      {
+        "title": "Teaching and Learning via Video Conferencing Platforms: Issues Across Three Asian Countries",
+        "published": "Jan 1, 2025",
+        "year": 2025,
+        "source": "PROCEEDINGS OF THE 12TH EUROPEAN CONFERENCE ON E-LEARNING (ECEL)",
+        "timesCited": 0
+      },
+      {
+        "title": "Blockchain-Based Controller Recovery and SDN Forwarding Device Rule Migration for UAVs",
+        "published": "Jan 1, 2025",
+        "year": 2025,
+        "source": "Lecture Notes in Networks and Systems",
+        "timesCited": 1
+      },
+      {
+        "title": "Transforming agri-food value chains in Bangladesh: A practical application of blockchain for traceability and fair pricing",
+        "published": "Nov 15, 2024",
+        "year": 2024,
+        "source": "Heliyon",
+        "timesCited": 5
+      },
+      {
+        "title": "A Robust Routing Protocol in Cognitive Unmanned Aerial Vehicular Networks",
+        "published": "Oct 1, 2024",
+        "year": 2024,
+        "source": "Sensors",
+        "timesCited": 3
+      },
+      {
+        "title": "A Review of Blockchain Approaches for KYC",
+        "published": "Jan 1, 2023",
+        "year": 2023,
+        "source": "IEEE Access",
+        "timesCited": 13
+      },
+      {
+        "title": "A Fresh Look at Routing Protocols in Unmanned Aerial Vehicular Networks: A Survey",
+        "published": "Jan 1, 2023",
+        "year": 2023,
+        "source": "IEEE Access",
+        "timesCited": 37
+      },
+      {
+        "title": "SF-LAP: Secure M2M Communication in IIoT with a Single-Factor Lightweight Authentication Protocol",
+        "published": "Nov 10, 2022",
+        "year": 2022,
+        "source": "Journal of Sensors",
+        "timesCited": 11
+      },
+      {
+        "title": "Learning-driven Spatio-temporal Feature Extraction for Violence Detection in IoT Environments",
+        "published": "Oct 20, 2021",
+        "year": 2021,
+        "source": "Proceedings of the International Conference on ICT Convergence",
+        "timesCited": 2
+      },
+      {
+        "title": "Towards Secure Communication in CR-VANETs Through a Trust-Based Routing Protocol",
+        "published": "May 10, 2021",
+        "year": 2021,
+        "source": "Proceedings of the IEEE Conference on Computer Communications Workshops (INFOCOM WKSHPS)",
+        "timesCited": 6
+      },
+      {
+        "title": "Prediction Approaches for Smart Cultivation: A Comparative Study",
+        "published": "Apr 9, 2021",
+        "year": 2021,
+        "source": "Complexity",
+        "timesCited": 10
+      },
+      {
+        "title": "A Transparent and Privacy-Preserving Healthcare Platform With Novel Smart Contract for Smart Cities",
+        "published": "Jan 1, 2021",
+        "year": 2021,
+        "source": "IEEE Access",
+        "timesCited": 38
+      },
+      {
+        "title": "An Efficient Routing Protocol for Secured Communication in Cognitive Radio Sensor Networks",
+        "published": "Jun 5, 2020",
+        "year": 2020,
+        "source": "IEEE Region 10 Symposium (TENSYMP)",
+        "timesCited": 2
+      },
+      {
+        "title": "Autonomous Maze Solving Robot",
+        "published": "May 21, 2020",
+        "year": 2020,
+        "source": "IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)",
+        "timesCited": 1,
+        "siteId": null,
+        "note": "Not on the website, and the Web of Science entry shows no claimed authorship."
+      },
+      {
+        "title": "A Spectrum Aware Mobility Pattern Based Routing Protocol for CR-VANETs",
+        "published": "Jan 1, 2020",
+        "year": 2020,
+        "source": "IEEE Wireless Communications and Networking Conference (WCNC)",
+        "timesCited": 8
+      },
+      {
+        "title": "Chittron: An Automatic Bangla Image Captioning System",
+        "published": "Jan 1, 2019",
+        "year": 2019,
+        "source": "Procedia Computer Science",
+        "timesCited": 15
+      },
+      {
+        "title": "Patterns of Flocking in Autonomous Agents",
+        "published": "Mar 1, 2018",
+        "year": 2018,
+        "source": "International Conference on Intelligent Autonomous Systems (ICoIAS)",
+        "timesCited": 3
+      },
+      {
+        "title": "Evolutionary search in the parameter spaces of the honeybee house-hunting model",
+        "published": "Mar 1, 2018",
+        "year": 2018,
+        "source": "International Conference on Intelligent Autonomous Systems (ICoIAS)",
+        "timesCited": 0
+      },
+      {
+        "title": "Mobility-aware medium access control protocols for wireless sensor networks: A survey",
+        "published": "Feb 15, 2018",
+        "year": 2018,
+        "source": "Journal of Network and Computer Applications",
+        "timesCited": 41
+      },
+      {
+        "title": "RARE: A Spectrum Aware Cross-Layer MAC Protocol for Cognitive Radio Ad-Hoc Networks",
+        "published": "Jan 1, 2018",
+        "year": 2018,
+        "source": "IEEE Access",
+        "timesCited": 27
+      },
+      {
+        "title": "Medium Access Control Protocols for Cognitive Radio Ad Hoc Networks: A Survey",
+        "published": "Sep 16, 2017",
+        "year": 2017,
+        "source": "Sensors",
+        "timesCited": 20,
+        "siteId": "j7"
+      },
+      {
+        "title": "Application of image retrieval for aesthetic evaluation and improvement suggestion of isolated Bangla handwritten characters",
+        "published": "Sep 12, 2017",
+        "year": 2017,
+        "source": "Proceedings of the IEEE International Conference on Signal and Image Processing Applications",
+        "timesCited": 0
+      },
+      {
+        "title": "A hybrid deep model with HOG features for Bangla handwritten numeral classification",
+        "published": "Dec 20, 2016",
+        "year": 2016,
+        "source": "International Conference on Electrical and Computer Engineering (ICECE)",
+        "timesCited": 21
+      },
+      {
+        "title": "A Framework for Event Anomaly Detection in Cognitive Radio Based Smart Community",
+        "published": "Dec 12, 2016",
+        "year": 2016,
+        "source": "International Workshop on Computational Intelligence (IWCI)",
+        "timesCited": 0
+      },
+      {
+        "title": "Sequence Classification: A Regression Based Generalization of Two-stage Clustering",
+        "published": "Dec 12, 2016",
+        "year": 2016,
+        "source": "International Workshop on Computational Intelligence (IWCI)",
+        "timesCited": 0
+      },
+      {
+        "title": "A Framework for Dynamic Vehicle Pooling and Ride-Sharing System",
+        "published": "Dec 12, 2016",
+        "year": 2016,
+        "source": "International Workshop on Computational Intelligence (IWCI)",
+        "timesCited": 6
+      },
+      {
+        "title": "A Novel On-Demand Routing Protocol For Cluster-Based Cognitive Radio Ad-Hoc Network",
+        "published": "Nov 22, 2016",
+        "year": 2016,
+        "source": "IEEE Region 10 Conference - TENCON",
+        "timesCited": 5
+      },
+      {
+        "title": "Clustering Analysis in Wireless Sensor Networks: The Ambit of Performance Metrics and Schemes Taxonomy",
+        "published": "Jul 22, 2016",
+        "year": 2016,
+        "source": "International Journal of Distributed Sensor Networks",
+        "timesCited": 54,
+        "siteId": "j5"
+      },
+      {
+        "title": "CMCS: a cross-layer mobility-aware MAC protocol for cognitive radio sensor networks",
+        "published": "Jul 7, 2016",
+        "year": 2016,
+        "source": "Eurasip Journal on Wireless Communications and Networking",
+        "timesCited": 17,
+        "siteId": "j6"
+      },
+      {
+        "title": "Dynamic Spectrum Allocation for Cognitive Radio Ad hoc Network",
+        "published": "Dec 17, 2015",
+        "year": 2015,
+        "source": "International Conference on Advances in Electrical Engineering (ICAEE)",
+        "timesCited": 5
+      },
+      {
+        "title": "A SURVEY ON SELF-ORGANIZED CLUSTER-BASED WIRELESS SENSOR NETWORK",
+        "published": "Sep 1, 2015",
+        "year": 2015,
+        "source": "Jurnal Teknologi (Sciences & Engineering)",
+        "timesCited": 1
+      },
+      {
+        "title": "Cluster Modelling for Cognitive Radio Ad-hoc Networks Using Graph Theory",
+        "published": "Jul 26, 2015",
+        "year": 2015,
+        "source": "International Seminar of Science and Applied Technology (ISSAT)",
+        "timesCited": 2,
+        "siteId": null,
+        "note": "Same title as website record c6, but Web of Science gives a different venue and year (ISSAT, July 2015; the website lists ICAMMS 2014)."
+      },
+      {
+        "title": "Cross-Layer Mobility-Aware MAC Protocol for Cognitive Radio Sensor Network",
+        "published": "Jun 15, 2015",
+        "year": 2015,
+        "source": "INTERNATIONAL CONFERENCE ON INFORMATICS, ELECTRONICS & VISION ICIEV 15",
+        "timesCited": 1
+      },
+      {
+        "title": "A Novel Node Joining Alogoritm For Spectrum Aware Cluster-Based Cognitive Radio Ad-Hoc Networks",
+        "published": "May 31, 2015",
+        "year": 2015,
+        "source": "Proceedings of the Asian Control Conference (ASCC)",
+        "timesCited": 0,
+        "siteId": "c10"
+      },
+      {
+        "title": "Cognitive Radio Ad-Hoc Network Architectures: A Survey",
+        "published": "Apr 1, 2015",
+        "year": 2015,
+        "source": "Wireless Personal Communications",
+        "timesCited": 28
+      },
+      {
+        "title": "Fault Tolerance in Dynamic Cluster-Based Wireless Sensor Networks",
+        "published": "Jan 13, 2015",
+        "year": 2015,
+        "source": "International Bhurban Conference on Applied Sciences and Technology (IBCAST)",
+        "timesCited": 1
+      },
+      {
+        "title": "A Stable Cluster-Based Architecture For Cognitive Radio Ad-Hoc Networks",
+        "published": "Oct 22, 2014",
+        "year": 2014,
+        "source": "IEEE Region 10 Conference - TENCON",
+        "timesCited": 2
+      },
+      {
+        "title": "Spectrum Aware Cluster-Based Architecture For Cognitive Radio Ad-Hoc Networks",
+        "published": "Dec 19, 2013",
+        "year": 2013,
+        "source": "International Conference on Advances in Electrical Engineering (ICAEE)",
+        "timesCited": 10
+      },
+      {
+        "title": "CoAd: A Cluster Based Adhoc Cognitive Radio Networks Architecture With Broadcasting Protocol",
+        "published": "May 17, 2013",
+        "year": 2013,
+        "source": "International Conference on Informatics, Electronics and Vision (ICIEV)",
+        "timesCited": 1,
+        "siteId": "c4"
+      },
+      {
+        "title": "Multiple description discrete cosine transform-based image coding using DC coefficient relocation and AC coefficient interpolation",
+        "published": "Apr 1, 2013",
+        "year": 2013,
+        "source": "Journal of Electronic Imaging",
+        "timesCited": 0
+      },
+      {
+        "title": "Multiple Description Image Coding: A Low Complexity Approach for Lossy Networks",
+        "published": "Nov 19, 2008",
+        "year": 2008,
+        "source": "IEEE Region 10 Conference - TENCON",
+        "timesCited": 0
+      },
+      {
+        "title": "Multiple description image transmission for diversity systems over unreliable communication networks",
+        "published": "Dec 27, 2007",
+        "year": 2007,
+        "source": "Proceedings of International Conference on Computer and Information Technology (Iccit)",
+        "timesCited": 6
+      }
+    ]
+  }
+}

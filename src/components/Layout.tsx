@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
+import { WEB_OF_SCIENCE } from '../constants';
 
 interface LayoutProps {
   children: ReactNode;
@@ -56,6 +57,14 @@ export default function Layout({ children }: LayoutProps) {
                 className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full border border-white/5 text-xs text-gray-400 hover:text-white transition-all flex items-center space-x-2"
               >
                 <span>ResearchGate</span>
+              </a>
+              <a 
+                href={WEB_OF_SCIENCE.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full border border-white/5 text-xs text-gray-400 hover:text-white transition-all flex items-center space-x-2"
+              >
+                <span>Web of Science</span>
               </a>
               <a 
                 href="https://scholar.google.com/citations?user=5dt40PYAAAAJ&hl=en&oi=ao" 
