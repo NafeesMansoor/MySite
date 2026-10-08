@@ -30,19 +30,55 @@ npm run dev      # start the dev server at http://localhost:3000
 | `npm run preview` | Serve the production build locally                             |
 | `npm run lint`    | Type-check the project (`tsc --noEmit`)                        |
 | `npm run clean`   | Remove `dist/`                                                 |
+| `npm run pubs:import` | Rebuild publication data from the curated list and the Scopus export |
+| `npm run pubs:validate` | Validate publication data (also runs as part of `build`)     |
+| `npm run pubs:check-links` | Check that every published DOI resolves (needs network)   |
 
 ## Project structure
 
 ```
+docs/               Generated publication match report
 public/             Static files (sitemap.xml, robots.txt, _redirects)
-scripts/            Build-time scripts (SEO file generation)
+resource/           Source workbooks (Scopus export)
+scripts/            Build-time scripts (SEO files, publication import and validation)
 src/
   components/       Shared layout and UI components
   pages/            Route pages (About, Projects, Services, Publications, Awards)
-  data/             Publication and citation data
+  data/             Citation counts and publication data (see below)
   constants.ts      Site content (education, awards, grants, services, …)
   types.ts          Shared TypeScript types
 ```
+
+## Publication data
+
+Publications live in `src/data/publications/`:
+
+| File                 | Role                                                                    |
+| -------------------- | ----------------------------------------------------------------------- |
+| `curated.json`       | Hand-maintained list (title, authors, venue, year, type, indexing). Edit this file to add or correct a publication. |
+| `import-config.json` | Path of the Scopus workbook, manual match decisions, and DOIs to withhold. |
+| `publications.json`  | **Generated** — the merged data the website reads. Do not edit by hand. |
+
+`npm run pubs:import` merges `curated.json` with the Scopus export in
+`resource/`. Curated fields are never overwritten; the workbook only adds
+metadata (abstract, keywords, DOI, Scopus link, citation count, and so on).
+Records are matched by DOI when the curated record has one, otherwise by
+normalized title; anything uncertain is listed in
+`docs/publication-match-report.md` instead of being guessed. Scopus rows that
+are not on the curated list are added as separate records
+(`"origin": "scopus"`).
+
+To refresh from a new Scopus export:
+
+1. Save the export in `resource/` and update `workbook` and
+   `scopusExportLabel` in `import-config.json`.
+2. Run `npm run pubs:import`.
+3. Read `docs/publication-match-report.md`. Resolve entries under
+   "Needs review" by adding `"<id>": "<EID>"` (or `null`) to `matches`,
+   then re-run the import.
+4. Run `npm run pubs:check-links`, then `npm run build`.
+
+To give a curated record an exact match, add its `doi` to `curated.json`.
 
 ## Deployment
 

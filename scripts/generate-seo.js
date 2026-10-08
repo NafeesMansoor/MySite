@@ -18,6 +18,7 @@ const routes = [
   '/services/professional',
   '/services/qa',
   '/services/community',
+  '/publications',
   '/publications/journals',
   '/publications/proceedings',
   '/publications/book-chapters',

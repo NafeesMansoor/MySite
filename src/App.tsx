@@ -9,6 +9,7 @@ import ResearchAwards from './pages/Projects/Awards';
 import Professional from './pages/Services/Professional';
 import QA from './pages/Services/QA';
 import Community from './pages/Services/Community';
+import AllPublications from './pages/Publications/AllPublications';
 import Journals from './pages/Publications/Journals';
 import Proceedings from './pages/Publications/Proceedings';
 import BookChapters from './pages/Publications/BookChapters';
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/services/professional" element={<Professional />} />
           <Route path="/services/qa" element={<QA />} />
           <Route path="/services/community" element={<Community />} />
+          <Route path="/publications" element={<AllPublications />} />
           <Route path="/publications/journals" element={<Journals />} />
           <Route path="/publications/proceedings" element={<Proceedings />} />
           <Route path="/publications/book-chapters" element={<BookChapters />} />
