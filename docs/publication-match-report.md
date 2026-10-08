@@ -64,42 +64,23 @@ _None._
 | | Count |
 | --- | --- |
 | Core Collection publications in Web of Science | 45 |
-| …matched to a website record | 43 |
-| …not matched | 2 |
-| Website records with any Web of Science data | 74 |
+| …matched to a website record | 44 |
+| …not matched | 1 |
+| Website records with any Web of Science data | 75 |
 | CV entries not found on the website | 0 |
 | DOIs taken from Web of Science | 1 (j14) |
 
 ### Core Collection publications not matched to the website
 
-- Autonomous Maze Solving Robot (May 21, 2020, IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)) — Not on the website, and the Web of Science entry shows no claimed authorship.
-- Cluster Modelling for Cognitive Radio Ad-hoc Networks Using Graph Theory (Jul 26, 2015, International Seminar of Science and Applied Technology (ISSAT)) — Same title as website record c6, but Web of Science gives a different venue and year (ISSAT, July 2015; the website lists ICAMMS 2014).
+- Autonomous Maze Solving Robot (May 21, 2020, IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)) — Not published on the website: Crossref (DOI 10.1109/aqtr49680.2020.9129943) lists the authors as R. Covaci, G. Harja and I. Nascu, so this entry appears to be attributed to the profile by mistake.
 
 ### Marked "ISI Indexed" on the website but not in the Core Collection list
 
-- **c36** (2023, conference) Certiblock: The Exemplary Utilization of Blockchain for the Rigorous Validation of Academic Certificates
-- **c35** (2023, conference) A New Approach to Financial Distribution Systems Leveraging Hyperledger-Besu and Consortium Blockchain
-- **c34** (2023, conference) RMT: A Lightweight Encryption Algorithm For Blockchain-Based Certificate Verification
-- **c27** (2021, conference) Early diagnosis and comparative analysis of different machine learning algorithms for myocardial infarction prediction
-- **c25** (2020, conference) TextMage: The Automated Bangla Caption Generator Based on Deep Learning
+_None._
 
 ### In the Core Collection list but not marked "ISI Indexed" on the website
 
-- **j10** (2019, journal) Chittron: An Automatic Bangla Image Captioning System — currently "Scopus Indexed"
-- **j4** (2015, journal) A Survey on Self-Organized Cluster-Based Wireless Sensor Network — currently "Scopus Indexed"
-- **c48** (2025, conference) Teaching and Learning via Video Conferencing Platforms: Issues Across Three Asian Countries — currently "Scopus Indexed"
-- **c21** (2018, conference) Patterns of Flocking in Autonomous Agents — currently "Scopus Indexed"
-- **c20** (2018, conference) Evolutionary search in the parameter spaces of the honeybee house-hunting model — currently "Scopus Indexed"
-- **c19** (2017, conference) Application of image retrieval for aesthetic evaluation and improvement suggestion of isolated Bangla handwritten characters — currently "Scopus Indexed"
-- **c17** (2016, conference) Sequence Classification: A Regression Based Generalization of Two-stage Clustering — currently "Scopus Indexed"
-- **c16** (2016, conference) A Framework for Event Anomaly Detection in Cognitive Radio Based Smart Community — currently "Scopus Indexed"
-- **c15** (2016, conference) A Framework for Dynamic Vehicle Pooling and Ride-Sharing System — currently "Scopus Indexed"
-- **c14** (2016, conference) A hybrid deep model with HOG features for Bangla handwritten numeral classification — currently "Scopus Indexed"
-- **c11** (2015, conference) Dynamic Spectrum Allocation for Cognitive Radio Ad hoc Network — currently "Scopus Indexed"
-- **c10** (2015, conference) A Novel Node Joining Algorithm for Spectrum Aware Cluster-Based Cognitive Radio Ad-Hoc Networks — currently "Scopus Indexed"
-- **c8** (2015, conference) Fault Tolerance in Dynamic Cluster-based Wireless Sensor Networks — currently "Scopus Indexed"
-- **c5** (2013, conference) Spectrum Aware Cluster-Based Architecture for Cognitive Radio Ad-Hoc Networks — currently "Scopus Indexed"
-- **scopus-105000720086** (2025, conference) Blockchain-Based Controller Recovery and SDN Forwarding Device Rule Migration for UAVs — currently "Scopus Indexed"
+_None._
 
 ## DOIs withheld
 

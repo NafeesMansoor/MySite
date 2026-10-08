@@ -1,10 +1,11 @@
 import { useEffect, useId, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ExternalLink, Filter, Search, X } from 'lucide-react';
 import { PUBLICATIONS, SCOPUS_EXPORT_LABEL, WEB_OF_SCIENCE } from '../constants';
 import { Publication } from '../types';
 import ShareButtons from './ShareButtons';
+import { SITE_URL, doiUrl, publicationJsonLd, publicationPath, setMeta, setPageJsonLd, typeLabel } from '../seo/site';
 
 type PublicationType = Publication['type'];
 type SortOrder = 'newest' | 'oldest' | 'cited' | 'title';
@@ -19,14 +20,6 @@ interface PublicationListProps {
   emptyLabel?: string;
 }
 
-const TYPE_LABELS: Record<PublicationType, string> = {
-  journal: 'Journal Article',
-  conference: 'Conference Paper',
-  'book-chapter': 'Book Chapter',
-  patent: 'Patent',
-  'edited-book': 'Edited Book',
-};
-
 const SORT_LABELS: Record<SortOrder, string> = {
   newest: 'Newest first',
   oldest: 'Oldest first',
@@ -37,7 +30,6 @@ const SORT_LABELS: Record<SortOrder, string> = {
 // Topics offered in the filter: author keywords used by at least this many listed publications.
 const MIN_TOPIC_COUNT = 3;
 
-const doiUrl = (doi: string) => `https://doi.org/${doi}`;
 const wosUrl = (accession: string) => `https://www.webofscience.com/wos/woscc/full-record/${accession}`;
 
 const searchText = (pub: Publication) =>
@@ -59,48 +51,24 @@ const searchText = (pub: Publication) =>
     .join(' ')
     .toLowerCase();
 
-const setMeta = (selector: string, attribute: string, name: string, content: string) => {
-  let element = document.head.querySelector<HTMLMetaElement>(selector);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attribute, name);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('content', content);
+// Badge colours follow the accent palette of the home page.
+const BADGE_BASE = 'text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border';
+export const BADGE = {
+  neutral: `${BADGE_BASE} text-white/50 bg-white/5 border-white/5`,
+  isi: `${BADGE_BASE} text-indigo-300 bg-indigo-500/10 border-indigo-500/20`,
+  scopus: `${BADGE_BASE} text-sky-300 bg-sky-500/10 border-sky-500/20`,
+  impact: `${BADGE_BASE} text-violet-300 bg-violet-500/10 border-violet-500/20`,
+  wos: `${BADGE_BASE} text-purple-300 bg-purple-500/10 border-purple-500/20`,
+  openAccess: `${BADGE_BASE} text-emerald-300 bg-emerald-500/10 border-emerald-500/20`,
+  cited: `${BADGE_BASE} text-amber-300 bg-amber-500/10 border-amber-500/20`,
 };
-
-const toJsonLd = (pubs: Publication[], name: string) => ({
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name,
-  numberOfItems: pubs.length,
-  itemListElement: pubs.map((pub, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    item: {
-      '@type': pub.type === 'book-chapter' ? 'Chapter' : 'ScholarlyArticle',
-      name: pub.title,
-      headline: pub.title,
-      author: pub.authorNames?.map((author) => ({ '@type': 'Person', name: author })) ?? pub.authors,
-      datePublished: String(pub.year),
-      isPartOf: { '@type': pub.type === 'journal' ? 'Periodical' : 'PublicationVolume', name: pub.sourceTitle ?? pub.venue },
-      ...(pub.publisher && { publisher: { '@type': 'Organization', name: pub.publisher } }),
-      ...(pub.authorKeywords && { keywords: pub.authorKeywords.join(', ') }),
-      ...(pub.doi && {
-        identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: pub.doi },
-        sameAs: doiUrl(pub.doi),
-        url: doiUrl(pub.doi),
-      }),
-    },
-  })),
-});
+export const indexedBadge = (indexed: string) => (indexed.startsWith('ISI') ? BADGE.isi : BADGE.scopus);
 
 const selectClass = 'bg-transparent text-sm text-gray-300 focus:outline-none cursor-pointer max-w-[14rem]';
 const pillClass =
-  'flex items-center space-x-2 bg-zinc-900/50 border border-white/5 rounded-full px-4 py-2 focus-within:border-white/30';
-const badgeClass = 'text-[10px] text-white/40 uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded';
+  'flex items-center space-x-2 bg-zinc-900/50 border border-white/5 rounded-full px-4 py-2 focus-within:border-indigo-400/60';
 const linkClass =
-  'inline-flex items-center space-x-1.5 text-xs text-gray-400 hover:text-white underline-offset-4 hover:underline transition-colors';
+  'inline-flex items-center space-x-1.5 text-xs text-sky-400/80 hover:text-sky-300 underline-offset-4 hover:underline transition-colors';
 
 export default function PublicationList({
   heading,
@@ -127,18 +95,19 @@ export default function PublicationList({
 
   useEffect(() => {
     document.title = pageTitle;
-    setMeta('meta[name="description"]', 'name', 'description', metaDescription);
-    setMeta('meta[property="og:title"]', 'property', 'og:title', pageTitle);
-    setMeta('meta[property="og:description"]', 'property', 'og:description', metaDescription);
-    setMeta('meta[property="og:type"]', 'property', 'og:type', 'website');
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(toJsonLd(pubs, heading));
-    document.head.appendChild(script);
-    return () => {
-      document.head.removeChild(script);
-    };
+    setMeta('name', 'description', metaDescription);
+    setPageJsonLd({
+      '@type': 'ItemList',
+      name: heading,
+      numberOfItems: pubs.length,
+      itemListElement: pubs.map((pub, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${SITE_URL}${publicationPath(pub)}`,
+        item: publicationJsonLd({ ...pub, abstract: undefined }),
+      })),
+    });
+    return () => setPageJsonLd(null);
   }, [pageTitle, metaDescription, heading, pubs]);
 
   // Keep the search term in the URL so that a search can be shared or bookmarked.
@@ -235,7 +204,7 @@ export default function PublicationList({
 
           <form role="search" onSubmit={(event) => event.preventDefault()} className="space-y-4">
             <div className={`${pillClass} px-5 py-3`}>
-              <Search className="w-4 h-4 text-gray-500 shrink-0" aria-hidden="true" />
+              <Search className="w-4 h-4 text-indigo-400 shrink-0" aria-hidden="true" />
               <label htmlFor={searchId} className="sr-only">
                 Search {heading.toLowerCase()}
               </label>
@@ -251,7 +220,7 @@ export default function PublicationList({
 
             <div className="flex flex-wrap items-center gap-3">
               <div className={pillClass}>
-                <Filter className="w-4 h-4 text-gray-500" aria-hidden="true" />
+                <Filter className="w-4 h-4 text-indigo-400" aria-hidden="true" />
                 <select
                   aria-label="Filter by year"
                   value={selectedYear}
@@ -275,7 +244,7 @@ export default function PublicationList({
                   >
                     <option value="All" className="bg-zinc-900">All Types</option>
                     {availableTypes.map((type) => (
-                      <option key={type} value={type} className="bg-zinc-900">{TYPE_LABELS[type]}</option>
+                      <option key={type} value={type} className="bg-zinc-900">{typeLabel(type)}</option>
                     ))}
                   </select>
                 </div>
@@ -364,18 +333,18 @@ export default function PublicationList({
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="group p-8 bg-zinc-900/50 border border-white/5 rounded-3xl hover:bg-zinc-900 hover:border-white/10 transition-all"
+                  className="group p-8 bg-zinc-900/50 border border-white/5 border-l-2 border-l-indigo-500/40 rounded-3xl hover:bg-zinc-900 hover:border-white/10 hover:border-l-indigo-400 transition-all"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div className="space-y-3 min-w-0">
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                        <span className="text-xs text-gray-500 font-mono">{pub.year}</span>
-                        {types.length > 1 && <span className={badgeClass}>{TYPE_LABELS[pub.type]}</span>}
-                        {pub.indexed && <span className={badgeClass}>{pub.indexed}</span>}
-                        {pub.impactFactor && <span className={badgeClass}>IF: {pub.impactFactor}</span>}
+                        <span className="text-xs text-indigo-400 font-mono font-medium">{pub.year}</span>
+                        {types.length > 1 && <span className={BADGE.neutral}>{typeLabel(pub.type)}</span>}
+                        {pub.indexed && <span className={indexedBadge(pub.indexed)}>{pub.indexed}</span>}
+                        {pub.impactFactor && <span className={BADGE.impact}>IF: {pub.impactFactor}</span>}
                         {pub.wosCoreCollection && (
                           <span
-                            className={badgeClass}
+                            className={BADGE.wos}
                             title={
                               pub.wosTimesCited !== undefined
                                 ? `Web of Science Core Collection — cited ${pub.wosTimesCited} times (${WEB_OF_SCIENCE.preparedLabel})`
@@ -385,22 +354,27 @@ export default function PublicationList({
                             Web of Science
                           </span>
                         )}
-                        {pub.openAccess && <span className={badgeClass}>Open Access</span>}
+                        {pub.openAccess && <span className={BADGE.openAccess}>Open Access</span>}
                         {pub.citedBy !== undefined && pub.citedBy > 0 && (
-                          <span className={badgeClass} title={`Scopus citation count, ${SCOPUS_EXPORT_LABEL}`}>
+                          <span className={BADGE.cited} title={`Scopus citation count, ${SCOPUS_EXPORT_LABEL}`}>
                             Cited by {pub.citedBy}
                           </span>
                         )}
                       </div>
-                      <h2 className="text-xl font-bold text-white group-hover:text-white/90 transition-colors leading-tight">
-                        {pub.title}
+                      <h2 className="text-xl font-bold text-white leading-tight">
+                        <Link
+                          to={publicationPath(pub)}
+                          className="hover:text-indigo-300 focus-visible:text-indigo-300 focus-visible:outline-none focus-visible:underline underline-offset-4 transition-colors"
+                        >
+                          {pub.title}
+                        </Link>
                       </h2>
                       <p className="text-sm text-gray-500 italic">{pub.authors}</p>
                       <p className="text-sm text-gray-400 md:hidden">{pub.venue}</p>
                     </div>
                     <div className="flex items-center space-x-6 shrink-0">
                       <div className="text-right hidden md:block">
-                        <div className="text-xs text-gray-600 uppercase tracking-widest mb-1">{venueLabel}</div>
+                        <div className="text-xs text-violet-400/70 uppercase tracking-widest mb-1">{venueLabel}</div>
                         <div className="text-sm text-gray-400 max-w-[250px] line-clamp-3" title={pub.venue}>
                           {pub.venue}
                         </div>
@@ -412,10 +386,10 @@ export default function PublicationList({
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View article: ${pub.title} (opens the publisher page in a new tab)`}
-                            className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 group/link flex items-center space-x-2"
+                            className="px-6 py-3 bg-indigo-500/10 hover:bg-indigo-500/20 rounded-full transition-all border border-indigo-500/30 group/link flex items-center space-x-2"
                           >
-                            <ExternalLink className="w-4 h-4 text-gray-500 group-hover/link:text-white transition-colors" aria-hidden="true" />
-                            <span className="text-sm font-medium text-gray-400 group-hover/link:text-white transition-colors whitespace-nowrap">
+                            <ExternalLink className="w-4 h-4 text-indigo-300 group-hover/link:text-white transition-colors" aria-hidden="true" />
+                            <span className="text-sm font-medium text-indigo-200 group-hover/link:text-white transition-colors whitespace-nowrap">
                               View article
                             </span>
                           </a>
@@ -435,7 +409,7 @@ export default function PublicationList({
                                 type="button"
                                 onClick={() => setQuery(keyword)}
                                 title={`Search for "${keyword}"`}
-                                className="text-xs text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5 rounded-full px-3 py-1 transition-colors"
+                                className="text-xs text-gray-400 hover:text-indigo-200 bg-white/5 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-full px-3 py-1 transition-colors"
                               >
                                 {keyword}
                               </button>
@@ -451,7 +425,7 @@ export default function PublicationList({
                             onClick={() => toggleAbstract(pub.id)}
                             aria-expanded={isOpen}
                             aria-controls={abstractId}
-                            className="inline-flex items-center space-x-1.5 text-xs font-medium text-gray-300 hover:text-white transition-colors"
+                            className="inline-flex items-center space-x-1.5 text-xs font-medium text-indigo-300 hover:text-indigo-200 transition-colors"
                           >
                             <ChevronDown
                               className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`}

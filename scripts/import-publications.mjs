@@ -267,6 +267,22 @@ for (const entry of wos.coreCollection.records) {
   record.wosTimesCited = entry.timesCited;
 }
 
+// The indexing label follows Web of Science: "ISI Indexed" means the Core Collection.
+for (const record of records) {
+  if (record.origin === 'scopus' && record.wosCoreCollection) record.indexed = 'ISI Indexed';
+}
+
+// Stable, readable URL slug for each publication page. Later duplicates of a title get the type appended.
+const slugs = new Set();
+for (const record of records) {
+  const base = normalizeTitle(record.title).split(' ').slice(0, 12).join('-');
+  let slug = base;
+  if (slugs.has(slug)) slug = `${base}-${record.type}`;
+  if (slugs.has(slug)) slug = `${base}-${record.id}`;
+  slugs.add(slug);
+  record.slug = slug;
+}
+
 const output = {
   source: path.basename(config.workbook),
   scopusExportLabel: config.scopusExportLabel,

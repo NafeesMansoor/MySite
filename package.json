@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "node scripts/validate-publications.mjs && node scripts/generate-seo.js && vite build",
+    "build": "node scripts/validate-publications.mjs && node scripts/generate-seo.js && vite build && node scripts/prerender.mjs",
     "pubs:import": "node scripts/import-publications.mjs && node scripts/validate-publications.mjs",
     "pubs:validate": "node scripts/validate-publications.mjs",
     "pubs:check-links": "node scripts/check-publication-links.mjs",
+    "seo:submit": "node scripts/submit-indexnow.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

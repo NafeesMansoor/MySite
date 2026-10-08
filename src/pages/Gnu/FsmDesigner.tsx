@@ -5,12 +5,12 @@ import { ExternalLink } from 'lucide-react';
 const DESIGNER_URL = '/tools/fsm-designer/index.html';
 
 const TIPS = [
-  { action: 'Double-click empty space', result: 'Add a state' },
-  { action: 'Double-click a state', result: 'Toggle accepting state' },
-  { action: 'Shift + drag', result: 'Add a transition' },
-  { action: 'Click', result: 'Select, then type to label' },
-  { action: 'Drag', result: 'Move a state or bend a transition' },
-  { action: 'Delete (Fn + Delete on macOS)', result: 'Remove the selected item' },
+  { action: 'Double-click', result: 'new state' },
+  { action: 'Double-click a state', result: 'accepting state' },
+  { action: 'Shift + drag', result: 'new transition' },
+  { action: 'Click, then type', result: 'label' },
+  { action: 'Drag', result: 'move or bend' },
+  { action: 'Delete (Fn + Delete on macOS)', result: 'remove' },
 ];
 
 export default function FsmDesigner() {
@@ -49,26 +49,26 @@ export default function FsmDesigner() {
           </a>
         </div>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {TIPS.map((tip) => (
-            <li key={tip.action} className="p-5 bg-zinc-900/50 border border-white/5 rounded-2xl">
-              <div className="text-xs font-bold uppercase tracking-widest text-indigo-400/80">{tip.action}</div>
-              <div className="text-sm text-gray-400 mt-1">{tip.result}</div>
-            </li>
-          ))}
-        </ul>
+        <div className="space-y-4">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-400" aria-label="How to use the drawing board">
+            {TIPS.map((tip) => (
+              <li key={tip.action}>
+                <span className="font-semibold text-indigo-300">{tip.action}</span>
+                <span className="text-gray-600"> → </span>
+                {tip.result}
+              </li>
+            ))}
+          </ul>
 
-        <div className="bg-zinc-900/50 border border-white/5 rounded-3xl overflow-hidden">
-          <iframe
-            src={DESIGNER_URL}
-            title="FSM Designer drawing board"
-            className="w-full h-[760px] block"
-          />
+          <div className="bg-zinc-900/50 border border-white/5 rounded-3xl overflow-hidden">
+            <iframe
+              src={DESIGNER_URL}
+              title="FSM Designer drawing board"
+              className="w-full h-[760px] block"
+            />
+          </div>
         </div>
 
-        <p className="text-xs text-gray-600">
-          Free software, released under the MIT License. Based on the Finite State Machine Designer by Evan Wallace.
-        </p>
       </motion.div>
     </div>
   );

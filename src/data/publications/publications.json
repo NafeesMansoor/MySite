@@ -9,7 +9,8 @@
       "venue": "Status: filed. Country: Bangladesh. Number: P/BD/2020/000018",
       "year": 2020,
       "type": "patent",
-      "origin": "curated"
+      "origin": "curated",
+      "slug": "a-portoble-insuloled-contoiner-for-sloring-ond-tronsporting-voccines"
     },
     {
       "id": "eb1",
@@ -18,7 +19,8 @@
       "venue": "Springer Nature",
       "year": 2022,
       "type": "edited-book",
-      "origin": "curated"
+      "origin": "curated",
+      "slug": "bangabandhu-and-digital-bangladesh-first-international-conference-icbbdb-2021-dhaka-bangladesh-december"
     },
     {
       "doi": "10.1049/sfw2/7326873",
@@ -86,7 +88,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001656869900001",
       "wosTimesCited": 3,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "design-and-development-of-a-blockchain-enabled-decentralized-framework-for-academic-microcredentials"
     },
     {
       "doi": "10.1371/journal.pone.0333286",
@@ -154,7 +157,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001598166800035",
       "wosTimesCited": 1,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "optimizing-network-bandwidth-slicing-identification-nadam-enhanced-cnn-and-vae-data-preprocessing"
     },
     {
       "doi": "10.1109/access.2025.3537498",
@@ -211,7 +215,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001492133300001",
       "wosTimesCited": 6,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "simulation-tools-for-cognitive-radio-network-a-survey"
     },
     {
       "doi": "10.1016/j.dib.2025.111629",
@@ -269,7 +274,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001503573700003",
       "wosTimesCited": 0,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "comprehensive-smartphone-image-dataset-for-fish-species-identification-in-bangladesh-s-freshwater"
     },
     {
       "doi": "10.3390/s24196334",
@@ -347,7 +353,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001334122400001",
       "wosTimesCited": 3,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "a-robust-routing-protocol-in-cognitive-unmanned-aerial-vehicular-networks"
     },
     {
       "doi": "10.1016/j.heliyon.2024.e40091",
@@ -397,7 +404,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001770563300001",
       "wosTimesCited": 5,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "transforming-agri-food-value-chains-in-bangladesh-a-practical-application-of-blockchain"
     },
     {
       "doi": "10.1109/access.2023.3328536",
@@ -454,7 +462,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001102132600001",
       "wosTimesCited": 13,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "a-review-of-blockchain-approaches-for-kyc"
     },
     {
       "doi": "10.1109/access.2023.3290871",
@@ -518,7 +527,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:001025453300001",
       "wosTimesCited": 37,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "a-fresh-look-at-routing-protocols-in-unmanned-aerial-vehicular-networks-a"
     },
     {
       "id": "j14",
@@ -529,7 +539,8 @@
       "type": "journal",
       "origin": "curated",
       "doi": "10.1155/2023/1060135",
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "a-computer-vision-based-system-for-recognition-and-classification-of-urdu-sign"
     },
     {
       "doi": "10.1155/2022/1309402",
@@ -584,7 +595,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:000888574800001",
       "wosTimesCited": 11,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "sf-lap-secure-m2m-communication-in-iiot-with-a-single-factor-lightweight"
     },
     {
       "doi": "10.1109/access.2021.3089601",
@@ -645,7 +657,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:000673738100001",
       "wosTimesCited": 38,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "a-transparent-and-privacy-preserving-healthcare-platform-with-novel-smart-contract-for"
     },
     {
       "doi": "10.1155/2021/5534379",
@@ -703,7 +716,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 10
+      "wosTimesCited": 10,
+      "slug": "prediction-approaches-for-smart-cultivation-a-comparative-study"
     },
     {
       "doi": "10.1016/j.procs.2019.06.100",
@@ -761,11 +775,12 @@
       "venue": "Procedia Computer Science, Volume 154, p.p. 636-642, 2019",
       "year": 2019,
       "type": "journal",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title",
       "wosCoreCollection": true,
-      "wosTimesCited": 15
+      "wosTimesCited": 15,
+      "slug": "chittron-an-automatic-bangla-image-captioning-system"
     },
     {
       "doi": "10.1109/access.2018.2807781",
@@ -821,7 +836,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 27
+      "wosTimesCited": 27,
+      "slug": "rare-a-spectrum-aware-cross-layer-mac-protocol-for-cognitive-radio-ad"
     },
     {
       "doi": "10.1016/j.jnca.2017.12.009",
@@ -876,7 +892,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 41
+      "wosTimesCited": 41,
+      "slug": "mobility-aware-medium-access-control-protocols-for-wireless-sensor-networks-a-survey"
     },
     {
       "doi": "10.3390/s17092136",
@@ -939,7 +956,8 @@
       "origin": "curated",
       "matchMethod": "manual",
       "wosCoreCollection": true,
-      "wosTimesCited": 20
+      "wosTimesCited": 20,
+      "slug": "medium-access-control-protocol-for-cognitive-radio-ad-hoc-networks-a-survey"
     },
     {
       "doi": "10.1186/s13638-016-0652-y",
@@ -1003,7 +1021,8 @@
       "origin": "curated",
       "matchMethod": "manual",
       "wosCoreCollection": true,
-      "wosTimesCited": 17
+      "wosTimesCited": 17,
+      "slug": "cmcs-a-cross-layer-mobility-aware-mac-protocol-for-cognitive-radio-sensor"
     },
     {
       "doi": "10.1177/155014774979142",
@@ -1053,7 +1072,8 @@
       "origin": "curated",
       "matchMethod": "manual",
       "wosCoreCollection": true,
-      "wosTimesCited": 54
+      "wosTimesCited": 54,
+      "slug": "clustering-analysis-in-wireless-sensor-networks-an-ambit-of-performance-metrics-and"
     },
     {
       "doi": "10.11113/jt.v76.4064",
@@ -1091,11 +1111,12 @@
       "venue": "Jurnal Teknologi, 76(1), 2015",
       "year": 2015,
       "type": "journal",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 1
+      "wosTimesCited": 1,
+      "slug": "a-survey-on-self-organized-cluster-based-wireless-sensor-network"
     },
     {
       "doi": "10.1007/s11277-014-2175-3",
@@ -1155,7 +1176,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 28
+      "wosTimesCited": 28,
+      "slug": "cognitive-radio-ad-hoc-network-architectures-a-survey"
     },
     {
       "doi": "10.1117/1.jei.22.2.023030",
@@ -1200,7 +1222,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "multiple-description-discrete-cosine-transform-based-image-coding-using-dc-coefficient-relocation"
     },
     {
       "scopusEid": "2-s2.0-84873423255",
@@ -1236,7 +1259,8 @@
       "type": "journal",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "a-comparative-analysis-of-ict-developments-in-developing-and-developed-countries"
     },
     {
       "doi": "10.1007/978-981-97-9559-8_18",
@@ -1302,7 +1326,8 @@
       "matchMethod": "manual",
       "wosAccession": "INSPEC:26600180",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "infrachain-a-sensor-enabled-bridge-management-application-using-blockchain"
     },
     {
       "doi": "10.1007/978-981-99-5166-6_24",
@@ -1362,7 +1387,8 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title"
+      "matchMethod": "title",
+      "slug": "verifi-chain-a-credentials-verifier-using-blockchain-and-ipfs"
     },
     {
       "doi": "10.1007/978-981-99-5166-6_40",
@@ -1419,7 +1445,8 @@
       "matchMethod": "title",
       "wosAccession": "INSPEC:24267459",
       "wosTimesCited": 1,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "mood-classification-of-bangla-songs-based-on-lyrics"
     },
     {
       "doi": "10.1007/978-981-99-5166-6_48",
@@ -1480,7 +1507,8 @@
       "matchMethod": "title",
       "wosAccession": "INSPEC:24267463",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "development-of-a-blockchain-based-on-demand-lightweight-commodity-delivery-system"
     },
     {
       "scopusEid": "2-s2.0-85169379819",
@@ -1509,7 +1537,8 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "cloud-computing-an-overview-of-security-risk-assessment-models-and-frameworks"
     },
     {
       "doi": "10.1088/1742-6596/1755/1/012023",
@@ -1562,7 +1591,8 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title"
+      "matchMethod": "title",
+      "slug": "development-of-a-monitoring-system-and-power-management-for-an-iot-based"
     },
     {
       "doi": "10.1007/978-981-15-8354-4_74",
@@ -1604,7 +1634,8 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title"
+      "matchMethod": "title",
+      "slug": "sensor-searching-techniques-in-internet-of-things-a-survey-taxonomy-and-challenges"
     },
     {
       "id": "bc4",
@@ -1614,7 +1645,8 @@
       "year": 2020,
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
-      "origin": "curated"
+      "origin": "curated",
+      "slug": "development-of-an-expert-system-oriented-service-support-helpdesk-management-system"
     },
     {
       "id": "bc3",
@@ -1624,7 +1656,8 @@
       "year": 2020,
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
-      "origin": "curated"
+      "origin": "curated",
+      "slug": "deb-a-delay-and-energy-based-routing-protocol-for-cognitive-radio-ad"
     },
     {
       "doi": "10.1007/978-981-10-6890-4_39",
@@ -1661,7 +1694,8 @@
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "classification-of-bangla-compound-characters-using-a-hog-cnn-hybrid-model"
     },
     {
       "id": "bc1",
@@ -1671,7 +1705,8 @@
       "year": 2015,
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
-      "origin": "curated"
+      "origin": "curated",
+      "slug": "construction-of-a-robust-clustering-algorithm-for-cognitive-radio-ad-hoc-network"
     },
     {
       "doi": "10.1109/qpain66474.2025.11171650",
@@ -1734,7 +1769,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:27423741",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "jailbreakllm-an-effective-llama-model-designed-specifically-to-jailbreak-openai-gpt"
     },
     {
       "doi": "10.34190/ecel.24.1.3731",
@@ -1799,12 +1835,13 @@
       "venue": "European Conference on e-Learning (pp. 246-251). Academic Conferences International Limited",
       "year": 2025,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosAccession": "WOS:001768022900028",
       "wosTimesCited": 0,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "teaching-and-learning-via-video-conferencing-platforms-issues-across-three-asian-countries"
     },
     {
       "doi": "10.1109/ecce64574.2025.11013113",
@@ -1867,7 +1904,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:26925614",
       "wosTimesCited": 1,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "dr-fans-a-decentralized-micro-credential-verification-system-towards-higher-qualifications"
     },
     {
       "doi": "10.1109/ecce64574.2025.11013795",
@@ -1928,7 +1966,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:26925684",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "design-and-development-of-a-blockchain-and-ipfs-based-credential-verifier-with"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499565",
@@ -1987,7 +2026,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25004983",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "a-robust-routing-protocol-in-cognitive-unmanned-aerial-vehicular-networks-conference"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499524",
@@ -2044,7 +2084,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25004968",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "blockchain-enhanced-academic-certificate-verification-a-decentralized-and-trustworthy-framework"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499520",
@@ -2106,7 +2147,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25005002",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "credchain-academic-and-professional-certificate-verification-system-using-blockchain"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499476",
@@ -2175,7 +2217,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25004965",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "bangla-e-commerce-sentiment-analysis-optimization-using-tokenization-and-tf-idf"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499448",
@@ -2233,7 +2276,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25004991",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "automation-of-financial-aid-distribution-systems-using-consortium-blockchain"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499575",
@@ -2293,7 +2337,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25005054",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "problems-in-video-conferencing-mediated-teaching-experiences-of-three-user-roles-of"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499577",
@@ -2356,7 +2401,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25005049",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "soft-voting-ensemble-based-approach-for-diagnosing-diabetes-mellitus"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499453",
@@ -2421,7 +2467,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25005005",
       "wosTimesCited": 1,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "blockchain-based-controller-recovery-and-sdn-packet-filtering-scheme-for-softwarized-uavs"
     },
     {
       "doi": "10.1109/icaccess61735.2024.10499613",
@@ -2488,7 +2535,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25005011",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "impact-of-ai-in-healthcare-services-analysis-using-medical-synthetic-data"
     },
     {
       "doi": "10.1109/iccit60459.2023.10441100",
@@ -2540,12 +2588,13 @@
       "venue": "2023 26th International Conference on Computer and Information Technology (ICCIT) (pp. 1-6). IEEE",
       "year": 2023,
       "type": "conference",
-      "indexed": "ISI Indexed",
+      "indexed": "Scopus Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:24768820",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "certiblock-the-exemplary-utilization-of-blockchain-for-the-rigorous-validation-of-academic"
     },
     {
       "doi": "10.1109/iccit60459.2023.10441085",
@@ -2597,12 +2646,13 @@
       "venue": "2023 26th International Conference on Computer and Information Technology (ICCIT) (pp. 1-6). IEEE",
       "year": 2023,
       "type": "conference",
-      "indexed": "ISI Indexed",
+      "indexed": "Scopus Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:24768407",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "a-new-approach-to-financial-distribution-systems-leveraging-hyperledger-besu-and-consortium"
     },
     {
       "doi": "10.1109/wiecon-ece60392.2023.10456497",
@@ -2658,12 +2708,13 @@
       "venue": "2023 IEEE 9th International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE) (pp. 232-236). IEEE",
       "year": 2023,
       "type": "conference",
-      "indexed": "ISI Indexed",
+      "indexed": "Scopus Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:24885282",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "rmt-a-lightweight-encryption-algorithm-for-blockchain-based-certificate-verification"
     },
     {
       "doi": "10.1007/978-981-99-8346-9_19",
@@ -2727,7 +2778,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:25187150",
       "wosTimesCited": 2,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "enhancing-student-engagement-and-performance-evaluation-an-integrated-approach-for-quality-learning"
     },
     {
       "doi": "10.1007/978-981-99-8346-9_39",
@@ -2794,7 +2846,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:24960556",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "wildsaver-advancing-wildlife-conservation-with-uavs-and-blockchain-technology"
     },
     {
       "doi": "10.1007/978-981-99-8349-0_36",
@@ -2864,7 +2917,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:24960501",
       "wosTimesCited": 2,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "infrachain-a-sensor-enabled-roadway-management-application-using-blockchain-and-digital-twin"
     },
     {
       "doi": "10.1007/978-981-99-8349-0_12",
@@ -2924,7 +2978,8 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "a-new-paradigm-in-blockchain-based-financial-aid-distribution"
     },
     {
       "doi": "10.1007/978-981-99-8349-0_10",
@@ -2990,7 +3045,8 @@
       "matchMethod": "title+type",
       "wosAccession": "INSPEC:24960491",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "advancing-fish-species-identification-in-bangladesh-deep-learning-approaches-for-accurate-freshwater"
     },
     {
       "doi": "10.1109/ictc52510.2021.9620892",
@@ -3057,7 +3113,8 @@
       "matchMethod": "title+type",
       "wosAccession": "WOS:000790235800447",
       "wosTimesCited": 2,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "learning-driven-spatio-temporal-feature-extraction-for-violence-detection-in-iot-environments"
     },
     {
       "doi": "10.1109/r10-htc53172.2021.9641080",
@@ -3117,9 +3174,10 @@
       "venue": "2021 IEEE 9th region 10 humanitarian technology conference (R10-HTC) (pp. 01-06). IEEE",
       "year": 2021,
       "type": "conference",
-      "indexed": "ISI Indexed",
+      "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "early-diagnosis-and-comparative-analysis-of-different-machine-learning-algorithms-for-myocardial"
     },
     {
       "doi": "10.1109/infocomwkshps51825.2021.9484515",
@@ -3183,7 +3241,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 6
+      "wosTimesCited": 6,
+      "slug": "towards-secure-communication-in-cr-vanets-through-a-trust-based-routing-protocol"
     },
     {
       "doi": "10.1109/dasa51403.2020.9317108",
@@ -3230,9 +3289,10 @@
       "venue": "2020 International Conference on Decision Aid Sciences and Applications (DASA’20), November 2020, Bahrain",
       "year": 2020,
       "type": "conference",
-      "indexed": "ISI Indexed",
+      "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "textmage-the-automated-bangla-caption-generator-based-on-deep-learning"
     },
     {
       "doi": "10.1109/ewdts50664.2020.9225047",
@@ -3286,7 +3346,8 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "an-iot-based-real-time-data-centric-monitoring-system-for-vaccine-cold"
     },
     {
       "doi": "10.1109/tensymp50017.2020.9230638",
@@ -3345,7 +3406,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 2
+      "wosTimesCited": 2,
+      "slug": "an-efficient-routing-protocol-for-secured-communication-in-cognitive-radio-sensor-networks"
     },
     {
       "doi": "10.1109/wcnc45663.2020.9120760",
@@ -3405,7 +3467,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 8
+      "wosTimesCited": 8,
+      "slug": "a-spectrum-aware-mobility-pattern-based-routing-protocol-for-cr-vanets"
     },
     {
       "doi": "10.1109/icoias.2018.8494115",
@@ -3456,11 +3519,12 @@
       "venue": "International Conference on Intelligent Autonomous Systems 2018, Singapore",
       "year": 2018,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 3
+      "wosTimesCited": 3,
+      "slug": "patterns-of-flocking-in-autonomous-agents"
     },
     {
       "doi": "10.1109/icoias.2018.8494150",
@@ -3516,11 +3580,12 @@
       "venue": "International Conference on Intelligent Autonomous Systems 2018, Singapore",
       "year": 2018,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "evolutionary-search-in-the-parameter-spaces-of-the-honeybee-house-hunting-model"
     },
     {
       "doi": "10.1109/icsipa.2017.8120596",
@@ -3579,11 +3644,12 @@
       "venue": "IEEE International Conference on Signal and Image Processing Applications (ICSIPA), September 2017, Malaysia",
       "year": 2017,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "application-of-image-retrieval-for-aesthetic-evaluation-and-improvement-suggestion-of-isolated"
     },
     {
       "id": "c18",
@@ -3593,7 +3659,8 @@
       "year": 2016,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "curated"
+      "origin": "curated",
+      "slug": "classification-of-bangla-compound-characters-using-a-hog-cnn-hybrid-model-conference"
     },
     {
       "doi": "10.1109/iwci.2016.7860352",
@@ -3642,11 +3709,12 @@
       "venue": "International Workshop on Computational Intelligence, (IWCI 2016), December 2016, Bangladesh",
       "year": 2016,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "sequence-classification-a-regression-based-generalization-of-two-stage-clustering"
     },
     {
       "doi": "10.1109/iwci.2016.7860356",
@@ -3699,11 +3767,12 @@
       "venue": "International Workshop on Computational Intelligence, (IWCI 2016), December 2016, Bangladesh",
       "year": 2016,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "a-framework-for-event-anomaly-detection-in-cognitive-radio-based-smart-community"
     },
     {
       "doi": "10.1109/iwci.2016.7860366",
@@ -3753,11 +3822,12 @@
       "venue": "International Workshop on Computational Intelligence, (IWCI 2016), December 2016, Bangladesh",
       "year": 2016,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 6
+      "wosTimesCited": 6,
+      "slug": "a-framework-for-dynamic-vehicle-pooling-and-ride-sharing-system"
     },
     {
       "doi": "10.1109/icece.2016.7853957",
@@ -3802,11 +3872,12 @@
       "venue": "9th International Conference on Electrical and Computer Engineering (ICECE-2016), Dhaka, Bangladesh",
       "year": 2016,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 21
+      "wosTimesCited": 21,
+      "slug": "a-hybrid-deep-model-with-hog-features-for-bangla-handwritten-numeral-classification"
     },
     {
       "doi": "10.1109/tencon.2016.7848079",
@@ -3870,7 +3941,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 5
+      "wosTimesCited": 5,
+      "slug": "a-novel-on-demand-routing-protocol-for-cluster-based-cognitive-radio-ad"
     },
     {
       "doi": "10.1109/iciev.2015.7334039",
@@ -3922,7 +3994,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 1
+      "wosTimesCited": 1,
+      "slug": "cross-layer-mobility-aware-mac-protocol-for-cognitive-radio-sensor-network"
     },
     {
       "doi": "10.1109/icaee.2015.7506825",
@@ -3974,11 +4047,12 @@
       "venue": "3RD International Conference on Advances in Electrical Engineering (ICAEE 2015), December 17-19, 2015, Dhaka, Bangladesh",
       "year": 2015,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 5
+      "wosTimesCited": 5,
+      "slug": "dynamic-spectrum-allocation-for-cognitive-radio-ad-hoc-network"
     },
     {
       "doi": "10.1109/ascc.2015.7244895",
@@ -4016,11 +4090,12 @@
       "venue": "10th Asian Control Conference (ASCC 2015), May 31 - June 3, 2015, Kota Kinabalu, Malaysia",
       "year": 2015,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "manual",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "a-novel-node-joining-algorithm-for-spectrum-aware-cluster-based-cognitive-radio"
     },
     {
       "doi": "10.1007/978-3-319-24540-9_63",
@@ -4084,7 +4159,8 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "construction-of-a-robust-clustering-algorithm-for-cognitive-radio-ad-hoc-network-conference"
     },
     {
       "doi": "10.1109/ibcast.2015.7058576",
@@ -4140,11 +4216,12 @@
       "venue": "12th International Bhurban Conference on Applied Sciences & Technology 2015, January 13 - 17, 2015, Islamabad, Pakistan",
       "year": 2015,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 1
+      "wosTimesCited": 1,
+      "slug": "fault-tolerance-in-dynamic-cluster-based-wireless-sensor-networks"
     },
     {
       "doi": "10.1109/tencon.2014.7022403",
@@ -4205,7 +4282,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 2
+      "wosTimesCited": 2,
+      "slug": "a-stable-cluster-based-architecture-for-cognitive-radio-ad-hoc-networks"
     },
     {
       "id": "c6",
@@ -4214,8 +4292,11 @@
       "venue": "International Conference on Applied Mathematics, Modeling and Simulation (ICAMMS2014), October 16-17, 2014, Xiamen, China",
       "year": 2014,
       "type": "conference",
-      "indexed": "Scopus Indexed",
-      "origin": "curated"
+      "indexed": "ISI Indexed",
+      "origin": "curated",
+      "wosCoreCollection": true,
+      "wosTimesCited": 2,
+      "slug": "cluster-modeling-for-cognitive-radio-ad-hoc-networks-using-graph-theory"
     },
     {
       "doi": "10.1109/icaee.2013.6750329",
@@ -4273,11 +4354,12 @@
       "venue": "2nd International Conference on Advances in Electrical Engineering (ICAEE), December 19-21, 2013, Dhaka, Bangladesh",
       "year": 2013,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 10
+      "wosTimesCited": 10,
+      "slug": "spectrum-aware-cluster-based-architecture-for-cognitive-radio-ad-hoc-networks"
     },
     {
       "doi": "10.1109/iciev.2013.6572654",
@@ -4336,7 +4418,8 @@
       "origin": "curated",
       "matchMethod": "manual",
       "wosCoreCollection": true,
-      "wosTimesCited": 1
+      "wosTimesCited": 1,
+      "slug": "coad-a-cluster-based-adhoc-cognitive-radio-network-architecture-with-broadcasting-protocol"
     },
     {
       "doi": "10.1109/cicsyn.2012.49",
@@ -4396,7 +4479,8 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "curated",
-      "matchMethod": "title+type"
+      "matchMethod": "title+type",
+      "slug": "a-secured-dynamic-cluster-based-wireless-sensor-network"
     },
     {
       "doi": "10.1109/tencon.2008.4766778",
@@ -4465,7 +4549,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 0
+      "wosTimesCited": 0,
+      "slug": "multiple-description-image-coding-a-low-complexity-approach-for-lossy-networks"
     },
     {
       "doi": "10.1109/iccitechn.2007.4579397",
@@ -4528,7 +4613,8 @@
       "origin": "curated",
       "matchMethod": "title+type",
       "wosCoreCollection": true,
-      "wosTimesCited": 6
+      "wosTimesCited": 6,
+      "slug": "multiple-description-image-transmission-for-diversity-systems-over-unreliable-communication-networks"
     },
     {
       "doi": "10.1201/9781003506218-13",
@@ -4575,7 +4661,8 @@
       "year": 2026,
       "type": "book-chapter",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "exploration-of-hyperledger-besu-in-designing-private-blockchain-based-financial-distribution-systems"
     },
     {
       "doi": "10.1109/wiecon-ece69386.2025.11526708",
@@ -4634,7 +4721,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "a-real-time-sign-language-translator-on-jetson-nano-using-mediapipe-mobilenet"
     },
     {
       "doi": "10.1109/becithcon69222.2025.11504291",
@@ -4696,7 +4784,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "unlearning-for-clinical-deployment-scalable-data-erasure-in-medical-image-classification-models"
     },
     {
       "doi": "10.1109/wiecon-ece69386.2025.11526013",
@@ -4754,7 +4843,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "blockchain-enabled-micro-credentials-a-hyperledger-besu-framework-for-academic-trust-and"
     },
     {
       "doi": "10.1109/wiecon-ece69386.2025.11525986",
@@ -4818,7 +4908,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "a-reputation-based-consensus-mechanism-inspired-by-ant-colony-optimization-aco"
     },
     {
       "doi": "10.1109/raaicon69033.2025.11502571",
@@ -4881,7 +4972,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "a-multimodal-framework-for-misinformation-detection-in-bengali-using-large-language-models"
     },
     {
       "doi": "10.1109/tencon66050.2025.11375041",
@@ -4942,7 +5034,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:28490159",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "decentralized-cross-border-financial-aid-distribution-utilizing-blockchain-based-tokenization"
     },
     {
       "doi": "10.1109/becithcon69222.2025.11504283",
@@ -5008,7 +5101,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "a-bio-inspired-reputation-based-consensus-mechanism-for-secure-and-scalable-permissioned"
     },
     {
       "doi": "10.1109/iccit68739.2025.11491062",
@@ -5063,7 +5157,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "efficient-data-erasure-in-deep-learning-via-sparsity-and-stability-mechanisms"
     },
     {
       "doi": "10.1007/978-981-97-9324-2_6",
@@ -5130,7 +5225,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:27082930",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "drivechain-scalable-and-effective-data-management-solution-to-blockchain-based-vanet-with"
     },
     {
       "doi": "10.1109/iccit68739.2025.11491770",
@@ -5188,7 +5284,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "a-privacy-focused-multichain-based-blockchain-framework-for-transparent-and-efficient-technology"
     },
     {
       "doi": "10.1007/978-3-031-81928-5_26",
@@ -5249,11 +5346,12 @@
       "venue": "Lecture Notes in Networks and Systems, vol. 1256 LNNS, pp. 268–277",
       "year": 2025,
       "type": "conference",
-      "indexed": "Scopus Indexed",
+      "indexed": "ISI Indexed",
       "origin": "scopus",
       "wosAccession": "WOS:001598475000026",
       "wosTimesCited": 1,
-      "wosCoreCollection": true
+      "wosCoreCollection": true,
+      "slug": "blockchain-based-controller-recovery-and-sdn-forwarding-device-rule-migration-for-uavs"
     },
     {
       "doi": "10.1109/wiecon-ece69386.2025.11526491",
@@ -5315,7 +5413,8 @@
       "year": 2025,
       "type": "conference",
       "indexed": "Scopus Indexed",
-      "origin": "scopus"
+      "origin": "scopus",
+      "slug": "a-collaborative-framework-for-evidence-grounded-misinformation-detection-in-bengali-using-retrieval"
     },
     {
       "doi": "10.1007/978-981-99-8111-3_12",
@@ -5380,7 +5479,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:24806212",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "agrichain-blockchain-enabled-food-traceability"
     },
     {
       "doi": "10.1109/sti64222.2024.10951133",
@@ -5437,7 +5537,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:26564131",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "design-and-development-of-an-iot-based-smart-vaccine-carrier-and-real"
     },
     {
       "doi": "10.1109/icict64387.2024.10839705",
@@ -5499,7 +5600,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:26167210",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "deep-learning-approach-for-multi-label-detection-of-abusive-bangla-social-media"
     },
     {
       "doi": "10.1007/978-981-99-9489-2_32",
@@ -5559,7 +5661,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:25250595",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "smart-health-with-medi2home-redefining-medicine-delivery-for-a-safer-tomorrow"
     },
     {
       "doi": "10.1007/978-981-99-8111-3_13",
@@ -5625,7 +5728,8 @@
       "origin": "scopus",
       "wosAccession": "INSPEC:24806213",
       "wosTimesCited": 0,
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "aid-nexus-a-blockchain-based-financial-distribution-system"
     },
     {
       "doi": "10.1007/978-3-030-90321-3_79",
@@ -5668,7 +5772,8 @@
       "type": "conference",
       "indexed": "Scopus Indexed",
       "origin": "scopus",
-      "wosCoreCollection": false
+      "wosCoreCollection": false,
+      "slug": "early-prediction-of-chronic-kidney-disease-using-data-mining-techniques"
     }
   ]
 }
