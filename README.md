@@ -1,20 +1,58 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Nafees Mansoor — Personal Academic Website
 
-# Run and deploy your AI Studio app
+Source code for the personal academic website of Dr. Nafees Mansoor
+(<https://www.nafees.info>): profile, publications, funded projects, awards,
+and professional services.
 
-This contains everything you need to run your app locally.
+## Tech stack
 
-View your app in AI Studio: https://ai.studio/apps/05951291-89d3-4582-b8b5-2b052e98a3f8
+- [React 19](https://react.dev) + [TypeScript](https://www.typescriptlang.org)
+- [Vite 6](https://vite.dev) (static single-page application, no backend)
+- [Tailwind CSS 4](https://tailwindcss.com)
+- [React Router 7](https://reactrouter.com) for client-side routing
+- Chart.js / D3 for the analytics dashboard and word cloud
 
-## Run Locally
+## Getting started
 
-**Prerequisites:**  Node.js
+**Prerequisite:** Node.js 20 or newer.
 
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server at http://localhost:3000
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Scripts
+
+| Command           | Purpose                                                        |
+| ----------------- | -------------------------------------------------------------- |
+| `npm run dev`     | Start the local development server                             |
+| `npm run build`   | Regenerate SEO files and create the production build in `dist/` |
+| `npm run preview` | Serve the production build locally                             |
+| `npm run lint`    | Type-check the project (`tsc --noEmit`)                        |
+| `npm run clean`   | Remove `dist/`                                                 |
+
+## Project structure
+
+```
+public/             Static files (sitemap.xml, robots.txt, _redirects)
+scripts/            Build-time scripts (SEO file generation)
+src/
+  components/       Shared layout and UI components
+  pages/            Route pages (About, Projects, Services, Publications, Awards)
+  data/             Publication and citation data
+  constants.ts      Site content (education, awards, grants, services, …)
+  types.ts          Shared TypeScript types
+```
+
+## Deployment
+
+`npm run build` outputs a static site to `dist/`, which can be served by any
+static host. `public/_redirects` rewrites all paths to `index.html` so that
+client-side routes resolve on hosts that support that file.
+
+## Development workflow
+
+1. Create a branch from `main`.
+2. Make focused changes; run `npm run lint` and `npm run build`.
+3. Review the diff, commit with a descriptive message, and push.
+4. Merge into `main` once the change has been verified.
