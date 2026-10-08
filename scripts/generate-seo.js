@@ -23,7 +23,7 @@ const routes = [
   '/publications/proceedings',
   '/publications/book-chapters',
   '/publications/patent',
-  '/awards'
+  '/gnu-projects/fsm-designer'
 ];
 
 const generateUrlEntries = (baseUrl, priority) => {

@@ -39,6 +39,7 @@ npm run dev      # start the dev server at http://localhost:3000
 ```
 docs/               Generated publication match report
 public/             Static files (sitemap.xml, robots.txt, _redirects)
+  tools/            Standalone tools embedded by pages (FSM Designer)
 resource/           Source workbooks (Scopus export)
 scripts/            Build-time scripts (SEO files, publication import and validation)
 src/
