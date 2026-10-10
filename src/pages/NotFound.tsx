@@ -5,8 +5,8 @@ import { setMeta } from '../seo/site';
 export default function NotFound() {
   useEffect(() => {
     document.title = 'Page not found | Nafees Mansoor';
-    // Unknown addresses are served the app shell with a 200 status; keep them out of search results.
-    setMeta('name', 'robots', 'noindex');
+    // Keep unknown addresses out of search results; the host also serves them with a 404 status.
+    setMeta('name', 'robots', 'noindex, follow');
     return () => setMeta('name', 'robots', 'index, follow');
   }, []);
 

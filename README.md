@@ -98,8 +98,11 @@ To give a curated record an exact match, add its `doi` to `curated.json`.
 ## Deployment
 
 `npm run build` outputs a static site to `dist/`, which can be served by any
-static host. `public/_redirects` rewrites all paths to `index.html` so that
-client-side routes resolve on hosts that support that file.
+static host. Every page is prerendered to its own HTML file, and `dist/404.html`
+is served with a 404 status for any other address (Netlify and Cloudflare Pages
+do this automatically). Permanent redirects for moved pages are listed in
+`src/seo/redirects.json` and written to `public/_redirects` on every build; add an
+entry there whenever a page's address changes.
 
 ## Development workflow
 
