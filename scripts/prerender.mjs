@@ -72,6 +72,22 @@ const renderPage = ({ route, title, description, head = [], body, ogType = 'webs
   fs.writeFileSync(path.join(DIST, file), html);
 };
 
+// A paper published twice (e.g. conference and journal versions) shares its title; later
+// copies get the publication type appended so each page has a distinct title.
+const publicationTitle = (pub) => {
+  const first = publications.find((other) => other.title === pub.title);
+  return first === pub ? pub.title : `${pub.title} (${TYPE_LABELS[pub.type]})`;
+};
+
+// Abstracts that open with the same sentences as another paper's would give identical search
+// snippets, so those lead with the title.
+const opening = (pub) => pub.abstract.slice(0, 160);
+const sharedOpening = (pub) => publications.some((other) => other !== pub && other.abstract && opening(other) === opening(pub));
+const publicationSummary = (pub) => {
+  if (!pub.abstract) return `${TYPE_LABELS[pub.type]} by ${pub.authors}. ${pub.venue}.`;
+  return sharedOpening(pub) ? `${pub.title}. ${pub.abstract}` : pub.abstract;
+};
+
 const publicationItem = (pub) =>
   `<li><a href="${publicationPath(pub)}">${escapeHtml(pub.title)}</a>. ${escapeHtml(pub.authors)}. ${escapeHtml(pub.venue)} (${pub.year}).</li>`;
 
@@ -99,7 +115,7 @@ for (const [route, page] of Object.entries(staticRoutes)) {
 }
 
 for (const pub of publications) {
-  const description = truncate(pub.abstract ?? `${TYPE_LABELS[pub.type]} by ${pub.authors}. ${pub.venue}.`, 300);
+  const description = truncate(publicationSummary(pub), 300);
   const head = [
     jsonLd(publicationJsonLd(pub, true)),
     meta('name', 'citation_title', pub.title),
@@ -119,12 +135,21 @@ for (const pub of publications) {
     `</article>`;
   renderPage({
     route: publicationPath(pub),
-    title: `${pub.title} | Nafees Mansoor`,
+    title: `${publicationTitle(pub)} | Nafees Mansoor`,
     description,
     head,
     body,
     ogType: 'article',
   });
 }
+
+// Served by the host, with a 404 status, for any address that matches no file. It loads the
+// app, which shows its "Page not found" view.
+fs.writeFileSync(
+  path.join(DIST, '404.html'),
+  template
+    .replace(/<title>[\s\S]*?<\/title>/, '<title>Page not found | Nafees Mansoor</title>')
+    .replace(/(<meta name="robots" content=")[^"]*(")/, '$1noindex, follow$2'),
+);
 
 console.log(`Prerendered ${Object.keys(staticRoutes).length + publications.length} pages into dist/ (${SITE_URL}).`);

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { SITE_URL, allPaths, absoluteUrl, staticRoutes } from './seo-config.mjs';
+import { SITE_URL, allPaths, absoluteUrl, redirects as movedPages, staticRoutes } from './seo-config.mjs';
 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
 
@@ -32,7 +32,11 @@ Allow: /
 Sitemap: ${SITE_URL}/sitemap.xml
 `;
 
-const redirects = `/*    /index.html   200`;
+// Permanent redirects for moved pages. There is deliberately no catch-all rewrite: every page is
+// prerendered, and unknown addresses get dist/404.html with a real 404 status.
+const redirects = Object.entries(movedPages)
+  .map(([from, to]) => `${from}  ${to}  301`)
+  .join('\n') + '\n';
 
 fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), sitemap);
 fs.writeFileSync(path.join(PUBLIC_DIR, 'robots.txt'), robots);

@@ -6,7 +6,7 @@ import { PUBLICATIONS, SCOPUS_EXPORT_LABEL, WEB_OF_SCIENCE } from '../../constan
 import { Publication } from '../../types';
 import { BADGE, indexedBadge } from '../../components/PublicationList';
 import ShareButtons from '../../components/ShareButtons';
-import { SITE_URL, doiUrl, publicationJsonLd, publicationPath, setMeta, setPageJsonLd, typeLabel } from '../../seo/site';
+import { SITE_URL, doiUrl, publicationJsonLd, publicationPath, publicationSummary, publicationTitle, setMeta, setPageJsonLd, typeLabel } from '../../seo/site';
 import NotFound from '../NotFound';
 
 const LIST_PATHS: Record<Publication['type'], { path: string; label: string }> = {
@@ -29,7 +29,7 @@ const CITATION_META = [
 ];
 
 const describe = (pub: Publication) => {
-  const summary = pub.abstract ?? `${typeLabel(pub.type)} by ${pub.authors}. ${pub.venue}.`;
+  const summary = publicationSummary(pub);
   return summary.length > 300 ? `${summary.slice(0, 297).trimEnd()}…` : summary;
 };
 
@@ -105,7 +105,7 @@ export default function PublicationDetail() {
 
   useEffect(() => {
     if (!pub) return;
-    document.title = `${pub.title} | Nafees Mansoor`;
+    document.title = `${publicationTitle(pub)} | Nafees Mansoor`;
     setMeta('name', 'description', describe(pub));
     setPageJsonLd(publicationJsonLd(pub));
 

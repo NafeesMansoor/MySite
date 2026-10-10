@@ -1,3 +1,4 @@
+import { PUBLICATIONS } from '../constants';
 import { Publication } from '../types';
 
 export const SITE_URL = 'https://www.nafees.info';
@@ -15,6 +16,22 @@ const TYPE_LABELS: Record<Publication['type'], string> = {
   'edited-book': 'Edited Book',
 };
 export const typeLabel = (type: Publication['type']) => TYPE_LABELS[type];
+
+// Page title and summary used for search results; must match scripts/prerender.mjs.
+// A paper published twice shares its title, so later copies get the type appended.
+export const publicationTitle = (pub: Publication) => {
+  const first = PUBLICATIONS.find((other) => other.title === pub.title);
+  return first === pub ? pub.title : `${pub.title} (${typeLabel(pub.type)})`;
+};
+
+// Abstracts that open like another paper's would give identical snippets, so those lead with the title.
+const opening = (abstract: string) => abstract.slice(0, 160);
+export const publicationSummary = (pub: Publication) => {
+  if (!pub.abstract) return `${typeLabel(pub.type)} by ${pub.authors}. ${pub.venue}.`;
+  const abstract = pub.abstract;
+  const shared = PUBLICATIONS.some((other) => other !== pub && other.abstract && opening(other.abstract) === opening(abstract));
+  return shared ? `${pub.title}. ${abstract}` : abstract;
+};
 
 // schema.org description of one publication; shared by the list and detail pages.
 export const publicationJsonLd = (pub: Publication) => ({

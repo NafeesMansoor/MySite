@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { 
   Trophy, 
@@ -27,8 +27,11 @@ import {
   FlaskConical
 } from 'lucide-react';
 import { PUBLICATIONS } from '../constants';
-import AnalyticsDashboard from '../components/AnalyticsDashboard';
 import ProfileWall from '../components/ProfileWall';
+import InteractiveBackground from '../components/InteractiveBackground';
+import { publicationPath } from '../seo/site';
+
+const AnalyticsDashboard = lazy(() => import('../components/AnalyticsDashboard'));
 
 const STATS = [
   { label: 'Publications', value: '100+' },
@@ -37,140 +40,7 @@ const STATS = [
   { label: 'Best Paper Awards', value: '7' },
 ];
 
-const InteractiveBackground = () => {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouse({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-[#020205]">
-      {/* Animated Mesh Gradients - Aura Style */}
-      <motion.div
-        animate={{
-          x: mouse.x - 500,
-          y: mouse.y - 500,
-          scale: [1, 1.2, 1],
-          rotate: [0, 90, 0],
-        }}
-        transition={{ 
-          x: { type: 'spring', damping: 50, stiffness: 30 },
-          y: { type: 'spring', damping: 50, stiffness: 30 },
-          scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
-          rotate: { duration: 20, repeat: Infinity, ease: "linear" }
-        }}
-        className="absolute w-[1000px] h-[1000px] rounded-full bg-indigo-500/15 blur-[160px] opacity-70 mix-blend-screen"
-      />
-      <motion.div
-        animate={{
-          x: mouse.x - 400,
-          y: mouse.y - 400,
-          scale: [1.2, 1, 1.2],
-          rotate: [360, 270, 360],
-        }}
-        transition={{ 
-          x: { type: 'spring', damping: 60, stiffness: 20 },
-          y: { type: 'spring', damping: 60, stiffness: 20 },
-          scale: { duration: 18, repeat: Infinity, ease: "easeInOut" },
-          rotate: { duration: 25, repeat: Infinity, ease: "linear" }
-        }}
-        className="absolute w-[800px] h-[800px] rounded-full bg-violet-600/15 blur-[140px] opacity-50 mix-blend-screen"
-      />
-      <motion.div
-        animate={{
-          x: mouse.x - 600,
-          y: mouse.y - 300,
-        }}
-        transition={{ type: 'spring', damping: 70, stiffness: 15 }}
-        className="absolute w-[700px] h-[700px] rounded-full bg-indigo-600/10 blur-[120px] opacity-40 mix-blend-screen"
-      />
-      
-      {/* Grid Pattern with Glow */}
-      <div 
-        className="absolute inset-0 opacity-[0.2]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(99,102,241,0.15) 1px, transparent 0)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ 
-              x: Math.random() * 2000 - 500, 
-              y: Math.random() * 2000 - 500,
-              opacity: Math.random() * 0.3
-            }}
-            animate={{
-              y: [null, Math.random() * -200 - 100],
-              opacity: [null, 0]
-            }}
-            transition={{
-              duration: Math.random() * 15 + 15,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 10
-            }}
-            className="absolute w-1 h-1 bg-indigo-300/30 rounded-full blur-[1px]"
-          />
-        ))}
-      </div>
-
-      {/* Mesh Lines (SVG for better control) */}
-      <svg className="absolute inset-0 w-full h-full opacity-30">
-        <defs>
-          <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.3)" />
-            <stop offset="50%" stopColor="rgba(167, 139, 250, 0.3)" />
-            <stop offset="100%" stopColor="rgba(139, 92, 246, 0.3)" />
-          </linearGradient>
-        </defs>
-        <motion.path
-          animate={{
-            d: [
-              "M-200,300 Q400,150 800,500 T1400,300",
-              "M-200,400 Q500,250 900,600 T1400,400",
-              "M-200,300 Q400,150 800,500 T1400,300"
-            ]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          stroke="url(#line-grad)"
-          strokeWidth="0.5"
-          fill="none"
-        />
-        <motion.path
-          animate={{
-            d: [
-              "M1400,900 Q900,1000 500,700 T-200,900",
-              "M1400,800 Q800,900 400,600 T-200,800",
-              "M1400,900 Q900,1000 500,700 T-200,900"
-            ]
-          }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-          stroke="url(#line-grad)"
-          strokeWidth="0.5"
-          fill="none"
-        />
-      </svg>
-    </div>
-  );
-};
-
 export default function Home() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
   const textX = useSpring(useMotionValue(0), { stiffness: 100, damping: 30 });
   const textY = useSpring(useMotionValue(0), { stiffness: 100, damping: 30 });
 
@@ -178,9 +48,6 @@ export default function Home() {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-      
-      mouseX.set(clientX);
-      mouseY.set(clientY);
       
       // Parallax effect for text
       const x = (clientX - innerWidth / 2) / 50;
@@ -190,7 +57,7 @@ export default function Home() {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY, textX, textY]);
+  }, [textX, textY]);
 
   useEffect(() => {
     document.title = "Nafees Mansoor | Professor & Researcher";
@@ -273,7 +140,9 @@ export default function Home() {
       </section>
 
       {/* Analytics Dashboard Section */}
-      <AnalyticsDashboard />
+      <Suspense fallback={<div className="h-[400px]" />}>
+        <AnalyticsDashboard />
+      </Suspense>
 
       {/* Stats Section */}
       <section className="bg-zinc-950/50 border-y border-white/10 py-24">
@@ -349,9 +218,13 @@ export default function Home() {
                       <div className="text-xs text-gray-500 uppercase tracking-widest">Venue</div>
                       <div className="text-sm text-gray-400 max-w-[200px] truncate">{pub.venue}</div>
                     </div>
-                    <button className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
-                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white" />
-                    </button>
+                    <a
+                      href={publicationPath(pub)}
+                      aria-label={`Open: ${pub.title}`}
+                      className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white" aria-hidden="true" />
+                    </a>
                   </div>
                 </div>
               </motion.div>
