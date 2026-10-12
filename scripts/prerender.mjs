@@ -4,7 +4,7 @@
 // inside #root as soon as it loads, so what visitors see is unchanged.
 import fs from 'fs';
 import path from 'path';
-import { SITE_URL, absoluteUrl, publicationPath, publications, staticRoutes } from './seo-config.mjs';
+import { SITE_URL, absoluteUrl, publicationPath, publications, redirects, staticRoutes } from './seo-config.mjs';
 
 const DIST = path.resolve(process.cwd(), 'dist');
 const template = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
@@ -141,6 +141,31 @@ for (const pub of publications) {
     body,
     ogType: 'article',
   });
+}
+
+// Moved pages. GitHub Pages cannot send a 301, so each old address gets a small page that
+// forwards at once; search engines treat an immediate refresh as a permanent redirect.
+for (const [from, to] of Object.entries(redirects)) {
+  const url = absoluteUrl(to);
+  const file = path.join(DIST, `${from.slice(1)}.html`);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(
+    file,
+    `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page moved | Nafees Mansoor</title>
+    <link rel="canonical" href="${url}" />
+    <meta http-equiv="refresh" content="0; url=${escapeHtml(to)}" />
+    <script>location.replace(${JSON.stringify(to)} + location.search + location.hash);</script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="${escapeHtml(to)}">${url}</a>.</p>
+  </body>
+</html>
+`,
+  );
 }
 
 // Served by the host, with a 404 status, for any address that matches no file. It loads the
