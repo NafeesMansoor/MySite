@@ -11,6 +11,8 @@ const TIPS = [
   { action: 'Click, then type', result: 'label' },
   { action: 'Drag', result: 'move or bend' },
   { action: 'Delete (Fn + Delete on macOS)', result: 'remove' },
+  { action: 'Label a, b or \\epsilon', result: 'symbols or an ε-move' },
+  { action: 'Type an input, then Execute', result: 'run the machine' },
 ];
 
 export default function FsmDesigner() {
@@ -18,7 +20,7 @@ export default function FsmDesigner() {
     document.title = 'FSM Designer | Nafees Mansoor';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Draw finite state machines in the browser: DFA, NFA, PDA, and Turing machine diagrams with PNG, SVG, and LaTeX export.');
+      metaDescription.setAttribute('content', 'Draw finite state machines in the browser, run DFAs and NFAs on an input string step by step, and export diagrams as PNG, SVG, or LaTeX.');
     }
   }, []);
 
@@ -33,9 +35,10 @@ export default function FsmDesigner() {
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">FSM Designer</h1>
             <p className="text-gray-500 max-w-2xl">
-              A drawing board for finite state machines. Sketch deterministic (DFA), non-deterministic (NFA),
-              pushdown (PDA), and Turing machine diagrams, then export them as PNG, SVG, or LaTeX. Drawings are
-              saved in your browser.
+              A drawing board and simulator for finite state machines. Sketch deterministic (DFA), non-deterministic
+              (NFA), pushdown (PDA), and Turing machine diagrams, then export them as PNG, SVG, or LaTeX. DFAs and
+              NFAs, including ε-moves, can be run on an input string one symbol at a time. Drawings are saved in
+              your browser.
             </p>
           </div>
           <a
@@ -64,7 +67,7 @@ export default function FsmDesigner() {
             <iframe
               src={DESIGNER_URL}
               title="FSM Designer drawing board"
-              className="w-full h-[760px] block"
+              className="w-full h-[1280px] block"
             />
           </div>
         </div>
