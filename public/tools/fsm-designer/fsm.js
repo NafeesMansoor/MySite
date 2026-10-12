@@ -589,11 +589,8 @@ function restoreBackup() {
 	}
 }
 
-function saveBackup() {
-	if(!localStorage || !JSON) {
-		return;
-	}
-
+// the machine as plain data: what gets saved to localStorage and what the simulator reads
+function serializeMachine() {
 	var backup = {
 		'nodes': [],
 		'links': [],
@@ -642,7 +639,15 @@ function saveBackup() {
 		}
 	}
 
-	localStorage['fsm'] = JSON.stringify(backup);
+	return backup;
+}
+
+function saveBackup() {
+	if(!localStorage || !JSON) {
+		return;
+	}
+
+	localStorage['fsm'] = JSON.stringify(serializeMachine());
 }
 
 function det(a, b, c, d, e, f, g, h, i) {
@@ -708,7 +713,8 @@ function drawArrow(c, x, y, angle) {
 }
 
 function canvasHasFocus() {
-	return (document.activeElement || document.body) == document.body;
+	var active = document.activeElement || document.body;
+	return active == document.body || active == canvas;
 }
 
 function drawText(c, originalText, x, y, angleOrNull, isSelected) {
@@ -769,19 +775,29 @@ var currentLink = null; // a Link
 var movingObject = false;
 var originalClick;
 
-function drawUsing(c) {
+// highlight is optional: { nodes: { index: { stroke, fill } }, links: { index: color } }
+// the exporters never pass it, so a running simulation does not show up in exported files
+function drawUsing(c, highlight) {
 	c.clearRect(0, 0, canvas.width, canvas.height);
 	c.save();
 	c.translate(0.5, 0.5);
 
 	for(var i = 0; i < nodes.length; i++) {
+		var nodeMark = highlight ? highlight.nodes[i] : null;
+		if(nodeMark) {
+			c.fillStyle = nodeMark.fill;
+			c.beginPath();
+			c.arc(nodes[i].x, nodes[i].y, nodeRadius, 0, 2 * Math.PI, false);
+			c.fill();
+		}
 		c.lineWidth = 5;
-		c.fillStyle = c.strokeStyle = (nodes[i] == selectedObject) ? 'orange' : 'white';
+		c.fillStyle = c.strokeStyle = nodeMark ? nodeMark.stroke : ((nodes[i] == selectedObject) ? 'orange' : 'white');
 		nodes[i].draw(c);
 	}
 	for(var i = 0; i < links.length; i++) {
-		c.lineWidth = 3;
-		c.fillStyle = c.strokeStyle = (links[i] == selectedObject) ? 'red' : 'orange';
+		var linkMark = highlight ? highlight.links[i] : null;
+		c.lineWidth = linkMark ? 5 : 3;
+		c.fillStyle = c.strokeStyle = linkMark || ((links[i] == selectedObject) ? 'red' : 'orange');
 		links[i].draw(c);
 	}
 	if(currentLink != null) {
@@ -793,8 +809,14 @@ function drawUsing(c) {
 	c.restore();
 }
 
+var simulationHighlight = null; // set by simulator-ui.js while a simulation is on screen
+var onBeforeDraw = null; // lets simulator-ui.js notice that the machine was edited
+
 function draw() {
-	drawUsing(canvas.getContext('2d'));
+	if(onBeforeDraw) {
+		onBeforeDraw();
+	}
+	drawUsing(canvas.getContext('2d'), simulationHighlight);
 	saveBackup();
 }
 

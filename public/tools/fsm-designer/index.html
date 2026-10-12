@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FSM Designer | Nafees Mansoor</title>
-  <meta name="description" content="Draw finite state machines in the browser: DFA, NFA, PDA, and Turing machine diagrams with PNG, SVG, and LaTeX export.">
+  <meta name="description" content="Draw finite state machines in the browser, run DFAs and NFAs on an input string step by step, and export diagrams as PNG, SVG, or LaTeX.">
   <link rel="canonical" href="https://www.nafees.info/gnu-projects/fsm-designer">
   <style>
     * { box-sizing: border-box; }
@@ -17,7 +17,66 @@
       border-radius: 9999px; padding: 8px 16px; transition: background 0.15s, color 0.15s;
     }
     button:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
-    button:focus-visible, canvas:focus-visible, textarea:focus-visible { outline: 2px solid #818cf8; outline-offset: 2px; }
+    button:disabled { opacity: 0.4; cursor: default; }
+    button:disabled:hover { background: rgba(255, 255, 255, 0.05); color: #d1d5db; }
+    button.primary { background: #4f46e5; border-color: #6366f1; color: #fff; }
+    button.primary:hover { background: #6366f1; }
+    button:focus-visible, canvas:focus-visible, textarea:focus-visible, input:focus-visible, tr:focus-visible { outline: 2px solid #818cf8; outline-offset: 2px; }
+    [hidden] { display: none !important; }
+
+    .sim { margin: 0 12px 12px; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; background: #0b0b10; }
+    .sim-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; }
+    .sim-row label { font-size: 13px; color: #9ca3af; }
+    .sim-row .field { display: flex; flex: 1 1 260px; align-items: center; gap: 8px; min-width: 0; }
+    .sim-row .group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    #sim-input {
+      flex: 1; min-width: 0; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px; color: #fff;
+      background: #000; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 9999px; padding: 8px 16px;
+    }
+    #sim-input::placeholder { color: #6b7280; }
+    #sim-speed { width: 110px; accent-color: #818cf8; }
+    #sim-speed-value { display: inline-block; min-width: 42px; font-size: 13px; color: #d1d5db; font-variant-numeric: tabular-nums; }
+    #sim-messages p { margin: 10px 0 0; padding: 8px 12px; border-radius: 10px; font-size: 13px; line-height: 1.5; }
+    #sim-messages .error { color: #fecaca; background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.3); }
+    #sim-messages .warning { color: #fde68a; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.25); }
+    #sim-panel { margin-top: 12px; }
+    #sim-machine { font-size: 12px; color: #9ca3af; }
+    #sim-step { margin-top: 6px; font-size: 14px; color: #e5e7eb; }
+    #sim-tape { display: flex; gap: 4px; margin-top: 10px; padding-bottom: 4px; overflow-x: auto; position: relative; }
+    #sim-tape .cell {
+      flex: none; min-width: 30px; height: 34px; padding: 0 6px; display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 15px; border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15); color: #e5e7eb; transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    #sim-tape .done { color: #6b7280; background: rgba(255, 255, 255, 0.04); border-color: transparent; }
+    #sim-tape .current { color: #001014; background: #22d3ee; border-color: #22d3ee; font-weight: 700; }
+    #sim-tape .fail { color: #1a0000; background: #f87171; border-color: #f87171; font-weight: 700; }
+    #sim-tape .empty { color: #9ca3af; border-style: dashed; }
+    #sim-tape-note { margin-top: 6px; font-size: 12px; color: #9ca3af; font-family: "JetBrains Mono", ui-monospace, monospace; overflow-wrap: anywhere; }
+    .verdict { margin-top: 12px; padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+    .verdict strong { display: block; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .verdict.pending { color: #9ca3af; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .verdict.pending strong { color: #9ca3af; }
+    .verdict.accepted { color: #d1fae5; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.35); }
+    .verdict.accepted strong { color: #34d399; }
+    .verdict.rejected { color: #fee2e2; background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.35); }
+    .verdict.rejected strong { color: #f87171; }
+    #sim-verdict-path { margin-top: 4px; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; overflow-wrap: anywhere; }
+    #sim-verdict-path:empty { display: none; }
+    #sim-trace { margin-top: 12px; }
+    #sim-trace h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: #9ca3af; }
+    #sim-trace-scroll { max-height: 240px; overflow: auto; position: relative; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; }
+    #sim-trace table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    #sim-trace th {
+      position: sticky; top: 0; background: #14141c; color: #9ca3af; font-weight: 600; text-align: left;
+      padding: 8px 12px; white-space: nowrap;
+    }
+    #sim-trace td { padding: 7px 12px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; vertical-align: top; }
+    #sim-trace td:nth-child(3) { overflow-wrap: anywhere; max-width: 220px; }
+    #sim-trace td:last-child { white-space: pre-wrap; }
+    #sim-trace tbody tr { cursor: pointer; }
+    #sim-trace tbody tr:hover { background: rgba(255, 255, 255, 0.04); }
+    #sim-trace tbody tr.current { background: rgba(34, 211, 238, 0.12); color: #fff; }
     .board { overflow: auto; margin: 0 12px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; background: #0b0b10; }
     canvas { display: block; }
     textarea {
@@ -27,6 +86,8 @@
     }
   </style>
   <script src="fsm.js"></script>
+  <script src="simulator.js"></script>
+  <script src="simulator-ui.js"></script>
 </head>
 <body>
   <div class="toolbar">
@@ -36,11 +97,54 @@
     <span class="spacer"></span>
     <button type="button" onclick="clearBoard()">Clear board</button>
   </div>
+  <section class="sim" aria-label="Simulator">
+    <form id="sim-form" class="sim-row">
+      <div class="field">
+        <label for="sim-input">Input string</label>
+        <input id="sim-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. 0110 (leave empty for the empty string)">
+        <button type="submit" class="primary">Execute</button>
+      </div>
+      <div class="group" role="group" aria-label="Playback">
+        <button type="button" id="sim-reset">Reset</button>
+        <button type="button" id="sim-previous">Previous step</button>
+        <button type="button" id="sim-play">Play</button>
+        <button type="button" id="sim-next">Next step</button>
+      </div>
+      <div class="group">
+        <label for="sim-speed">Speed</label>
+        <input id="sim-speed" type="range" min="0.25" max="3" step="0.25" value="1">
+        <span id="sim-speed-value"></span>
+      </div>
+    </form>
+    <div id="sim-messages" role="status" aria-live="polite"></div>
+    <div id="sim-panel" hidden>
+      <div id="sim-machine"></div>
+      <div id="sim-step" role="status" aria-live="polite"></div>
+      <div id="sim-tape" aria-hidden="true"></div>
+      <div id="sim-tape-note"></div>
+      <div id="sim-verdict" class="verdict pending" role="status" aria-live="polite">
+        <strong id="sim-verdict-title"></strong>
+        <span id="sim-verdict-text"></span>
+        <div id="sim-verdict-path"></div>
+      </div>
+    </div>
+  </section>
   <div class="board">
     <canvas id="canvas" width="1200" height="650" tabindex="0" aria-label="State machine drawing board">
       Your browser does not support the HTML5 canvas element.
     </canvas>
   </div>
+  <section id="sim-trace" class="sim" aria-label="Execution trace" hidden>
+    <h2>Execution trace</h2>
+    <div id="sim-trace-scroll">
+      <table>
+        <thead id="sim-trace-head">
+          <tr><th scope="col">Step</th><th scope="col">Read</th><th scope="col">Remaining</th><th scope="col">Current states</th><th scope="col">Transitions taken</th></tr>
+        </thead>
+        <tbody id="sim-trace-body"></tbody>
+      </table>
+    </div>
+  </section>
   <textarea id="output" aria-label="Exported diagram source" readonly></textarea>
   <script>
     // Download the drawing on the board's dark background (the canvas itself is transparent).

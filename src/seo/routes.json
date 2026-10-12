@@ -76,7 +76,7 @@
   },
   "/gnu-projects/fsm-designer": {
     "title": "FSM Designer | Nafees Mansoor",
-    "description": "Draw finite state machines in the browser: DFA, NFA, PDA, and Turing machine diagrams with PNG, SVG, and LaTeX export.",
+    "description": "Draw finite state machines in the browser, run DFAs and NFAs on an input string step by step, and export diagrams as PNG, SVG, or LaTeX.",
     "heading": "FSM Designer"
   }
 }
