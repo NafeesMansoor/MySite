@@ -29,7 +29,7 @@ npm run dev      # start the dev server at http://localhost:3000
 | `npm run build`   | Validate data, regenerate SEO files, build to `dist/`, and prerender every page |
 | `npm run preview` | Serve the production build locally                             |
 | `npm run lint`    | Type-check the project (`tsc --noEmit`)                        |
-| `npm test`        | Run the StateTrace simulator tests (Node's built-in test runner) |
+| `npm test`        | Run the DFA/NFA simulator tests (Node's built-in test runner)  |
 | `npm run clean`   | Remove `dist/`                                                 |
 | `npm run pubs:import` | Rebuild publication data from the curated list and the Scopus export |
 | `npm run pubs:validate` | Validate publication data (also runs as part of `build`)     |
@@ -41,7 +41,7 @@ npm run dev      # start the dev server at http://localhost:3000
 ```
 docs/               Generated publication match report
 public/             Static files (sitemap.xml, robots.txt, _redirects)
-  tools/            Standalone tools embedded by pages (StateTrace, the DFA & NFA simulator)
+  tools/            Standalone tools embedded by pages (StateTrace and the FSM Designer)
 resource/           Source workbooks (Scopus export)
 scripts/            Build-time scripts (SEO files, publication import and validation)
 tests/              Automated tests (FSM simulator)

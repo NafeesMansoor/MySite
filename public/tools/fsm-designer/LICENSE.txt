@@ -1,4 +1,4 @@
-StateTrace: Interactive DFA & NFA Simulator (https://www.nafees.info/gnu-projects/fsm-designer)
+FSM Designer (https://www.nafees.info/gnu-projects/fsm-designer)
 License: MIT License (see below)
 
 Copyright (c) 2019-2026 Nafees Mansoor
@@ -28,5 +28,3 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-
-The fonts in fonts/ are under the SIL Open Font License; see fonts/LICENSE.txt.
