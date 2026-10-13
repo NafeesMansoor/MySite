@@ -47,7 +47,6 @@ const NAV_ITEMS = [
     children: [
       { label: 'FSM Designer', path: '/gnu-projects/fsm-designer' },
       { label: 'StateTrace', path: '/gnu-projects/statetrace' },
-      { label: 'StateTrace2', path: '/gnu-projects/statetrace2' },
     ]
   },
 ];
