@@ -48,7 +48,7 @@ const siteNav = `<nav aria-label="Site"><ul>${Object.entries(staticRoutes)
   .map(([route, page]) => `<li><a href="${route}">${escapeHtml(page.heading)}</a></li>`)
   .join('')}</ul></nav>`;
 
-const renderPage = ({ route, title, description, head = [], body, ogType = 'website' }) => {
+const renderPage = ({ route, title, description, head = [], body, ogType = 'website', image, imageAlt }) => {
   const url = absoluteUrl(route);
   const tags = [
     `<link rel="canonical" href="${url}" />`,
@@ -63,6 +63,9 @@ const renderPage = ({ route, title, description, head = [], body, ogType = 'webs
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${escapeHtml(title)}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${escapeHtml(description)}$2`)
     .replace(/(<meta property="og:type" content=")[^"]*(")/, `$1${ogType}$2`)
+    // A page may bring its own social preview image (same 1200x630 size as the site's).
+    .replace(/(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*(")/g, (match, start, end) => (image ? `${start}${absoluteUrl(image)}${end}` : match))
+    .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, (match, start, end) => (imageAlt ? `${start}${escapeHtml(imageAlt)}${end}` : match))
     .replace('</head>', `  ${tags}\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root"><main class="max-w-7xl mx-auto px-4 py-24 text-gray-400">${body}${siteNav}</main></div>`);
   if (!html.includes(body.slice(0, 40))) throw new Error(`prerender: could not inject content for ${route}`);
@@ -108,10 +111,12 @@ for (const [route, page] of Object.entries(staticRoutes)) {
         }),
       ]
     : [];
+  if (page.jsonLd) head.push(jsonLd(page.jsonLd));
   const body =
     `<h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p>` +
+    (page.sections ?? []).map((section) => `<h2>${escapeHtml(section.heading)}</h2><p>${escapeHtml(section.text)}</p>`).join('') +
     (listed.length ? `<ol>${listed.map(publicationItem).join('')}</ol>` : '');
-  renderPage({ route, title: page.title, description: page.description, head, body });
+  renderPage({ route, title: page.title, description: page.description, head, body, image: page.image, imageAlt: page.imageAlt });
 }
 
 for (const pub of publications) {

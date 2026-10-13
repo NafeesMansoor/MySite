@@ -1,3 +1,7 @@
+// The drawing editor of StateTrace (see LICENSE.txt).
+// Derived from Finite State Machine Designer, copyright (c) 2010 Evan Wallace, MIT License.
+// Changes for StateTrace copyright (c) 2019-2026 Nafees Mansoor, MIT License.
+
 // draw using this instead of a canvas and call toLaTeX() afterward
 function ExportAsLaTeX() {
 	this._points = [];
@@ -116,7 +120,11 @@ function ExportAsSVG() {
 	this._transY = 0;
 
 	this.toSVG = function() {
-		return '<?xml version="1.0" standalone="no"?>\n<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n\n<svg width="900" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">\n' + this._svgData + '</svg>\n';
+		// size the image to the drawing, wherever on the board it is
+		var box = contentBounds() || { 'left': 0, 'top': 0, 'right': 900, 'bottom': 600 };
+		var width = Math.ceil(box.right - box.left);
+		var height = Math.ceil(box.bottom - box.top);
+		return '<?xml version="1.0" standalone="no"?>\n<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n\n<svg width="' + width + '" height="' + height + '" viewBox="' + Math.floor(box.left) + ' ' + Math.floor(box.top) + ' ' + width + ' ' + height + '" version="1.1" xmlns="http://www.w3.org/2000/svg">\n' + this._svgData + '</svg>\n';
 	};
 
 	this.beginPath = function() {
@@ -546,45 +554,52 @@ TemporaryLink.prototype.draw = function(c) {
 	drawArrow(c, this.to.x, this.to.y, Math.atan2(this.to.y - this.from.y, this.to.x - this.from.x));
 };
 
+// replace the machine on the board with one in the format of serializeMachine()
+function loadMachine(backup) {
+	nodes.length = 0;
+	links.length = 0;
+	for(var i = 0; i < backup.nodes.length; i++) {
+		var backupNode = backup.nodes[i];
+		var node = new Node(backupNode.x, backupNode.y);
+		node.isAcceptState = backupNode.isAcceptState;
+		node.text = backupNode.text;
+		nodes.push(node);
+	}
+	for(var i = 0; i < backup.links.length; i++) {
+		var backupLink = backup.links[i];
+		var link = null;
+		if(backupLink.type == 'SelfLink') {
+			link = new SelfLink(nodes[backupLink.node]);
+			link.anchorAngle = backupLink.anchorAngle;
+			link.text = backupLink.text;
+		} else if(backupLink.type == 'StartLink') {
+			link = new StartLink(nodes[backupLink.node]);
+			link.deltaX = backupLink.deltaX;
+			link.deltaY = backupLink.deltaY;
+			link.text = backupLink.text;
+		} else if(backupLink.type == 'Link') {
+			link = new Link(nodes[backupLink.nodeA], nodes[backupLink.nodeB]);
+			link.parallelPart = backupLink.parallelPart;
+			link.perpendicularPart = backupLink.perpendicularPart;
+			link.text = backupLink.text;
+			link.lineAngleAdjust = backupLink.lineAngleAdjust;
+		}
+		if(link != null) {
+			links.push(link);
+		}
+	}
+}
+
 function restoreBackup() {
 	if(!localStorage || !JSON) {
 		return;
 	}
 
 	try {
-		var backup = JSON.parse(localStorage['fsm']);
-
-		for(var i = 0; i < backup.nodes.length; i++) {
-			var backupNode = backup.nodes[i];
-			var node = new Node(backupNode.x, backupNode.y);
-			node.isAcceptState = backupNode.isAcceptState;
-			node.text = backupNode.text;
-			nodes.push(node);
-		}
-		for(var i = 0; i < backup.links.length; i++) {
-			var backupLink = backup.links[i];
-			var link = null;
-			if(backupLink.type == 'SelfLink') {
-				link = new SelfLink(nodes[backupLink.node]);
-				link.anchorAngle = backupLink.anchorAngle;
-				link.text = backupLink.text;
-			} else if(backupLink.type == 'StartLink') {
-				link = new StartLink(nodes[backupLink.node]);
-				link.deltaX = backupLink.deltaX;
-				link.deltaY = backupLink.deltaY;
-				link.text = backupLink.text;
-			} else if(backupLink.type == 'Link') {
-				link = new Link(nodes[backupLink.nodeA], nodes[backupLink.nodeB]);
-				link.parallelPart = backupLink.parallelPart;
-				link.perpendicularPart = backupLink.perpendicularPart;
-				link.text = backupLink.text;
-				link.lineAngleAdjust = backupLink.lineAngleAdjust;
-			}
-			if(link != null) {
-				links.push(link);
-			}
-		}
+		loadMachine(JSON.parse(localStorage['fsm']));
 	} catch(e) {
+		nodes.length = 0;
+		links.length = 0;
 		localStorage['fsm'] = '';
 	}
 }
@@ -643,11 +658,17 @@ function serializeMachine() {
 }
 
 function saveBackup() {
-	if(!localStorage || !JSON) {
+	if(!JSON) {
 		return;
 	}
 
-	localStorage['fsm'] = JSON.stringify(serializeMachine());
+	var json = JSON.stringify(serializeMachine());
+	recordHistory(json);
+	try {
+		localStorage['fsm'] = json;
+	} catch(e) {
+		// storage can be full or switched off; the drawing still works for this visit
+	}
 }
 
 function det(a, b, c, d, e, f, g, h, i) {
@@ -703,8 +724,10 @@ function textToXML(text) {
 }
 
 function drawArrow(c, x, y, angle) {
-	var dx = Math.cos(angle);
-	var dy = Math.sin(angle);
+	// the board's thin lines need a slightly larger head than the exports
+	var size = isBoard(c) ? 1.35 : 1;
+	var dx = size * Math.cos(angle);
+	var dy = size * Math.sin(angle);
 	c.beginPath();
 	c.moveTo(x, y);
 	c.lineTo(x - 8 * dx + 5 * dy, y - 8 * dy - 5 * dx);
@@ -718,8 +741,9 @@ function canvasHasFocus() {
 }
 
 function drawText(c, originalText, x, y, angleOrNull, isSelected) {
-	text = convertLatexShortcuts(originalText);
-	c.font = '20px "Times New Roman", serif';
+	var text = convertLatexShortcuts(originalText);
+	var board = isBoard(c);
+	c.font = board ? canvasFont : '20px "Times New Roman", serif';
 	var width = c.measureText(text).width;
 
 	// center the text
@@ -742,7 +766,24 @@ function drawText(c, originalText, x, y, angleOrNull, isSelected) {
 	} else {
 		x = Math.round(x);
 		y = Math.round(y);
-		c.fillText(text, x, y + 6);
+		if(board) {
+			var ink = c.fillStyle;
+			if(textBackdrop && angleOrNull != null && text != '') {
+				c.fillStyle = textBackdrop;
+				c.beginPath();
+				c.rect(x - 5, y - 11, width + 10, 22);
+				c.fill();
+			}
+			c.fillStyle = textStyle || ink;
+			c.textBaseline = 'middle';
+			var shadow = c.shadowBlur;
+			c.shadowBlur = 0;
+			c.fillText(text, x, y + 1);
+			c.shadowBlur = shadow;
+			c.fillStyle = ink;
+		} else {
+			c.fillText(text, x, y + 6);
+		}
 		if(isSelected && caretVisible && canvasHasFocus() && document.hasFocus()) {
 			x += width;
 			c.beginPath();
@@ -758,7 +799,10 @@ var caretVisible = true;
 
 function resetCaret() {
 	clearInterval(caretTimer);
-	caretTimer = setInterval('caretVisible = !caretVisible; draw()', 500);
+	caretTimer = setInterval(function() {
+		caretVisible = !caretVisible;
+		render();
+	}, 500);
 	caretVisible = true;
 }
 
@@ -775,49 +819,230 @@ var currentLink = null; // a Link
 var movingObject = false;
 var originalClick;
 
-// highlight is optional: { nodes: { index: { stroke, fill } }, links: { index: color } }
+// colours of the board; exported SVG and LaTeX use exportTheme so they print on paper
+var theme = {
+	'node': '#5b8cff',
+	'nodeFill': '#0f1838',
+	'nodeText': '#eef2ff',
+	'link': '#6f9bff',
+	'linkText': '#c3d0fa',
+	'selected': '#a5ecff',
+	'labelBackdrop': 'rgba(8, 13, 32, 0.82)',
+	'token': '#ffe1dc',
+};
+var exportTheme = { 'node': 'black', 'link': 'black', 'selected': 'black' };
+var canvasFont = '500 17px "JetBrains Mono", ui-monospace, Menlo, monospace';
+var textStyle = null; // colour of labels on the board, set by drawUsing
+var textBackdrop = null; // colour behind transition labels on the board
+
+// the part of the drawing that is on screen: screen = world * scale + (x, y)
+var view = { 'scale': 1, 'x': 0, 'y': 0 };
+var minScale = 0.3;
+var maxScale = 2.5;
+var pixelRatio = 1;
+var panning = null;
+var linkTool = false; // the toolbar's "draw transition" mode, same as holding shift
+
+function isBoard(c) {
+	return c.canvas === canvas;
+}
+
+// where a symbol is, a fraction t of the way along a transition
+function linkPoint(link, t) {
+	var stuff = link instanceof StartLink ? link.getEndPoints() : link.getEndPointsAndCircle();
+	if(!stuff.hasCircle) {
+		return { 'x': stuff.startX + (stuff.endX - stuff.startX) * t, 'y': stuff.startY + (stuff.endY - stuff.startY) * t };
+	}
+	var startAngle = stuff.startAngle;
+	var endAngle = stuff.endAngle;
+	if(stuff.isReversed) {
+		while(endAngle > startAngle) endAngle -= 2 * Math.PI;
+	} else {
+		while(endAngle < startAngle) endAngle += 2 * Math.PI;
+	}
+	var angle = startAngle + (endAngle - startAngle) * t;
+	return { 'x': stuff.circleX + stuff.circleRadius * Math.cos(angle), 'y': stuff.circleY + stuff.circleRadius * Math.sin(angle) };
+}
+
+// the box around everything drawn, with room for labels and self-loops, or null for an empty board
+function contentBounds() {
+	if(nodes.length == 0) return null;
+	var box = { 'left': Infinity, 'top': Infinity, 'right': -Infinity, 'bottom': -Infinity };
+	function include(x, y, padding) {
+		box.left = Math.min(box.left, x - padding);
+		box.top = Math.min(box.top, y - padding);
+		box.right = Math.max(box.right, x + padding);
+		box.bottom = Math.max(box.bottom, y + padding);
+	}
+	for(var i = 0; i < nodes.length; i++) {
+		include(nodes[i].x, nodes[i].y, nodeRadius + 26);
+	}
+	for(var i = 0; i < links.length; i++) {
+		if(links[i] instanceof StartLink) {
+			var ends = links[i].getEndPoints();
+			include(ends.startX, ends.startY, 14);
+		} else {
+			var middle = linkPoint(links[i], 0.5);
+			include(middle.x, middle.y, 34);
+		}
+	}
+	return box;
+}
+
+// highlight is optional: { nodes: { index: { stroke, fill, halo } }, links: { index: color }, tokens: [{ link, t }] }
 // the exporters never pass it, so a running simulation does not show up in exported files
 function drawUsing(c, highlight) {
-	c.clearRect(0, 0, canvas.width, canvas.height);
-	c.save();
-	c.translate(0.5, 0.5);
+	var board = isBoard(c);
+	var colors = board ? theme : exportTheme;
+	if(board) {
+		c.setTransform(1, 0, 0, 1, 0, 0);
+		c.clearRect(0, 0, canvas.width, canvas.height);
+		c.setTransform(pixelRatio * view.scale, 0, 0, pixelRatio * view.scale, pixelRatio * view.x, pixelRatio * view.y);
+		c.lineCap = 'round';
+		c.setLineDash([]);
+	} else {
+		c.clearRect(0, 0, canvas.width, canvas.height);
+		c.save();
+		c.translate(0.5, 0.5);
+	}
+	textStyle = textBackdrop = null;
 
 	for(var i = 0; i < nodes.length; i++) {
+		var node = nodes[i];
 		var nodeMark = highlight ? highlight.nodes[i] : null;
-		if(nodeMark) {
-			c.fillStyle = nodeMark.fill;
+		var color = nodeMark ? nodeMark.stroke : (node == selectedObject ? colors.selected : colors.node);
+		if(board) {
+			c.globalAlpha = highlight && !nodeMark ? 0.6 : 1;
+			if(nodeMark && nodeMark.halo > 0) {
+				// rings around a state the machine is in
+				c.strokeStyle = nodeMark.stroke;
+				c.lineWidth = 1.5;
+				var alpha = c.globalAlpha;
+				for(var ring = 1; ring <= 2; ring++) {
+					c.globalAlpha = alpha * nodeMark.halo * (ring == 1 ? 0.55 : 0.25);
+					c.beginPath();
+					c.arc(node.x, node.y, nodeRadius + 9 * ring * nodeMark.halo, 0, 2 * Math.PI, false);
+					c.stroke();
+				}
+				c.globalAlpha = alpha;
+			}
+			c.fillStyle = nodeMark ? nodeMark.fill : colors.nodeFill;
+			c.shadowColor = color;
+			c.shadowBlur = nodeMark || node == selectedObject ? 20 : 11;
 			c.beginPath();
-			c.arc(nodes[i].x, nodes[i].y, nodeRadius, 0, 2 * Math.PI, false);
+			c.arc(node.x, node.y, nodeRadius, 0, 2 * Math.PI, false);
 			c.fill();
+			c.shadowBlur = 0;
+			if(node == selectedObject && nodeMark) {
+				c.strokeStyle = colors.selected;
+				c.lineWidth = 1.5;
+				c.setLineDash([4, 5]);
+				c.beginPath();
+				c.arc(node.x, node.y, nodeRadius + 5, 0, 2 * Math.PI, false);
+				c.stroke();
+				c.setLineDash([]);
+			}
+			textStyle = colors.nodeText;
 		}
-		c.lineWidth = 5;
-		c.fillStyle = c.strokeStyle = nodeMark ? nodeMark.stroke : ((nodes[i] == selectedObject) ? 'orange' : 'white');
-		nodes[i].draw(c);
+		c.lineWidth = board ? (nodeMark ? 3 : 2.5) : 1;
+		c.fillStyle = c.strokeStyle = color;
+		node.draw(c);
 	}
 	for(var i = 0; i < links.length; i++) {
 		var linkMark = highlight ? highlight.links[i] : null;
-		c.lineWidth = linkMark ? 5 : 3;
-		c.fillStyle = c.strokeStyle = linkMark || ((links[i] == selectedObject) ? 'red' : 'orange');
+		var color = linkMark || (links[i] == selectedObject ? colors.selected : colors.link);
+		if(board) {
+			c.globalAlpha = highlight && !linkMark ? 0.5 : 1;
+			c.shadowColor = color;
+			c.shadowBlur = linkMark ? 12 : 0;
+			textStyle = linkMark || links[i] == selectedObject ? '#ffffff' : colors.linkText;
+			textBackdrop = colors.labelBackdrop;
+		}
+		c.lineWidth = board ? (linkMark ? 3 : (links[i] == selectedObject ? 2.5 : 1.75)) : 1;
+		c.fillStyle = c.strokeStyle = color;
 		links[i].draw(c);
 	}
+	if(board) {
+		c.globalAlpha = 1;
+		c.shadowBlur = 0;
+	}
 	if(currentLink != null) {
-		c.lineWidth = 5;
-		c.fillStyle = c.strokeStyle = 'red';
+		c.lineWidth = board ? 2 : 1;
+		c.fillStyle = c.strokeStyle = colors.selected;
+		if(board) c.setLineDash([6, 6]);
 		currentLink.draw(c);
+		if(board) c.setLineDash([]);
+	}
+	if(board && highlight && highlight.tokens) {
+		// one dot per transition being taken, so an NFA visibly splits
+		for(var i = 0; i < highlight.tokens.length; i++) {
+			var token = highlight.tokens[i];
+			if(!links[token.link]) continue;
+			var point = linkPoint(links[token.link], token.t);
+			c.fillStyle = theme.token;
+			c.shadowColor = highlight.links[token.link] || theme.token;
+			c.shadowBlur = 16;
+			c.beginPath();
+			c.arc(point.x, point.y, 5.5, 0, 2 * Math.PI, false);
+			c.fill();
+		}
+		c.shadowBlur = 0;
 	}
 
-	c.restore();
+	textStyle = textBackdrop = null;
+	if(!board) {
+		c.restore();
+	}
 }
 
 var simulationHighlight = null; // set by simulator-ui.js while a simulation is on screen
-var onBeforeDraw = null; // lets simulator-ui.js notice that the machine was edited
+var drawHooks = []; // run before every draw(), so the interface can follow edits and selection
+
+// repaint only, for animation frames and the caret
+function render() {
+	drawUsing(canvas.getContext('2d'), simulationHighlight);
+}
 
 function draw() {
-	if(onBeforeDraw) {
-		onBeforeDraw();
+	for(var i = 0; i < drawHooks.length; i++) {
+		drawHooks[i]();
 	}
-	drawUsing(canvas.getContext('2d'), simulationHighlight);
+	render();
 	saveBackup();
+}
+
+// undo and redo keep whole copies of the machine, which is small
+var editHistory = { 'undo': [], 'redo': [], 'last': null, 'limit': 200 };
+
+function recordHistory(json) {
+	if(editHistory.last == null) {
+		editHistory.last = json;
+	} else if(json != editHistory.last && !movingObject && currentLink == null) {
+		editHistory.undo.push(editHistory.last);
+		if(editHistory.undo.length > editHistory.limit) editHistory.undo.shift();
+		editHistory.redo = [];
+		editHistory.last = json;
+	}
+}
+
+function stepHistory(from, to) {
+	if(from.length == 0) return false;
+	to.push(editHistory.last);
+	editHistory.last = from.pop();
+	loadMachine(JSON.parse(editHistory.last));
+	selectedObject = null;
+	currentLink = null;
+	movingObject = false;
+	draw();
+	return true;
+}
+
+function undo() {
+	return stepHistory(editHistory.undo, editHistory.redo);
+}
+
+function redo() {
+	return stepHistory(editHistory.redo, editHistory.undo);
 }
 
 function selectObject(x, y) {
@@ -848,108 +1073,302 @@ function snapNode(node) {
 	}
 }
 
+function deleteSelected() {
+	if(selectedObject == null) return;
+	for(var i = 0; i < nodes.length; i++) {
+		if(nodes[i] == selectedObject) {
+			nodes.splice(i--, 1);
+		}
+	}
+	for(var i = 0; i < links.length; i++) {
+		if(links[i] == selectedObject || links[i].node == selectedObject || links[i].nodeA == selectedObject || links[i].nodeB == selectedObject) {
+			links.splice(i--, 1);
+		}
+	}
+	selectedObject = null;
+	draw();
+}
+
+function boardSize() {
+	return { 'width': canvas.clientWidth, 'height': canvas.clientHeight };
+}
+
+// match the drawing surface to the size the canvas has on the page, at the screen's pixel density
+function resizeCanvas() {
+	var size = boardSize();
+	if(size.width == 0 || size.height == 0) return;
+	pixelRatio = window.devicePixelRatio || 1;
+	var width = Math.round(size.width * pixelRatio);
+	var height = Math.round(size.height * pixelRatio);
+	if(canvas.width != width || canvas.height != height) {
+		canvas.width = width;
+		canvas.height = height;
+	}
+	render();
+}
+
+function setView(scale, x, y) {
+	view.scale = Math.max(minScale, Math.min(maxScale, scale));
+	view.x = x;
+	view.y = y;
+	draw();
+}
+
+// zoom while keeping the point under (screenX, screenY) where it is
+function zoomAt(factor, screenX, screenY) {
+	var scale = Math.max(minScale, Math.min(maxScale, view.scale * factor));
+	var worldX = (screenX - view.x) / view.scale;
+	var worldY = (screenY - view.y) / view.scale;
+	setView(scale, screenX - worldX * scale, screenY - worldY * scale);
+}
+
+function zoomBy(factor) {
+	var size = boardSize();
+	zoomAt(factor, size.width / 2, size.height / 2);
+}
+
+function resetView() {
+	setView(1, 0, 0);
+}
+
+function fitView() {
+	var box = contentBounds();
+	var size = boardSize();
+	if(box == null || size.width == 0) {
+		resetView();
+		return;
+	}
+	var scale = Math.min(size.width / (box.right - box.left), size.height / (box.bottom - box.top), 1);
+	scale = Math.max(minScale, scale);
+	setView(scale, (size.width - (box.left + box.right) * scale) / 2, (size.height - (box.top + box.bottom) * scale) / 2);
+}
+
+function contentIsVisible() {
+	var box = contentBounds();
+	var size = boardSize();
+	if(box == null) return true;
+	return box.left * view.scale + view.x >= 0 && box.top * view.scale + view.y >= 0 &&
+		box.right * view.scale + view.x <= size.width && box.bottom * view.scale + view.y <= size.height;
+}
+
+// the middle of the visible board, in drawing coordinates
+function viewCenter() {
+	var size = boardSize();
+	return { 'x': (size.width / 2 - view.x) / view.scale, 'y': (size.height / 2 - view.y) / view.scale };
+}
+
+function screenPos(e) {
+	var rect = canvas.getBoundingClientRect();
+	return { 'x': e.clientX - rect.left, 'y': e.clientY - rect.top };
+}
+
+function canvasPos(e) {
+	var screen = screenPos(e);
+	return { 'x': (screen.x - view.x) / view.scale, 'y': (screen.y - view.y) / view.scale };
+}
+
+function linking() {
+	return shift || linkTool;
+}
+
+function pressBoard(e) {
+	var mouse = canvasPos(e);
+	selectedObject = selectObject(mouse.x, mouse.y);
+	movingObject = false;
+	originalClick = mouse;
+
+	if(selectedObject != null) {
+		if(linking() && selectedObject instanceof Node) {
+			currentLink = new SelfLink(selectedObject, mouse);
+		} else {
+			movingObject = true;
+			deltaMouseX = deltaMouseY = 0;
+			if(selectedObject.setMouseStart) {
+				selectedObject.setMouseStart(mouse.x, mouse.y);
+			}
+		}
+		resetCaret();
+	} else if(linking()) {
+		currentLink = new TemporaryLink(mouse, mouse);
+	} else {
+		// dragging the empty board moves the view
+		var screen = screenPos(e);
+		panning = { 'startX': screen.x, 'startY': screen.y, 'viewX': view.x, 'viewY': view.y };
+	}
+
+	draw();
+}
+
+function doubleClickBoard(e) {
+	var mouse = canvasPos(e);
+	selectedObject = selectObject(mouse.x, mouse.y);
+
+	if(selectedObject == null) {
+		selectedObject = new Node(mouse.x, mouse.y);
+		nodes.push(selectedObject);
+		resetCaret();
+		draw();
+	} else if(selectedObject instanceof Node) {
+		selectedObject.isAcceptState = !selectedObject.isAcceptState;
+		draw();
+	}
+}
+
+function moveBoard(e) {
+	var mouse = canvasPos(e);
+
+	if(panning != null) {
+		var screen = screenPos(e);
+		view.x = panning.viewX + screen.x - panning.startX;
+		view.y = panning.viewY + screen.y - panning.startY;
+		draw();
+		return;
+	}
+
+	if(currentLink != null) {
+		var targetNode = selectObject(mouse.x, mouse.y);
+		if(!(targetNode instanceof Node)) {
+			targetNode = null;
+		}
+
+		if(selectedObject == null) {
+			if(targetNode != null) {
+				currentLink = new StartLink(targetNode, originalClick);
+			} else {
+				currentLink = new TemporaryLink(originalClick, mouse);
+			}
+		} else {
+			if(targetNode == selectedObject) {
+				currentLink = new SelfLink(selectedObject, mouse);
+			} else if(targetNode != null) {
+				currentLink = new Link(selectedObject, targetNode);
+			} else {
+				currentLink = new TemporaryLink(selectedObject.closestPointOnCircle(mouse.x, mouse.y), mouse);
+			}
+		}
+		draw();
+	}
+
+	if(movingObject) {
+		selectedObject.setAnchorPoint(mouse.x, mouse.y);
+		if(selectedObject instanceof Node) {
+			snapNode(selectedObject);
+		}
+		draw();
+	}
+}
+
+function releaseBoard() {
+	movingObject = false;
+	panning = null;
+
+	if(currentLink != null) {
+		if(!(currentLink instanceof TemporaryLink)) {
+			selectedObject = currentLink;
+			links.push(currentLink);
+			linkTool = false;
+			resetCaret();
+		}
+		currentLink = null;
+	}
+	draw();
+}
+
 window.onload = function() {
 	canvas = document.getElementById('canvas');
 	restoreBackup();
+	resizeCanvas();
+	if(!contentIsVisible()) {
+		fitView();
+	}
 	draw();
+	if(document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(render);
+	}
+	window.addEventListener('resize', resizeCanvas);
 
-	canvas.onmousedown = function(e) {
-		var mouse = crossBrowserRelativeMousePos(e);
-		selectedObject = selectObject(mouse.x, mouse.y);
-		movingObject = false;
-		originalClick = mouse;
+	var touches = {}; // fingers on the board, by pointer id
+	var pinch = null;
+	var lastTap = { 'time': 0, 'x': 0, 'y': 0 };
+	var lastTouchDouble = 0;
 
-		if(selectedObject != null) {
-			if(shift && selectedObject instanceof Node) {
-				currentLink = new SelfLink(selectedObject, mouse);
-			} else {
-				movingObject = true;
-				deltaMouseX = deltaMouseY = 0;
-				if(selectedObject.setMouseStart) {
-					selectedObject.setMouseStart(mouse.x, mouse.y);
-				}
+	function touchList() {
+		var list = [];
+		for(var id in touches) list.push(touches[id]);
+		return list;
+	}
+
+	function pinchState() {
+		var list = touchList();
+		var dx = list[1].x - list[0].x;
+		var dy = list[1].y - list[0].y;
+		return { 'distance': Math.sqrt(dx * dx + dy * dy) || 1, 'x': (list[0].x + list[1].x) / 2, 'y': (list[0].y + list[1].y) / 2 };
+	}
+
+	canvas.addEventListener('pointerdown', function(e) {
+		if(e.pointerType == 'mouse' && e.button != 0) return;
+		try { canvas.setPointerCapture(e.pointerId); } catch(error) {}
+
+		if(e.pointerType != 'mouse') {
+			touches[e.pointerId] = screenPos(e);
+			if(touchList().length == 2) {
+				// a second finger turns the gesture into zoom and pan
+				movingObject = false;
+				currentLink = null;
+				panning = null;
+				var state = pinchState();
+				pinch = { 'distance': state.distance, 'worldX': (state.x - view.x) / view.scale, 'worldY': (state.y - view.y) / view.scale, 'scale': view.scale };
+				return;
 			}
-			resetCaret();
-		} else if(shift) {
-			currentLink = new TemporaryLink(mouse, mouse);
-		}
-
-		draw();
-
-		if(canvasHasFocus()) {
-			// disable drag-and-drop only if the canvas is already focused
-			return false;
-		} else {
-			// otherwise, let the browser switch the focus away from wherever it was
-			resetCaret();
-			return true;
-		}
-	};
-
-	canvas.ondblclick = function(e) {
-		var mouse = crossBrowserRelativeMousePos(e);
-		selectedObject = selectObject(mouse.x, mouse.y);
-
-		if(selectedObject == null) {
-			selectedObject = new Node(mouse.x, mouse.y);
-			nodes.push(selectedObject);
-			resetCaret();
-			draw();
-		} else if(selectedObject instanceof Node) {
-			selectedObject.isAcceptState = !selectedObject.isAcceptState;
-			draw();
-		}
-	};
-
-	canvas.onmousemove = function(e) {
-		var mouse = crossBrowserRelativeMousePos(e);
-
-		if(currentLink != null) {
-			var targetNode = selectObject(mouse.x, mouse.y);
-			if(!(targetNode instanceof Node)) {
-				targetNode = null;
+			// touch screens have no double-click, so two quick taps in one place count as one
+			var now = Date.now();
+			var tap = screenPos(e);
+			if(now - lastTap.time < 350 && Math.abs(tap.x - lastTap.x) < 30 && Math.abs(tap.y - lastTap.y) < 30) {
+				lastTap.time = 0;
+				lastTouchDouble = now;
+				doubleClickBoard(e);
+				return;
 			}
-
-			if(selectedObject == null) {
-				if(targetNode != null) {
-					currentLink = new StartLink(targetNode, originalClick);
-				} else {
-					currentLink = new TemporaryLink(originalClick, mouse);
-				}
-			} else {
-				if(targetNode == selectedObject) {
-					currentLink = new SelfLink(selectedObject, mouse);
-				} else if(targetNode != null) {
-					currentLink = new Link(selectedObject, targetNode);
-				} else {
-					currentLink = new TemporaryLink(selectedObject.closestPointOnCircle(mouse.x, mouse.y), mouse);
-				}
-			}
-			draw();
+			lastTap = { 'time': now, 'x': tap.x, 'y': tap.y };
 		}
+		pressBoard(e);
+	});
 
-		if(movingObject) {
-			selectedObject.setAnchorPoint(mouse.x, mouse.y);
-			if(selectedObject instanceof Node) {
-				snapNode(selectedObject);
+	canvas.addEventListener('pointermove', function(e) {
+		if(e.pointerType != 'mouse' && touches[e.pointerId]) {
+			touches[e.pointerId] = screenPos(e);
+			if(pinch != null && touchList().length == 2) {
+				var state = pinchState();
+				var scale = Math.max(minScale, Math.min(maxScale, pinch.scale * state.distance / pinch.distance));
+				setView(scale, state.x - pinch.worldX * scale, state.y - pinch.worldY * scale);
+				return;
 			}
-			draw();
 		}
-	};
+		moveBoard(e);
+	});
 
-	canvas.onmouseup = function(e) {
-		movingObject = false;
+	function pointerEnd(e) {
+		var wasPinch = pinch != null;
+		delete touches[e.pointerId];
+		if(touchList().length < 2) pinch = null;
+		if(wasPinch) return;
+		releaseBoard();
+	}
+	canvas.addEventListener('pointerup', pointerEnd);
+	canvas.addEventListener('pointercancel', pointerEnd);
 
-		if(currentLink != null) {
-			if(!(currentLink instanceof TemporaryLink)) {
-				selectedObject = currentLink;
-				links.push(currentLink);
-				resetCaret();
-			}
-			currentLink = null;
-			draw();
-		}
-	};
+	canvas.addEventListener('dblclick', function(e) {
+		if(Date.now() - lastTouchDouble < 700) return;
+		doubleClickBoard(e);
+	});
+
+	// pinch on a trackpad, or ctrl/cmd + wheel, zooms; a plain wheel still scrolls the page
+	canvas.addEventListener('wheel', function(e) {
+		if(!e.ctrlKey && !e.metaKey) return;
+		e.preventDefault();
+		var screen = screenPos(e);
+		zoomAt(Math.exp(-e.deltaY * 0.01), screen.x, screen.y);
+	}, { 'passive': false });
 }
 
 var shift = false;
@@ -962,6 +1381,9 @@ document.onkeydown = function(e) {
 	} else if(!canvasHasFocus()) {
 		// don't read keystrokes when other things have focus
 		return true;
+	} else if((e.ctrlKey || e.metaKey) && (key == 90 || key == 89)) { // ctrl/cmd + z, y
+		if(key == 89 || e.shiftKey) redo(); else undo();
+		return false;
 	} else if(key == 8) { // backspace key
 		if(selectedObject != null && 'text' in selectedObject) {
 			selectedObject.text = selectedObject.text.substr(0, selectedObject.text.length - 1);
@@ -972,20 +1394,7 @@ document.onkeydown = function(e) {
 		// backspace is a shortcut for the back button, but do NOT want to change pages
 		return false;
 	} else if(key == 46) { // delete key
-		if(selectedObject != null) {
-			for(var i = 0; i < nodes.length; i++) {
-				if(nodes[i] == selectedObject) {
-					nodes.splice(i--, 1);
-				}
-			}
-			for(var i = 0; i < links.length; i++) {
-				if(links[i] == selectedObject || links[i].node == selectedObject || links[i].nodeA == selectedObject || links[i].nodeB == selectedObject) {
-					links.splice(i--, 1);
-				}
-			}
-			selectedObject = null;
-			draw();
-		}
+		deleteSelected();
 	}
 };
 
@@ -1021,68 +1430,32 @@ function crossBrowserKey(e) {
 	return e.which || e.keyCode;
 }
 
-function crossBrowserElementPos(e) {
-	e = e || window.event;
-	var obj = e.target || e.srcElement;
-	var x = 0, y = 0;
-	while(obj.offsetParent) {
-		x += obj.offsetLeft;
-		y += obj.offsetTop;
-		obj = obj.offsetParent;
-	}
-	return { 'x': x, 'y': y };
-}
-
-function crossBrowserMousePos(e) {
-	e = e || window.event;
-	return {
-		'x': e.pageX || e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
-		'y': e.pageY || e.clientY + document.body.scrollTop + document.documentElement.scrollTop,
-	};
-}
-
-function crossBrowserRelativeMousePos(e) {
-	var element = crossBrowserElementPos(e);
-	var mouse = crossBrowserMousePos(e);
-	return {
-		'x': mouse.x - element.x,
-		'y': mouse.y - element.y
-	};
-}
-
 function output(text) {
 	var element = document.getElementById('output');
 	element.style.display = 'block';
 	element.value = text;
 }
 
-function saveAsPNG() {
+// what the board would look like with nothing selected and no simulation, for exporting
+function drawPlain(c) {
 	var oldSelectedObject = selectedObject;
 	selectedObject = null;
-	drawUsing(canvas.getContext('2d'));
+	drawUsing(c);
 	selectedObject = oldSelectedObject;
-	var pngData = canvas.toDataURL('image/png');
-	document.location.href = pngData;
 }
 
 function saveAsSVG() {
 	var exporter = new ExportAsSVG();
-	var oldSelectedObject = selectedObject;
-	selectedObject = null;
-	drawUsing(exporter);
-	selectedObject = oldSelectedObject;
+	drawPlain(exporter);
 	var svgData = exporter.toSVG();
 	output(svgData);
-	// Chrome isn't ready for this yet, the 'Save As' menu item is disabled
-	// document.location.href = 'data:image/svg+xml;base64,' + btoa(svgData);
+	return svgData;
 }
 
 function saveAsLaTeX() {
 	var exporter = new ExportAsLaTeX();
-	var oldSelectedObject = selectedObject;
-	selectedObject = null;
-	drawUsing(exporter);
-	selectedObject = oldSelectedObject;
+	drawPlain(exporter);
 	var texData = exporter.toLaTeX();
 	output(texData);
+	return texData;
 }
