@@ -3,10 +3,14 @@ import { ExternalLink } from 'lucide-react';
 import routes from '../../seo/routes.json';
 import { SITE_URL, setMeta, setPageJsonLd } from '../../seo/site';
 
-// StateTrace is a standalone tool in public/tools/statetrace; this page frames it.
-const WORKSPACE_URL = '/tools/statetrace/index.html';
-// Title, description and the text below the workspace are shared with the prerendered page.
-const PAGE = routes['/gnu-projects/statetrace'];
+// Frames a StateTrace workspace, a standalone tool under public/tools:
+//   StateTrace   /tools/statetrace    downloaded at build time from github.com/NafeesMansoor/StateTrace
+//   StateTrace2  /tools/statetrace2   the edition kept in this repository
+interface StateTracePageProps {
+  name: string;
+  route: '/gnu-projects/statetrace' | '/gnu-projects/statetrace2';
+  workspaceUrl: string;
+}
 
 const NAVBAR_HEIGHT = 64;
 const TOOL_HEADER_HEIGHT = 56;
@@ -18,7 +22,9 @@ const setSocialImage = (url: string, alt: string) => {
   setMeta('property', 'og:image:alt', alt);
 };
 
-export default function StateTrace() {
+export default function StateTracePage({ name, route, workspaceUrl }: StateTracePageProps) {
+  // Title, description and the text below the workspace are shared with the prerendered page.
+  const PAGE = routes[route];
   const frame = useRef<HTMLIFrameElement>(null);
   const [frameHeight, setFrameHeight] = useState(TOOL_HEADER_HEIGHT + 680);
 
@@ -31,7 +37,7 @@ export default function StateTrace() {
       setSocialImage(DEFAULT_IMAGE.url, DEFAULT_IMAGE.alt);
       setPageJsonLd(null);
     };
-  }, []);
+  }, [PAGE]);
 
   // The workspace is on the same origin, so the frame can follow its height (no inner scrollbar)
   // and the board can be told how much of the window it may fill.
@@ -73,7 +79,7 @@ export default function StateTrace() {
           <div className="space-y-2">
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
               <span className="block mb-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#a5ecff]">
-                StateTrace <span className="text-[#94a2d0]">· Interactive DFA &amp; NFA Simulator</span>
+                {name} <span className="text-[#94a2d0]">· Interactive DFA &amp; NFA Simulator</span>
               </span>{' '}
               Explore Finite-State Machines
             </h1>
@@ -82,7 +88,7 @@ export default function StateTrace() {
             </p>
           </div>
           <a
-            href={WORKSPACE_URL}
+            href={workspaceUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#7a98ff]/30 bg-[#7a98ff]/10 hover:bg-[#7a98ff]/20 text-sm font-medium text-[#e8edff] transition-colors"
@@ -95,8 +101,8 @@ export default function StateTrace() {
         <div className="rounded-2xl overflow-hidden border border-[#7a98ff]/20 shadow-[0_24px_80px_rgba(2,5,18,0.6)]">
           <iframe
             ref={frame}
-            src={WORKSPACE_URL}
-            title="StateTrace workspace: state machine canvas and execution inspector"
+            src={workspaceUrl}
+            title={`${name} workspace: state machine canvas and execution inspector`}
             className="w-full block bg-[#0c1330]"
             style={{ height: frameHeight }}
           />

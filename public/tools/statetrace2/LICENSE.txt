@@ -1,4 +1,4 @@
-StateTrace: Interactive DFA & NFA Simulator (https://www.nafees.info/gnu-projects/statetrace)
+StateTrace2: Interactive DFA & NFA Simulator (https://www.nafees.info/gnu-projects/statetrace2)
 License: MIT License (see below)
 
 Copyright (c) 2019-2026 Nafees Mansoor

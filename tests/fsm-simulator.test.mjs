@@ -1,4 +1,5 @@
-// Tests for the simulator shared by StateTrace and the FSM Designer (public/tools/*/simulator.js).
+// Tests for the simulator shared by StateTrace2 and the FSM Designer (public/tools/*/simulator.js).
+// StateTrace itself is tested in its own repository, github.com/NafeesMansoor/StateTrace.
 // The file is a classic browser script, so it is evaluated here exactly as shipped.
 // Machines are written in the format fsm.js saves: serializeMachine().
 import assert from 'node:assert/strict';
@@ -6,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import vm from 'node:vm';
 
-const source = readFileSync(new URL('../public/tools/statetrace/simulator.js', import.meta.url), 'utf8');
+const source = readFileSync(new URL('../public/tools/statetrace2/simulator.js', import.meta.url), 'utf8');
 vm.runInThisContext(source, { filename: 'simulator.js' });
 const { compile, run, simulate } = globalThis.FsmSimulator;
 

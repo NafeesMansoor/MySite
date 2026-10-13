@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "node scripts/validate-publications.mjs && node scripts/generate-seo.js && vite build && node scripts/prerender.mjs",
+    "dev": "node scripts/fetch-statetrace.mjs --optional && vite --port=3000 --host=0.0.0.0",
+    "build": "node scripts/validate-publications.mjs && node scripts/generate-seo.js && node scripts/fetch-statetrace.mjs && vite build && node scripts/prerender.mjs",
     "pubs:import": "node scripts/import-publications.mjs && node scripts/validate-publications.mjs",
     "pubs:validate": "node scripts/validate-publications.mjs",
     "pubs:check-links": "node scripts/check-publication-links.mjs",
@@ -13,6 +13,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
+    "tools:fetch": "node scripts/fetch-statetrace.mjs",
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
