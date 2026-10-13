@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DFA &amp; NFA Simulator | StateTrace Finite Automata Tool</title>
+  <meta name="description" content="Draw finite-state machines and simulate DFA and NFA input strings with step-by-step transition tracing, visual execution, and acceptance results.">
+  <!-- The page people should land on is the one on the site that embeds this workspace. -->
+  <link rel="canonical" href="https://www.nafees.info/gnu-projects/statetrace">
+  <meta name="theme-color" content="#0c1330">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
+  <script src="fsm.js" defer></script>
+  <script src="simulator.js" defer></script>
+  <script src="simulator-ui.js" defer></script>
+  <script src="workspace.js" defer></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-state" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><path d="M12 9v6M9 12h6"/></symbol>
+      <symbol id="i-transition" viewBox="0 0 24 24"><circle cx="5" cy="17" r="2.5"/><circle cx="19" cy="7" r="2.5"/><path d="M7.2 15.3 16 9.2M12.6 9h3.6v3.6"/></symbol>
+      <symbol id="i-start" viewBox="0 0 24 24"><circle cx="15.5" cy="12" r="5.5"/><path d="M2.5 12H9M6.5 9.5 9 12l-2.5 2.5"/></symbol>
+      <symbol id="i-accept" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/></symbol>
+      <symbol id="i-delete" viewBox="0 0 24 24"><path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l.8 12.5h9.4L17.5 7M10 10.5v6M14 10.5v6"/></symbol>
+      <symbol id="i-undo" viewBox="0 0 24 24"><path d="M8 5 4 9l4 4"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
+      <symbol id="i-redo" viewBox="0 0 24 24"><path d="m16 5 4 4-4 4"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></symbol>
+      <symbol id="i-clear" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+      <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4M5 14v5h14v-5"/></symbol>
+      <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 4v11M8 11l4 4 4-4M5 14v5h14v-5"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.5a2.4 2.4 0 1 1 3.5 2.2c-.8.5-1.200 1-1.200 1.900M12 16.700v.1"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></symbol>
+      <symbol id="i-fit" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M6 5v14"/><path d="M19 5.5v13L9.5 12z"/></symbol>
+      <symbol id="i-previous" viewBox="0 0 24 24"><path d="M15 5.5 8 12l7 6.5"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 5.5 7 6.5-7 6.5"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M7.5 5v14l11-7z"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.5 5.5v13M15.5 5.5v13"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="app-header">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="#131c40"/>
+        <path d="M11.5 18.4 20.4 12" stroke="#ff6f61" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="9" cy="20" r="4" fill="#0c1330" stroke="#5b8cff" stroke-width="2"/>
+        <circle cx="23" cy="10.5" r="5" fill="#0c1330" stroke="#5b8cff" stroke-width="2"/>
+        <circle cx="23" cy="10.5" r="2.2" fill="none" stroke="#5b8cff" stroke-width="1.4"/>
+      </svg>
+      <h1>StateTrace <span class="descriptor">Interactive DFA &amp; NFA Simulator</span></h1>
+    </div>
+    <div class="mode" id="mode-chip" role="status" data-state="empty" data-tip-side="bottom"><span id="mode-label">No machine</span></div>
+    <span class="spacer"></span>
+    <div class="header-actions">
+      <button type="button" class="btn" id="import-button" aria-label="Import a machine from a JSON file"><svg class="icon"><use href="#i-import"/></svg><span class="text">Import</span></button>
+      <button type="button" class="btn" id="export-button" aria-label="Export the machine"><svg class="icon"><use href="#i-export"/></svg><span class="text">Export</span></button>
+      <button type="button" class="btn" id="help-button" aria-label="How to use StateTrace"><svg class="icon"><use href="#i-help"/></svg><span class="text">Help</span></button>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="stage" aria-labelledby="stage-title">
+      <h2 id="stage-title" class="sr-only">State machine canvas</h2>
+      <div class="board">
+        <canvas id="canvas" tabindex="0" aria-label="State machine canvas. Double-click to add a state; open Help for all controls.">
+          Your browser does not support the HTML5 canvas element.
+        </canvas>
+
+        <div class="empty" id="empty-state" hidden>
+          <div class="card">
+            <h3>The board is empty</h3>
+            <p>Double-click anywhere to add a state, or start from a small NFA that accepts strings ending in ab.</p>
+            <button type="button" class="btn primary" id="example-button">Load the example</button>
+          </div>
+        </div>
+
+        <div class="toolbar edit" role="toolbar" aria-label="Edit the machine" aria-orientation="vertical">
+          <button type="button" class="btn icon-only" id="tool-state" aria-label="Add a state" data-tip="Add state (double-click the board)" data-tip-side="right"><svg class="icon"><use href="#i-state"/></svg></button>
+          <button type="button" class="btn icon-only" id="tool-transition" aria-pressed="false" aria-label="Draw a transition" data-tip="Draw transition (Shift + drag)" data-tip-side="right"><svg class="icon"><use href="#i-transition"/></svg></button>
+          <button type="button" class="btn icon-only" id="tool-start" aria-label="Make the selected state the start state" data-tip="Make start state" data-tip-side="right"><svg class="icon"><use href="#i-start"/></svg></button>
+          <button type="button" class="btn icon-only" id="tool-accept" aria-pressed="false" aria-label="Make the selected state accepting" data-tip="Accepting state (double-click a state)" data-tip-side="right"><svg class="icon"><use href="#i-accept"/></svg></button>
+          <button type="button" class="btn icon-only" id="tool-delete" aria-label="Delete the selected state or transition" data-tip="Delete (Delete key)" data-tip-side="right"><svg class="icon"><use href="#i-delete"/></svg></button>
+          <span class="divider"></span>
+          <button type="button" class="btn icon-only" id="tool-undo" aria-label="Undo" data-tip="Undo (Ctrl/Cmd + Z)" data-tip-side="right"><svg class="icon"><use href="#i-undo"/></svg></button>
+          <button type="button" class="btn icon-only" id="tool-redo" aria-label="Redo" data-tip="Redo (Ctrl/Cmd + Shift + Z)" data-tip-side="right"><svg class="icon"><use href="#i-redo"/></svg></button>
+          <span class="divider"></span>
+          <button type="button" class="btn icon-only" id="tool-clear" aria-label="Clear the board" data-tip="Clear board" data-tip-side="right"><svg class="icon"><use href="#i-clear"/></svg></button>
+        </div>
+
+        <div class="label-editor" id="label-editor" hidden>
+          <label for="label-input" id="label-caption">Label</label>
+          <input type="text" id="label-input" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <span class="hint" id="label-hint"></span>
+        </div>
+
+        <div class="toolbar viewbar" role="toolbar" aria-label="View">
+          <button type="button" class="btn icon-only" id="zoom-out" aria-label="Zoom out" data-tip="Zoom out" data-tip-side="top"><svg class="icon"><use href="#i-minus"/></svg></button>
+          <button type="button" class="btn" id="zoom-level" aria-label="Reset the view to 100%" data-tip="Reset view" data-tip-side="top">100%</button>
+          <button type="button" class="btn icon-only" id="zoom-in" aria-label="Zoom in" data-tip="Zoom in" data-tip-side="top"><svg class="icon"><use href="#i-plus"/></svg></button>
+          <span class="divider"></span>
+          <button type="button" class="btn icon-only" id="zoom-fit" aria-label="Fit the machine to the view" data-tip="Fit to view" data-tip-side="top-end"><svg class="icon"><use href="#i-fit"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="inspector" aria-labelledby="inspector-title">
+      <div>
+        <h2 id="inspector-title">Execution</h2>
+        <form id="sim-form">
+          <label class="field-label" for="sim-input">Input string</label>
+          <div class="input-row">
+            <input id="sim-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. aab, or empty for &#949;">
+            <button type="submit" class="btn primary">Execute</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="transport" role="group" aria-label="Playback">
+        <button type="button" class="btn icon-only" id="sim-reset" aria-label="Reset to the start" data-tip="Reset" data-tip-side="bottom"><svg class="icon"><use href="#i-reset"/></svg></button>
+        <button type="button" class="btn icon-only" id="sim-previous" aria-label="Previous step" data-tip="Previous step" data-tip-side="bottom"><svg class="icon"><use href="#i-previous"/></svg></button>
+        <button type="button" class="btn icon-only" id="sim-play" aria-label="Play" data-tip="Play" data-tip-side="bottom"><svg class="icon"><use id="sim-play-icon" href="#i-play"/></svg></button>
+        <button type="button" class="btn icon-only" id="sim-next" aria-label="Next step" data-tip="Next step" data-tip-side="bottom"><svg class="icon"><use href="#i-next"/></svg></button>
+        <div class="speed">
+          <label for="sim-speed">Speed</label>
+          <input id="sim-speed" type="range" min="0.25" max="3" step="0.25" value="1">
+          <span id="sim-speed-value"></span>
+        </div>
+      </div>
+
+      <div id="sim-messages" role="status" aria-live="polite"></div>
+
+      <section class="panel" aria-labelledby="machine-title">
+        <h3 id="machine-title">Machine</h3>
+        <dl class="stats">
+          <div><dt>States</dt><dd id="stat-states">0</dd></div>
+          <div><dt>Transitions</dt><dd id="stat-transitions">0</dd></div>
+          <div><dt>Alphabet</dt><dd id="stat-alphabet">&#8709;</dd></div>
+        </dl>
+        <p id="machine-kind"></p>
+        <div id="machine-problems"></div>
+      </section>
+
+      <section class="panel" id="sim-panel" aria-labelledby="step-title" hidden>
+        <h3 id="step-title">Current step <span class="count" id="sim-counter"></span></h3>
+        <div class="progress" aria-hidden="true"><i id="sim-progress"></i></div>
+        <div id="sim-tape" aria-hidden="true"></div>
+        <dl class="readout">
+          <dt>Consumed</dt><dd id="sim-consumed"></dd>
+          <dt>Remaining</dt><dd id="sim-remaining"></dd>
+        </dl>
+        <p class="sr-only" id="sim-step" role="status" aria-live="polite"></p>
+        <p class="subhead" id="sim-states-title">Current state</p>
+        <ul class="chips" id="sim-states"></ul>
+        <p class="subhead">Transitions taken</p>
+        <ul class="moves" id="sim-moves"></ul>
+        <div id="sim-verdict" class="verdict" role="status" aria-live="polite">
+          <strong id="sim-verdict-title"></strong>
+          <span id="sim-verdict-text"></span>
+          <div id="sim-verdict-path"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="sim-trace" aria-labelledby="trace-title" hidden>
+        <h2 id="trace-title" style="margin-bottom:8px">Execution trace</h2>
+        <ol id="sim-trace-body"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="head">
+      <h2 id="help-title">How to use StateTrace</h2>
+      <button type="button" class="btn icon-only" data-close aria-label="Close help"><svg class="icon"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="body">
+      <h3>Build the machine</h3>
+      <ul class="steps">
+        <li><span class="do">Double-click the board</span><span class="get">Add a state, then type its name</span></li>
+        <li><span class="do"><kbd>Shift</kbd> + drag between two states</span><span class="get">Add a transition, then type its symbols</span></li>
+        <li><span class="do"><kbd>Shift</kbd> + drag inside one state</span><span class="get">Add a self-loop</span></li>
+        <li><span class="do"><kbd>Shift</kbd> + drag from the empty board onto a state</span><span class="get">Mark the start state</span></li>
+        <li><span class="do">Double-click a state</span><span class="get">Toggle accepting (double circle)</span></li>
+        <li><span class="do">Drag a state or a transition</span><span class="get">Move it, or bend the arrow</span></li>
+        <li><span class="do">Click, then type or use the Label box</span><span class="get">Rename a state or relabel a transition</span></li>
+        <li><span class="do"><kbd>Delete</kbd> (<kbd>Fn</kbd> + <kbd>Delete</kbd> on a Mac)</span><span class="get">Remove the selection</span></li>
+        <li><span class="do"><kbd>Ctrl/Cmd</kbd> + <kbd>Z</kbd>, add <kbd>Shift</kbd> to redo</span><span class="get">Undo or redo an edit</span></li>
+      </ul>
+      <p style="margin-top:8px;color:var(--muted);font-size:13px">The toolbar on the board does the same without a keyboard, which is how to build a machine on a touch screen.</p>
+
+      <h3>Label transitions</h3>
+      <ul class="steps">
+        <li><span class="do"><kbd>a</kbd></span><span class="get">Read the symbol a</span></li>
+        <li><span class="do"><kbd>a, b</kbd></span><span class="get">Read a or b (one character per symbol)</span></li>
+        <li><span class="do"><kbd>\epsilon</kbd> or <kbd>\lambda</kbd></span><span class="get">Move without reading a symbol (&#949;-move)</span></li>
+        <li><span class="do"><kbd>q_0</kbd>, <kbd>\alpha</kbd></span><span class="get">Subscripts and Greek letters in names</span></li>
+      </ul>
+
+      <h3>Trace an input</h3>
+      <ul class="steps">
+        <li><span class="do">Type an input string, press Execute</span><span class="get">Run the machine; leave it empty to test the empty string</span></li>
+        <li><span class="do">Play, Pause, Next, Previous, Reset</span><span class="get">Move through the run one symbol at a time</span></li>
+        <li><span class="do">Click a row of the execution trace</span><span class="get">Jump to that step</span></li>
+      </ul>
+      <p style="margin-top:8px;color:var(--muted);font-size:13px">The machine is a DFA when every state has at most one move per symbol and there are no &#949;-moves; otherwise it runs as an NFA and every state it could be in is highlighted at once.</p>
+
+      <h3>Move around</h3>
+      <ul class="steps">
+        <li><span class="do">Drag the empty board</span><span class="get">Pan</span></li>
+        <li><span class="do">Pinch, or <kbd>Ctrl/Cmd</kbd> + scroll</span><span class="get">Zoom</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <dialog id="export-dialog" aria-labelledby="export-title">
+    <div class="head">
+      <h2 id="export-title">Export the machine</h2>
+      <button type="button" class="btn icon-only" data-close aria-label="Close export"><svg class="icon"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="body">
+      <div class="formats" role="group" aria-label="Format">
+        <button type="button" class="btn" data-format="png" aria-pressed="false">PNG</button>
+        <button type="button" class="btn" data-format="svg" aria-pressed="false">SVG</button>
+        <button type="button" class="btn" data-format="latex" aria-pressed="false">LaTeX</button>
+        <button type="button" class="btn" data-format="json" aria-pressed="false">JSON</button>
+      </div>
+      <img id="export-preview" alt="Preview of the exported image" hidden>
+      <textarea id="output" aria-label="Exported source" readonly spellcheck="false"></textarea>
+      <div class="dialog-actions">
+        <span class="status" id="export-status" role="status"></span>
+        <button type="button" class="btn" id="export-copy">Copy</button>
+        <button type="button" class="btn primary" id="export-download">Download</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

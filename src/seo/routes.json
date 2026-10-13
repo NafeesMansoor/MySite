@@ -89,6 +89,11 @@
     ]
   },
   "/gnu-projects/fsm-designer": {
+    "title": "FSM Designer | Nafees Mansoor",
+    "description": "Draw finite state machines in the browser, run DFAs and NFAs on an input string step by step, and export diagrams as PNG, SVG, or LaTeX.",
+    "heading": "FSM Designer"
+  },
+  "/gnu-projects/statetrace": {
     "title": "DFA & NFA Simulator | StateTrace Finite Automata Tool",
     "description": "Draw finite-state machines and simulate DFA and NFA input strings with step-by-step transition tracing, visual execution, and acceptance results.",
     "heading": "StateTrace: Interactive DFA & NFA Simulator",
@@ -114,10 +119,10 @@
     ],
     "jsonLd": {
       "@type": "WebApplication",
-      "@id": "https://www.nafees.info/gnu-projects/fsm-designer#app",
+      "@id": "https://www.nafees.info/gnu-projects/statetrace#app",
       "name": "StateTrace",
       "alternateName": "StateTrace: Interactive DFA & NFA Simulator",
-      "url": "https://www.nafees.info/gnu-projects/fsm-designer",
+      "url": "https://www.nafees.info/gnu-projects/statetrace",
       "description": "Draw finite-state machines and simulate DFA and NFA input strings with step-by-step transition tracing, visual execution, and acceptance results.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any",

@@ -45,7 +45,8 @@ const NAV_ITEMS = [
     id: 'gnu', 
     label: 'GNU Projects', 
     children: [
-      { label: 'StateTrace: DFA & NFA Simulator', path: '/gnu-projects/fsm-designer' },
+      { label: 'FSM Designer', path: '/gnu-projects/fsm-designer' },
+      { label: 'StateTrace', path: '/gnu-projects/statetrace' },
     ]
   },
 ];

@@ -1,4 +1,4 @@
-// Tests for the FSM Designer simulator (public/tools/fsm-designer/simulator.js).
+// Tests for the simulator shared by StateTrace and the FSM Designer (public/tools/*/simulator.js).
 // The file is a classic browser script, so it is evaluated here exactly as shipped.
 // Machines are written in the format fsm.js saves: serializeMachine().
 import assert from 'node:assert/strict';
@@ -6,9 +6,13 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import vm from 'node:vm';
 
-const source = readFileSync(new URL('../public/tools/fsm-designer/simulator.js', import.meta.url), 'utf8');
+const source = readFileSync(new URL('../public/tools/statetrace/simulator.js', import.meta.url), 'utf8');
 vm.runInThisContext(source, { filename: 'simulator.js' });
 const { compile, run, simulate } = globalThis.FsmSimulator;
+
+test('both tools ship the same simulator', () => {
+  assert.equal(readFileSync(new URL('../public/tools/fsm-designer/simulator.js', import.meta.url), 'utf8'), source);
+});
 
 const node = (text, isAcceptState = false) => ({ x: 0, y: 0, text, isAcceptState });
 const start = (index) => ({ type: 'StartLink', node: index, text: '', deltaX: -50, deltaY: 0 });

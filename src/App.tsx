@@ -19,6 +19,7 @@ const BookChapters = lazy(() => import('./pages/Publications/BookChapters'));
 const Patents = lazy(() => import('./pages/Publications/Patents'));
 const PublicationDetail = lazy(() => import('./pages/Publications/PublicationDetail'));
 const FsmDesigner = lazy(() => import('./pages/Gnu/FsmDesigner'));
+const StateTrace = lazy(() => import('./pages/Gnu/StateTrace'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/publications/paper/:slug" element={<PublicationDetail />} />
             <Route path="/awards" element={<Navigate to="/projects/awards" replace />} />
             <Route path="/gnu-projects/fsm-designer" element={<FsmDesigner />} />
+            <Route path="/gnu-projects/statetrace" element={<StateTrace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
