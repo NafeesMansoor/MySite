@@ -5,3 +5,5 @@ coverage/
 .DS_Store
 *.log
 .env*
+# Downloaded from github.com/NafeesMansoor/StateTrace by scripts/fetch-statetrace.mjs
+public/tools/statetrace/

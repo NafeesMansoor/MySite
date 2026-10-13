@@ -147,5 +147,60 @@
         "@id": "https://www.nafees.info/#person"
       }
     }
+  },
+  "/gnu-projects/statetrace2": {
+    "title": "StateTrace2 | DFA & NFA Simulator",
+    "description": "StateTrace2 is the edition of the StateTrace DFA and NFA simulator kept on this site: draw finite-state machines and trace input strings step by step.",
+    "heading": "StateTrace2: Interactive DFA & NFA Simulator",
+    "image": "/og-statetrace.png",
+    "imageAlt": "StateTrace2 tracing an input string through an NFA state diagram",
+    "sections": [
+      {
+        "heading": "Explore finite-state machines",
+        "text": "Build a DFA or NFA, enter an input string, and trace how the machine processes each symbol."
+      },
+      {
+        "heading": "Draw a state machine",
+        "text": "Add states and transitions on the canvas, mark the start state and the accepting states, and label each transition with input symbols or an ε-move. Diagrams export as PNG, SVG, LaTeX, or JSON."
+      },
+      {
+        "heading": "Trace an input string",
+        "text": "Run the finite automaton on any input and step forwards or backwards. StateTrace2 highlights the current state of a DFA, or every active state of an NFA, along with the transition being taken, the consumed and remaining input, and whether the string is accepted or rejected."
+      },
+      {
+        "heading": "DFA and NFA support",
+        "text": "StateTrace2 detects whether a diagram is a deterministic or a nondeterministic finite automaton, including NFAs with ε-transitions, and follows all branches of an NFA at once. Pushdown automata and Turing machines are not simulated."
+      }
+    ],
+    "jsonLd": {
+      "@type": "WebApplication",
+      "@id": "https://www.nafees.info/gnu-projects/statetrace2#app",
+      "name": "StateTrace2",
+      "alternateName": "StateTrace2: Interactive DFA & NFA Simulator",
+      "url": "https://www.nafees.info/gnu-projects/statetrace2",
+      "description": "StateTrace2 is the edition of the StateTrace DFA and NFA simulator kept on this site: draw finite-state machines and trace input strings step by step.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and a modern web browser.",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Draw DFA and NFA state diagrams",
+        "Step-by-step input string tracing",
+        "NFA branching and ε-transitions",
+        "Accepted or rejected result with an explanation",
+        "Export to PNG, SVG, LaTeX, and JSON"
+      ],
+      "image": "https://www.nafees.info/og-statetrace.png",
+      "license": "https://opensource.org/licenses/MIT",
+      "author": {
+        "@id": "https://www.nafees.info/#person"
+      }
+    }
   }
 }

@@ -31,6 +31,7 @@ npm run dev      # start the dev server at http://localhost:3000
 | `npm run lint`    | Type-check the project (`tsc --noEmit`)                        |
 | `npm test`        | Run the DFA/NFA simulator tests (Node's built-in test runner)  |
 | `npm run clean`   | Remove `dist/`                                                 |
+| `npm run tools:fetch` | Download StateTrace from github.com/NafeesMansoor/StateTrace (also runs as part of `build`) |
 | `npm run pubs:import` | Rebuild publication data from the curated list and the Scopus export |
 | `npm run pubs:validate` | Validate publication data (also runs as part of `build`)     |
 | `npm run pubs:check-links` | Check that every published DOI resolves (needs network)   |
@@ -41,7 +42,8 @@ npm run dev      # start the dev server at http://localhost:3000
 ```
 docs/               Generated publication match report
 public/             Static files (sitemap.xml, robots.txt, _redirects)
-  tools/            Standalone tools embedded by pages (StateTrace and the FSM Designer)
+  tools/            Standalone tools embedded by pages (StateTrace2 and the FSM Designer;
+                    StateTrace is downloaded here from its own repository when building)
 resource/           Source workbooks (Scopus export)
 scripts/            Build-time scripts (SEO files, publication import and validation)
 tests/              Automated tests (FSM simulator)

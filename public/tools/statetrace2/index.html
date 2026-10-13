@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DFA &amp; NFA Simulator | StateTrace Finite Automata Tool</title>
+  <title>StateTrace2 | DFA &amp; NFA Simulator</title>
   <meta name="description" content="Draw finite-state machines and simulate DFA and NFA input strings with step-by-step transition tracing, visual execution, and acceptance results.">
   <!-- The page people should land on is the one on the site that embeds this workspace. -->
-  <link rel="canonical" href="https://www.nafees.info/gnu-projects/statetrace">
+  <link rel="canonical" href="https://www.nafees.info/gnu-projects/statetrace2">
   <meta name="theme-color" content="#0c1330">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -52,14 +52,14 @@
         <circle cx="23" cy="10.5" r="5" fill="#0c1330" stroke="#5b8cff" stroke-width="2"/>
         <circle cx="23" cy="10.5" r="2.2" fill="none" stroke="#5b8cff" stroke-width="1.4"/>
       </svg>
-      <h1>StateTrace <span class="descriptor">Interactive DFA &amp; NFA Simulator</span></h1>
+      <h1>StateTrace2 <span class="descriptor">Interactive DFA &amp; NFA Simulator</span></h1>
     </div>
     <div class="mode" id="mode-chip" role="status" data-state="empty" data-tip-side="bottom"><span id="mode-label">No machine</span></div>
     <span class="spacer"></span>
     <div class="header-actions">
       <button type="button" class="btn" id="import-button" aria-label="Import a machine from a JSON file"><svg class="icon"><use href="#i-import"/></svg><span class="text">Import</span></button>
       <button type="button" class="btn" id="export-button" aria-label="Export the machine"><svg class="icon"><use href="#i-export"/></svg><span class="text">Export</span></button>
-      <button type="button" class="btn" id="help-button" aria-label="How to use StateTrace"><svg class="icon"><use href="#i-help"/></svg><span class="text">Help</span></button>
+      <button type="button" class="btn" id="help-button" aria-label="How to use StateTrace2"><svg class="icon"><use href="#i-help"/></svg><span class="text">Help</span></button>
       <input type="file" id="import-file" accept="application/json,.json" hidden>
     </div>
   </header>
@@ -175,7 +175,7 @@
 
   <dialog id="help-dialog" aria-labelledby="help-title">
     <div class="head">
-      <h2 id="help-title">How to use StateTrace</h2>
+      <h2 id="help-title">How to use StateTrace2</h2>
       <button type="button" class="btn icon-only" data-close aria-label="Close help"><svg class="icon"><use href="#i-close"/></svg></button>
     </div>
     <div class="body">
