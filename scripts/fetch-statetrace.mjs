@@ -13,7 +13,7 @@ const REPOSITORY = 'NafeesMansoor/StateTrace';
 const REF = 'main';
 const TARGET = path.resolve(process.cwd(), 'public/tools/statetrace');
 // Only what the app needs to run; tests, scripts and documentation stay in the repository.
-const FILES = ['index.html', 'styles.css', 'fsm.js', 'simulator.js', 'simulator-ui.js', 'workspace.js', 'favicon.svg', 'LICENSE', 'fonts'];
+const FILES = ['index.html', 'styles.css', 'export-protection.js', 'fsm.js', 'simulator.js', 'simulator-ui.js', 'workspace.js', 'favicon.svg', 'LICENSE', 'fonts'];
 
 const optional = process.argv.includes('--optional');
 const work = fs.mkdtempSync(path.join(os.tmpdir(), 'statetrace-'));
