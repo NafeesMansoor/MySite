@@ -1,0 +1,7 @@
+;; nafees.info - the one record that changes when moving www from Netlify to GitHub Pages.
+;;
+;; Cloudflare's import only ADDS records; it will not overwrite the existing www CNAME.
+;; Delete the current "www" CNAME (target nafees.mansoor.info) first, then import this file
+;; under DNS > Records > Import and Export. Every other record stays as it is.
+
+www.nafees.info.	1	IN	CNAME	nafeesmansoor.github.io. ; cf_tags=cf-proxied:true
