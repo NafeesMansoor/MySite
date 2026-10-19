@@ -7,3 +7,5 @@ coverage/
 .env*
 # Downloaded from github.com/NafeesMansoor/StateTrace by scripts/fetch-statetrace.mjs
 public/tools/statetrace/
+# Built from github.com/NafeesMansoor/fish-fight by scripts/fetch-fishfight.mjs
+public/apps/pwa/FishFight/
