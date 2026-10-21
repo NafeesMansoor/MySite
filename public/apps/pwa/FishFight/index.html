@@ -2,24 +2,110 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fish Fight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>NibbleNaut</title>
     <!--
-      Fish Fight is deployed from its own repository (github.com/NafeesMansoor/fish-fight), which
-      serves the game, its update checker (service worker) and its install manifest. This page only
-      forwards visitors there.
+      NibbleNaut (formerly Fish Fight) is deployed from its own repository
+      (github.com/NafeesMansoor/fish-fight), which serves the game, its update checker (service
+      worker) and its install manifest. In a normal browser this page forwards there at once.
+      Opened from an old home-screen icon (installed when the game lived here), forwarding would
+      leave the app's site, so iOS would show it in a browser view with an address bar; instead
+      this page explains how to re-add the icon from the game's own address.
     -->
     <link rel="canonical" href="https://nafeesmansoor.github.io/fish-fight/" />
-    <meta http-equiv="refresh" content="0; url=https://nafeesmansoor.github.io/fish-fight/" />
     <script>
-      location.replace('https://nafeesmansoor.github.io/fish-fight/' + location.search + location.hash);
+      (function () {
+        var GAME = 'https://nafeesmansoor.github.io/fish-fight/';
+        var standalone =
+          window.navigator.standalone === true ||
+          (window.matchMedia && (matchMedia('(display-mode: standalone)').matches || matchMedia('(display-mode: fullscreen)').matches));
+        if (!standalone) location.replace(GAME + location.search + location.hash);
+        else document.documentElement.className = 'standalone';
+      })();
     </script>
     <style>
-      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0b3d66; color: #fff; font: 18px system-ui, sans-serif; }
-      a { color: #ffd23f; }
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 16px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at top, #1c8fd6, #0b3d66 70%);
+        color: #fff;
+        font: 17px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      a {
+        color: #ffd23f;
+      }
+      .card {
+        display: none;
+        width: min(420px, 100%);
+        padding: 22px 20px;
+        border-radius: 22px;
+        background: rgba(5, 36, 70, 0.9);
+        border: 2px solid rgba(143, 230, 247, 0.35);
+        text-align: center;
+      }
+      .standalone .card {
+        display: block;
+      }
+      .standalone .forwarding {
+        display: none;
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 34px;
+        color: #ff8a1f;
+      }
+      h1 span {
+        color: #fff;
+      }
+      ol {
+        text-align: left;
+        padding-left: 22px;
+        margin: 12px 0;
+      }
+      li {
+        margin: 6px 0;
+      }
+      .bn {
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 15px;
+        color: #cfe8f7;
+      }
+      .btn {
+        display: block;
+        margin-top: 14px;
+        padding: 13px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, #ffa443, #ff6a00);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
-    <p>Opening <a href="https://nafeesmansoor.github.io/fish-fight/">Fish Fight</a>…</p>
+    <p class="forwarding">Opening <a href="https://nafeesmansoor.github.io/fish-fight/">NibbleNaut</a>…</p>
+    <div class="card">
+      <h1>Nibble<span>Naut</span></h1>
+      <p>Fish Fight is now <b>NibbleNaut</b>, and it has a new home. To play full screen again:</p>
+      <ol>
+        <li>Open <a href="https://nafeesmansoor.github.io/fish-fight/">nafeesmansoor.github.io/fish-fight</a> in Safari.</li>
+        <li>Tap <b>Share</b>, then <b>Add to Home Screen</b>.</li>
+        <li>Delete this old icon.</li>
+      </ol>
+      <p>To keep your progress, first tap <b>Play now</b> below and choose <b>Settings → Copy progress code</b>. Then, in the new icon, choose <b>Settings → Paste progress code</b>.</p>
+      <div class="bn" lang="bn">
+        ফিশ ফাইট এখন <b>নিবলনট</b>, আর এর নতুন ঠিকানা হয়েছে। আবার পুরো পর্দায় খেলতে Safari-তে ওপরের লিংকটা খোলো, <b>Share → Add to Home Screen</b> চাপো, তারপর এই পুরোনো আইকনটা মুছে দাও। অগ্রগতি রাখতে আগে নিচের <b>এখনই খেলো</b> চেপে <b>সেটিংস → অগ্রগতির কোড কপি করো</b>, তারপর নতুন আইকনে <b>সেটিংস → অগ্রগতির কোড বসাও</b>।
+      </div>
+      <a class="btn" href="https://nafeesmansoor.github.io/fish-fight/">Play now / এখনই খেলো</a>
+    </div>
   </body>
 </html>
