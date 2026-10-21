@@ -12,14 +12,19 @@
       leave the app's site, so iOS would show it in a browser view with an address bar; instead
       this page explains how to re-add the icon from the game's own address.
     -->
-    <link rel="canonical" href="https://nafeesmansoor.github.io/NibbleNaut/" />
+    <link rel="canonical" href="https://nabeeha.mansoor.info/" />
     <script>
       (function () {
-        var GAME = 'https://nafeesmansoor.github.io/NibbleNaut/';
+        var GAME = 'https://nabeeha.mansoor.info/';
+        // Progress saved at this address (same site as before) travels along in the link's
+        // fragment; the game imports it at its new home.
+        var saved = null;
+        try { saved = localStorage.getItem('fishfight.save'); } catch (e) {}
+        var dest = saved ? GAME + '#progress=' + encodeURIComponent('NIBBLENAUT1:' + btoa(encodeURIComponent(saved))) : GAME + location.search + location.hash;
         var standalone =
           window.navigator.standalone === true ||
           (window.matchMedia && (matchMedia('(display-mode: standalone)').matches || matchMedia('(display-mode: fullscreen)').matches));
-        if (!standalone) location.replace(GAME + location.search + location.hash);
+        if (!standalone) location.replace(dest);
         else document.documentElement.className = 'standalone';
       })();
     </script>
@@ -92,12 +97,12 @@
     </style>
   </head>
   <body>
-    <p class="forwarding">Opening <a href="https://nafeesmansoor.github.io/NibbleNaut/">NibbleNaut</a>…</p>
+    <p class="forwarding">Opening <a href="https://nabeeha.mansoor.info/">NibbleNaut</a>…</p>
     <div class="card">
       <h1>Nibble<span>Naut</span></h1>
       <p>Fish Fight is now <b>NibbleNaut</b>, and it has a new home. To play full screen again:</p>
       <ol>
-        <li>Open <a href="https://nafeesmansoor.github.io/NibbleNaut/">nafeesmansoor.github.io/NibbleNaut</a> in Safari.</li>
+        <li>Open <a href="https://nabeeha.mansoor.info/">nabeeha.mansoor.info</a> in Safari.</li>
         <li>Tap <b>Share</b>, then <b>Add to Home Screen</b>.</li>
         <li>Delete this old icon.</li>
       </ol>
@@ -105,7 +110,7 @@
       <div class="bn" lang="bn">
         ফিশ ফাইট এখন <b>নিবলনট</b>, আর এর নতুন ঠিকানা হয়েছে। আবার পুরো পর্দায় খেলতে Safari-তে ওপরের লিংকটা খোলো, <b>Share → Add to Home Screen</b> চাপো, তারপর এই পুরোনো আইকনটা মুছে দাও। অগ্রগতি রাখতে আগে নিচের <b>এখনই খেলো</b> চেপে <b>সেটিংস → অগ্রগতির কোড কপি করো</b>, তারপর নতুন আইকনে <b>সেটিংস → অগ্রগতির কোড বসাও</b>।
       </div>
-      <a class="btn" href="https://nafeesmansoor.github.io/NibbleNaut/">Play now / এখনই খেলো</a>
+      <a class="btn" href="https://nabeeha.mansoor.info/">Play now / এখনই খেলো</a>
     </div>
   </body>
 </html>
