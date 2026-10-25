@@ -70,6 +70,23 @@ const splitList = (value) => {
   return items.length ? items : undefined;
 };
 
+// Scopus keyword lists carry OCR errors ("BangIa", "Hyperledg") and generic indexing tags
+// ("Article", "human"). "keywordFixes" in import-config.json maps a keyword to its correction,
+// or to null to drop it.
+const keywordFixes = config.keywordFixes ?? {};
+const splitKeywords = (value) => {
+  const seen = new Set();
+  const items = [];
+  for (const item of splitList(value) ?? []) {
+    const fixed = Object.hasOwn(keywordFixes, item) ? keywordFixes[item] : item;
+    if (fixed && !seen.has(fixed.toLowerCase())) {
+      seen.add(fixed.toLowerCase());
+      items.push(fixed);
+    }
+  }
+  return items.length ? items : undefined;
+};
+
 // "Mansoor, Nafees (24780011400); ..." -> ["Nafees Mansoor", ...]
 const parseAuthorNames = (value) =>
   splitList(value)?.map((entry) => {
@@ -100,10 +117,13 @@ const toScopusRecord = (row) => {
       doi: doi ? normalizeDoi(doi) : undefined,
       scopusEid: clean(row['EID']),
       scopusUrl: clean(row['Link'])?.replace(/\?.*$/, ''),
-      abstract: clean(row['Abstract']),
+      abstract: clean(row['Abstract'])
+        ?.replace(/\bBangIa\b/g, 'Bangla')
+        .replace(/\bin-sights\b/g, 'insights')
+        .replace(/\bsen-timents\b/g, 'sentiments'),
       authorNames: parseAuthorNames(row['Author full names']),
-      authorKeywords: splitList(row['Author Keywords']),
-      indexKeywords: splitList(row['Index Keywords']),
+      authorKeywords: splitKeywords(row['Author Keywords']),
+      indexKeywords: splitKeywords(row['Index Keywords']),
       sourceTitle: clean(row['Source title']),
       publisher: clean(row['Publisher']),
       volume: clean(row['Volume']),

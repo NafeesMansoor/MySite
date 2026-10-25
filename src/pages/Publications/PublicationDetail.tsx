@@ -107,6 +107,7 @@ export default function PublicationDetail() {
     if (!pub) return;
     document.title = `${publicationTitle(pub)} | Nafees Mansoor`;
     setMeta('name', 'description', describe(pub));
+    setMeta('name', 'keywords', pub.authorKeywords?.join(', ') ?? null);
     setPageJsonLd(publicationJsonLd(pub));
 
     document.head.querySelectorAll(CITATION_META.map((name) => `meta[name="${name}"]`).join(',')).forEach((el) => el.remove());
@@ -224,28 +225,20 @@ export default function PublicationDetail() {
               </Card>
             )}
 
-            {(pub.authorKeywords || pub.indexKeywords) && (
+            {/* Only the authors' own keywords are shown. Scopus index keywords are machine-assigned and
+                often off-topic ("Explosives", "Prisons", "Houses"), which made search engines associate
+                the site with unrelated terms; they are still used by the publication search. */}
+            {pub.authorKeywords && (
               <Card title="Keywords">
-                {pub.authorKeywords && (
-                  <div className="space-y-2">
-                    <h3 className={labelClass}>Author keywords</h3>
-                    <ul className="flex flex-wrap gap-2">
-                      {pub.authorKeywords.map((keyword) => (
-                        <li key={keyword}>
-                          <Link to={`/publications?q=${encodeURIComponent(keyword)}`} className={chipClass}>
-                            {keyword}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {pub.indexKeywords && (
-                  <div className="space-y-2">
-                    <h3 className={labelClass}>Index keywords (assigned by Scopus)</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{pub.indexKeywords.join(' · ')}</p>
-                  </div>
-                )}
+                <ul className="flex flex-wrap gap-2">
+                  {pub.authorKeywords.map((keyword) => (
+                    <li key={keyword}>
+                      <Link to={`/publications?q=${encodeURIComponent(keyword)}`} className={chipClass}>
+                        {keyword}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </Card>
             )}
 
