@@ -5,8 +5,7 @@ export default function Patents() {
     <PublicationList
       heading="Patents"
       description="Intellectual property and innovations filed for patent protection."
-      pageTitle="Patents | Nafees Mansoor"
-      metaDescription="Intellectual property and innovations filed for patent protection by Dr. Nafees Mansoor."
+      route="/publications/patent"
       types={['patent']}
       venueLabel="Status & Details"
       emptyLabel="patents"

@@ -5,8 +5,7 @@ export default function BookChapters() {
     <PublicationList
       heading="Book Chapters"
       description="Contributions to edited books and research monographs."
-      pageTitle="Book Chapters | Nafees Mansoor"
-      metaDescription="Contributions to edited books and research monographs by Dr. Nafees Mansoor."
+      route="/publications/book-chapters"
       types={['book-chapter']}
       venueLabel="Publisher"
       emptyLabel="book chapters"

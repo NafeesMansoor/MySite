@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { GraduationCap } from 'lucide-react';
 import { EDUCATIONS } from '../../constants';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 export default function Degrees() {
-  useEffect(() => {
-    document.title = "Academic Degrees | Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Educational background and academic qualifications of Dr. Nafees Mansoor.');
-    }
-  }, []);
+  usePageMeta('/about/degrees');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, ScrollText } from 'lucide-react';
 import { NEWSPAPER_MENTIONS } from '../../constants';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 export default function Mentions() {
-  useEffect(() => {
-    document.title = "Newspaper Mentions | Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Media coverage and newspaper features highlighting the work and contributions of Dr. Nafees Mansoor.');
-    }
-  }, []);
+  usePageMeta('/about/mentions');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

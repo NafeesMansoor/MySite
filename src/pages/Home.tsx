@@ -30,6 +30,7 @@ import { PUBLICATIONS } from '../constants';
 import ProfileWall from '../components/ProfileWall';
 import InteractiveBackground from '../components/InteractiveBackground';
 import { publicationPath } from '../seo/site';
+import { usePageMeta } from '../seo/usePageMeta';
 
 const AnalyticsDashboard = lazy(() => import('../components/AnalyticsDashboard'));
 
@@ -59,13 +60,7 @@ export default function Home() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [textX, textY]);
 
-  useEffect(() => {
-    document.title = "Nafees Mansoor | Professor & Researcher";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Official website of Dr. Nafees Mansoor, Professor and Researcher specializing in Wireless Communications, Distributed Systems, and Security.');
-    }
-  }, []);
+  usePageMeta('/');
 
   const recentPublications = [...PUBLICATIONS]
     .sort((a, b) => b.year - a.year)
@@ -134,7 +129,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="max-w-3xl text-lg text-gray-400 leading-relaxed font-light"
           >
-            Dr. Nafees Mansoor is a distinguished Professor and Researcher with over 15 years of experience in academia and industry. His research focuses on the intersection of wireless communication protocols, decentralized systems, and artificial intelligence, aiming to build more resilient and efficient digital infrastructures.
+            Dr. Nafees Mansoor is Professor and Head of the Department of Computer Science & Engineering at the University of Liberal Arts Bangladesh (ULAB), Dhaka, and Director of its Office of Faculty Research, with over 15 years of experience in academia and industry. His research spans wireless communication protocols and cognitive radio networks, blockchain and decentralized systems, generative AI and machine learning, and the Internet of Things, aiming to build more resilient and efficient digital infrastructures.
           </motion.div>
         </motion.div>
       </section>

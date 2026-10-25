@@ -5,6 +5,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Filter, Search, X } from 'lucide
 import { PUBLICATIONS } from '../constants';
 import { Publication } from '../types';
 import { SITE_URL, publicationJsonLd, publicationPath, setMeta, setPageJsonLd, typeLabel } from '../seo/site';
+import { pageMeta, Route } from '../seo/usePageMeta';
 
 type PublicationType = Publication['type'];
 type SortOrder = 'newest' | 'oldest' | 'cited' | 'title';
@@ -12,8 +13,8 @@ type SortOrder = 'newest' | 'oldest' | 'cited' | 'title';
 interface PublicationListProps {
   heading: string;
   description: string;
-  pageTitle: string;
-  metaDescription: string;
+  // Page title, description and keywords are read from src/seo/routes.json.
+  route: Route;
   types: PublicationType[];
   venueLabel?: string;
   emptyLabel?: string;
@@ -78,8 +79,7 @@ const pageWindow = (current: number, total: number) => {
 export default function PublicationList({
   heading,
   description,
-  pageTitle,
-  metaDescription,
+  route,
   types,
   venueLabel = 'Venue',
   emptyLabel = 'publications',
@@ -131,8 +131,10 @@ export default function PublicationList({
   const haystacks = useMemo(() => new Map(pubs.map((pub) => [pub.id, searchText(pub)])), [pubs]);
 
   useEffect(() => {
-    document.title = pageTitle;
-    setMeta('name', 'description', metaDescription);
+    const page = pageMeta(route);
+    document.title = page.title;
+    setMeta('name', 'description', page.description);
+    setMeta('name', 'keywords', page.keywords?.join(', ') ?? null);
     setPageJsonLd({
       '@type': 'ItemList',
       name: heading,
@@ -145,7 +147,7 @@ export default function PublicationList({
       })),
     });
     return () => setPageJsonLd(null);
-  }, [pageTitle, metaDescription, heading, pubs]);
+  }, [route, heading, pubs]);
 
   const years = useMemo(
     () => Array.from(new Set<string>(pubs.map((p) => p.year.toString()))).sort((a, b) => b.localeCompare(a)),

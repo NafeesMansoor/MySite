@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Cpu, ShieldCheck, Code, Layers, Database, Globe, Terminal, Fingerprint, FlaskConical } from 'lucide-react';
 import { RESEARCH_INTERESTS } from '../../constants';
 import WordCloud from '../../components/WordCloud';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 const INTEREST_ICONS: Record<string, any> = {
   'Wireless Communications': Cpu,
@@ -17,13 +17,7 @@ const INTEREST_ICONS: Record<string, any> = {
 };
 
 export default function Interests() {
-  useEffect(() => {
-    document.title = "Research Interests | Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Key research areas and expertise of Dr. Nafees Mansoor, including wireless communications and distributed systems.');
-    }
-  }, []);
+  usePageMeta('/about/interests');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
