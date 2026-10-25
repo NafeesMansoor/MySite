@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, ExternalLink } from 'lucide-react';
 import { QA_ACTIVITIES } from '../../constants';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 export default function QA() {
-  useEffect(() => {
-    document.title = "Quality Assurance Activities | Dr. Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', "Explore Dr. Nafees Mansoor's contributions to institutional and national quality assurance in higher education, including BAETE accreditation and PQAC roles.");
-    }
-  }, []);
+  usePageMeta('/services/qa');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

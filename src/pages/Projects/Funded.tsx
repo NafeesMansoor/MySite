@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Database, ExternalLink } from 'lucide-react';
 import { GRANTS } from '../../constants';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 export default function Funded() {
-  useEffect(() => {
-    document.title = "Funded Projects | Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Overview of research projects funded by various organizations and institutions led by Dr. Nafees Mansoor.');
-    }
-  }, []);
+  usePageMeta('/projects/funded');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Briefcase, ExternalLink } from 'lucide-react';
 import { EXPERIENCES, PROFESSIONAL_SERVICES } from '../../constants';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 export default function Professional() {
-  useEffect(() => {
-    document.title = "Professional Services | Dr. Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', "Professional consultancy and administrative services provided by Dr. Nafees Mansoor, including database design and web services enhancement.");
-    }
-  }, []);
+  usePageMeta('/services/professional');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

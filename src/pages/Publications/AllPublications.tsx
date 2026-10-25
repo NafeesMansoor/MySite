@@ -5,8 +5,7 @@ export default function AllPublications() {
     <PublicationList
       heading="Publications"
       description="Search across all journal articles, conference papers, book chapters, and patents."
-      pageTitle="Publications | Nafees Mansoor"
-      metaDescription="Searchable list of journal articles, conference papers, book chapters, and patents by Dr. Nafees Mansoor, with abstracts, keywords, and DOI links."
+      route="/publications"
       types={['journal', 'conference', 'book-chapter', 'edited-book', 'patent']}
     />
   );

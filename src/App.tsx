@@ -1,6 +1,7 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Fragment, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
+import redirects from './seo/redirects.json';
 
 // Each page is its own chunk so visitors download only what the current page needs.
 const Home = lazy(() => import('./pages/Home'));
@@ -21,6 +22,14 @@ const PublicationDetail = lazy(() => import('./pages/Publications/PublicationDet
 const FsmDesigner = lazy(() => import('./pages/Gnu/FsmDesigner'));
 const StateTracePage = lazy(() => import('./pages/Gnu/StateTracePage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+// The host serves "/about/degrees.html" and "/index.html" with the right prerendered page; move the
+// app to the clean address instead of showing "Page not found", which search engines saw as a soft 404.
+function CatchAll() {
+  const { pathname, search, hash } = useLocation();
+  const route = pathname.replace(/(\/index)?\.html$/, '') || '/';
+  return route === pathname ? <NotFound /> : <Navigate to={route + search + hash} replace />;
+}
 
 export default function App() {
   return (
@@ -43,7 +52,11 @@ export default function App() {
             <Route path="/publications/book-chapters" element={<BookChapters />} />
             <Route path="/publications/patent" element={<Patents />} />
             <Route path="/publications/paper/:slug" element={<PublicationDetail />} />
-            <Route path="/awards" element={<Navigate to="/projects/awards" replace />} />
+            {Object.entries(redirects).map(([from, to]) => (
+              <Fragment key={from}>
+                <Route path={from} element={<Navigate to={to} replace />} />
+              </Fragment>
+            ))}
             <Route path="/gnu-projects/fsm-designer" element={<FsmDesigner />} />
             <Route
               path="/gnu-projects/statetrace"
@@ -53,7 +66,7 @@ export default function App() {
               path="/gnu-projects/statetrace2"
               element={<StateTracePage key="statetrace2" name="StateTrace2" route="/gnu-projects/statetrace2" workspaceUrl="/tools/statetrace2/index.html" />}
             />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<CatchAll />} />
           </Routes>
         </Suspense>
       </Layout>

@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Users, Globe, Award, Briefcase } from 'lucide-react';
 import { COMMUNITY_SERVICES } from '../../constants';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 export default function Community() {
-  useEffect(() => {
-    document.title = "Community Service | Dr. Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', "Dr. Nafees Mansoor's community service and professional leadership roles in IEEE, international conferences, and global education awards.");
-    }
-  }, []);
+  usePageMeta('/services/community');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

@@ -12,7 +12,9 @@ export default function Layout({ children }: LayoutProps) {
 
   // Canonical URL always points at the primary domain, whichever host served the page.
   useEffect(() => {
-    const url = SITE_URL + (location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, ''));
+    // "/about/degrees.html" and "/index.html" serve the same prerendered pages as their clean addresses.
+    const path = location.pathname.replace(/(\/index)?\.html$/, '').replace(/\/$/, '');
+    const url = SITE_URL + (path || '/');
     let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!link) {
       link = document.createElement('link');

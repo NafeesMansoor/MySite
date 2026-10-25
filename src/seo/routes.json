@@ -1,52 +1,146 @@
 {
   "/": {
-    "title": "Nafees Mansoor | Professor & Researcher",
-    "description": "Official website of Dr. Nafees Mansoor, Professor and Researcher specializing in Wireless Communications, Distributed Systems, and Security.",
+    "title": "Dr. Nafees Mansoor | Professor of CSE, ULAB Bangladesh",
+    "description": "Dr. Nafees Mansoor, Professor and Head of CSE at ULAB, Dhaka. Research in wireless networks, blockchain, generative AI, machine learning and IoT.",
+    "keywords": [
+      "Nafees Mansoor",
+      "Dr. Nafees Mansoor",
+      "computer science professor Bangladesh",
+      "ULAB CSE",
+      "University of Liberal Arts Bangladesh",
+      "wireless communications",
+      "cognitive radio networks",
+      "blockchain",
+      "generative AI",
+      "large language models",
+      "machine learning",
+      "deep learning",
+      "Internet of Things",
+      "cybersecurity",
+      "distributed computing",
+      "EdTech"
+    ],
     "heading": "Nafees Mansoor"
   },
   "/about/degrees": {
-    "title": "Academic Degrees | Nafees Mansoor",
-    "description": "Educational background and academic qualifications of Dr. Nafees Mansoor.",
+    "title": "Education: PhD, M.Sc., B.Sc. | Dr. Nafees Mansoor",
+    "description": "Degrees of Dr. Nafees Mansoor: PhD in Electrical Engineering (UTM, Malaysia), M.Sc. in Telecommunication Engineering and B.Sc. in Computer Science (IUB).",
+    "keywords": [
+      "Nafees Mansoor PhD",
+      "Universiti Teknologi Malaysia",
+      "UTM PhD electrical engineering",
+      "telecommunication engineering",
+      "Independent University Bangladesh",
+      "cognitive radio ad hoc networks thesis"
+    ],
     "heading": "Academic Degrees"
   },
   "/about/interests": {
-    "title": "Research Interests | Nafees Mansoor",
-    "description": "Key research areas and expertise of Dr. Nafees Mansoor, including wireless communications and distributed systems.",
+    "title": "Research: Wireless, Blockchain & AI | Nafees Mansoor",
+    "description": "Research areas of Dr. Nafees Mansoor: wireless networks, blockchain, generative AI, distributed and pervasive computing, communication protocols and EdTech.",
+    "keywords": [
+      "wireless communications research",
+      "wireless networks",
+      "blockchain research",
+      "generative AI research",
+      "distributed computing",
+      "pervasive computing",
+      "ubiquitous computing",
+      "communication protocols",
+      "graph theory",
+      "EdTech",
+      "computer networks research Bangladesh"
+    ],
     "heading": "Research Interests"
   },
   "/about/mentions": {
-    "title": "Newspaper Mentions | Nafees Mansoor",
-    "description": "Media coverage and newspaper features highlighting the work and contributions of Dr. Nafees Mansoor.",
+    "title": "News & Media Coverage | Dr. Nafees Mansoor",
+    "description": "Newspaper articles and media coverage featuring Dr. Nafees Mansoor and the ULAB Computer Science & Engineering department, research workshops and events.",
+    "keywords": [
+      "Nafees Mansoor news",
+      "ULAB news",
+      "ULAB CSE events",
+      "research internationalisation workshop"
+    ],
     "heading": "Newspaper Mentions"
   },
   "/projects/funded": {
-    "title": "Funded Projects | Nafees Mansoor",
-    "description": "Overview of research projects funded by various organizations and institutions led by Dr. Nafees Mansoor.",
+    "title": "Funded Research Projects | Dr. Nafees Mansoor",
+    "description": "Funded projects led by Dr. Nafees Mansoor: blockchain document verification, an IoT vaccine carrier monitor and video-conferencing tools for higher education.",
+    "keywords": [
+      "funded research projects",
+      "blockchain document verification",
+      "lightweight encryption",
+      "IoT vaccine cold chain monitoring",
+      "EdTech video conferencing",
+      "research grants Bangladesh"
+    ],
     "heading": "Funded Projects"
   },
   "/projects/awards": {
-    "title": "Awards & Recognition | Nafees Mansoor",
-    "description": "Awards, honors, and research recognitions received by Dr. Nafees Mansoor.",
+    "title": "Awards & Honors | Dr. Nafees Mansoor",
+    "description": "Awards received by Dr. Nafees Mansoor: IEEE Outstanding Student Branch Counselor, VC Excellence Award for Research, and multiple Best Paper awards.",
+    "keywords": [
+      "Nafees Mansoor awards",
+      "IEEE Outstanding Student Branch Counselor Award",
+      "best paper award",
+      "research excellence award",
+      "IEEE Bangladesh Section"
+    ],
     "heading": "Awards & Recognition"
   },
   "/services/professional": {
     "title": "Professional Services | Dr. Nafees Mansoor",
-    "description": "Professional consultancy and administrative services provided by Dr. Nafees Mansoor, including database design and web services enhancement.",
+    "description": "Professional and administrative services by Dr. Nafees Mansoor, including database design, web services and academic administration at ULAB.",
+    "keywords": [
+      "professional services",
+      "academic administration",
+      "database design",
+      "web services",
+      "ULAB"
+    ],
     "heading": "Professional & Administrative Services"
   },
   "/services/qa": {
-    "title": "Quality Assurance Activities | Dr. Nafees Mansoor",
-    "description": "Dr. Nafees Mansoor's contributions to institutional and national quality assurance in higher education.",
+    "title": "Quality Assurance in Higher Education | Nafees Mansoor",
+    "description": "Dr. Nafees Mansoor's work in institutional and national quality assurance for higher education in Bangladesh, including BAETE accreditation and PQAC roles.",
+    "keywords": [
+      "quality assurance higher education",
+      "BAETE accreditation",
+      "outcome-based education",
+      "IQAC",
+      "PQAC",
+      "engineering accreditation Bangladesh"
+    ],
     "heading": "Quality Assurance Activities"
   },
   "/services/community": {
-    "title": "Community Service | Dr. Nafees Mansoor",
-    "description": "Dr. Nafees Mansoor's community service and professional leadership roles in IEEE, international conferences, and global education awards.",
+    "title": "IEEE & Community Service | Dr. Nafees Mansoor",
+    "description": "Dr. Nafees Mansoor's community service and professional leadership in IEEE, international conferences as organiser and reviewer, and education awards.",
+    "keywords": [
+      "IEEE volunteer",
+      "IEEE Bangladesh Section",
+      "conference organising committee",
+      "technical program committee",
+      "peer reviewer"
+    ],
     "heading": "Service to the Community"
   },
   "/publications": {
-    "title": "Publications | Nafees Mansoor",
-    "description": "Searchable list of journal articles, conference papers, book chapters, and patents by Dr. Nafees Mansoor, with abstracts, keywords, and DOI links.",
+    "title": "Publications: Journals, Papers & Patents | Nafees Mansoor",
+    "description": "Searchable journal articles, conference papers, book chapters and patents by Dr. Nafees Mansoor on wireless networks, blockchain, AI and IoT, with DOI links.",
+    "keywords": [
+      "Nafees Mansoor publications",
+      "research papers",
+      "Scopus indexed publications",
+      "Web of Science",
+      "cognitive radio networks papers",
+      "blockchain papers",
+      "machine learning papers",
+      "Bangla NLP",
+      "UAV networks",
+      "IoT research"
+    ],
     "heading": "Publications",
     "types": [
       "journal",
@@ -57,45 +151,96 @@
     ]
   },
   "/publications/journals": {
-    "title": "Journal Publications | Nafees Mansoor",
-    "description": "Peer-reviewed research articles published in international journals by Dr. Nafees Mansoor.",
+    "title": "Journal Articles | Dr. Nafees Mansoor",
+    "description": "Peer-reviewed journal articles by Dr. Nafees Mansoor in Scopus and Web of Science indexed journals on wireless networks, blockchain, AI and IoT.",
+    "keywords": [
+      "journal articles",
+      "peer-reviewed research",
+      "ISI indexed journals",
+      "Scopus journals",
+      "blockchain journal papers",
+      "wireless networks journal papers"
+    ],
     "heading": "Journal Publications",
     "types": [
       "journal"
     ]
   },
   "/publications/proceedings": {
-    "title": "Conference Proceedings | Nafees Mansoor",
-    "description": "Research papers presented at international conferences and symposia by Dr. Nafees Mansoor.",
+    "title": "Conference Papers | Dr. Nafees Mansoor",
+    "description": "Conference papers by Dr. Nafees Mansoor at IEEE and international conferences on cognitive radio, UAV networks, blockchain, deep learning and NLP.",
+    "keywords": [
+      "conference papers",
+      "IEEE conference papers",
+      "conference proceedings",
+      "cognitive radio",
+      "FANET",
+      "VANET",
+      "deep learning",
+      "natural language processing"
+    ],
     "heading": "Conference Proceedings",
     "types": [
       "conference"
     ]
   },
   "/publications/book-chapters": {
-    "title": "Book Chapters | Nafees Mansoor",
-    "description": "Contributions to edited books and research monographs by Dr. Nafees Mansoor.",
+    "title": "Book Chapters | Dr. Nafees Mansoor",
+    "description": "Book chapters by Dr. Nafees Mansoor in edited volumes on networking, blockchain, artificial intelligence and emerging technologies.",
+    "keywords": [
+      "book chapters",
+      "edited books",
+      "Springer book chapters",
+      "emerging technologies"
+    ],
     "heading": "Book Chapters",
     "types": [
       "book-chapter"
     ]
   },
   "/publications/patent": {
-    "title": "Patents | Nafees Mansoor",
-    "description": "Intellectual property and innovations filed for patent protection by Dr. Nafees Mansoor.",
+    "title": "Patents | Dr. Nafees Mansoor",
+    "description": "Patents by Dr. Nafees Mansoor, including a portable insulated container for storing and transporting vaccines.",
+    "keywords": [
+      "patents",
+      "vaccine carrier patent",
+      "portable insulated vaccine container",
+      "Bangladesh patent"
+    ],
     "heading": "Patents",
     "types": [
       "patent"
     ]
   },
   "/gnu-projects/fsm-designer": {
-    "title": "FSM Designer | Nafees Mansoor",
-    "description": "Draw finite state machines in the browser, run DFAs and NFAs on an input string step by step, and export diagrams as PNG, SVG, or LaTeX.",
+    "title": "FSM Designer: Draw Finite State Machines Online",
+    "description": "Free online finite state machine designer: draw DFA and NFA state diagrams, simulate input strings step by step, and export to PNG, SVG or LaTeX.",
+    "keywords": [
+      "FSM designer",
+      "finite state machine drawing tool",
+      "state diagram maker",
+      "draw automata online",
+      "DFA",
+      "NFA",
+      "automata to LaTeX",
+      "theory of computation"
+    ],
     "heading": "FSM Designer"
   },
   "/gnu-projects/statetrace": {
     "title": "DFA & NFA Simulator | StateTrace Finite Automata Tool",
     "description": "Draw finite-state machines and simulate DFA and NFA input strings with step-by-step transition tracing, visual execution, and acceptance results.",
+    "keywords": [
+      "DFA simulator",
+      "NFA simulator",
+      "finite automata simulator",
+      "automata simulator online",
+      "epsilon NFA",
+      "state machine simulator",
+      "theory of computation tool",
+      "regular languages",
+      "formal languages and automata"
+    ],
     "heading": "StateTrace: Interactive DFA & NFA Simulator",
     "image": "/og-statetrace.png",
     "imageAlt": "StateTrace tracing an input string through an NFA state diagram",

@@ -23,7 +23,7 @@ _None._
 
 | ID | Type | Year | Title |
 | --- | --- | --- | --- |
-| p1 | patent | 2020 | A Portoble Insuloled Contoiner for Sloring ond Tronsporting Voccines |
+| p1 | patent | 2020 | A Portable Insulated Container for Storing and Transporting Vaccines |
 | eb1 | edited-book | 2022 | Bangabandhu and Digital Bangladesh: First International Conference, ICBBDB 2021, Dhaka, Bangladesh, December 30, 2021, Revised Selected Papers |
 | j14 | journal | 2023 | A Computer Vision-Based System for Recognition and Classification of Urdu Sign Language Dataset for Differently Abled People Using Artificial Intelligence |
 | bc4 | book-chapter | 2020 | Development of an Expert System-Oriented Service Support Helpdesk Management System |

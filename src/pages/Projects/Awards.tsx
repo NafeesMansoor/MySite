@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Trophy, Star } from 'lucide-react';
 import { AWARDS } from '../../constants';
 import { Award } from '../../types';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 type Scope = 'all' | 'research';
 type Layout = 'timeline' | 'cards';
@@ -77,13 +77,7 @@ export default function Awards() {
     setSearchParams(next, { replace: true });
   };
 
-  useEffect(() => {
-    document.title = "Awards & Recognition | Nafees Mansoor";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Awards, honors, and research recognitions received by Dr. Nafees Mansoor.');
-    }
-  }, []);
+  usePageMeta('/projects/awards');
 
   const awards = scope === 'research' ? AWARDS.filter(isResearchAward) : AWARDS;
 

@@ -111,6 +111,7 @@ for (const [route, page] of Object.entries(staticRoutes)) {
         }),
       ]
     : [];
+  if (page.keywords) head.push(meta('name', 'keywords', page.keywords.join(', ')));
   if (page.jsonLd) head.push(jsonLd(page.jsonLd));
   const body =
     `<h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p>` +
@@ -123,6 +124,7 @@ for (const pub of publications) {
   const description = truncate(publicationSummary(pub), 300);
   const head = [
     jsonLd(publicationJsonLd(pub, true)),
+    ...(pub.authorKeywords ? [meta('name', 'keywords', pub.authorKeywords.join(', '))] : []),
     meta('name', 'citation_title', pub.title),
     ...(pub.authorNames ?? []).map((name) => meta('name', 'citation_author', name)),
     meta('name', 'citation_publication_date', pub.year),
@@ -152,7 +154,8 @@ for (const pub of publications) {
 // forwards at once; search engines treat an immediate refresh as a permanent redirect.
 for (const [from, to] of Object.entries(redirects)) {
   const url = absoluteUrl(to);
-  const file = path.join(DIST, `${from.slice(1)}.html`);
+  // "/journals/" (an old WordPress address) is served from journals/index.html, "/about" from about.html.
+  const file = path.join(DIST, from.endsWith('/') ? `${from.slice(1)}index.html` : `${from.slice(1)}.html`);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(
     file,

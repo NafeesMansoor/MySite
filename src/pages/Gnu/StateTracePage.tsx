@@ -31,6 +31,7 @@ export default function StateTracePage({ name, route, workspaceUrl }: StateTrace
   useEffect(() => {
     document.title = PAGE.title;
     setMeta('name', 'description', PAGE.description);
+    setMeta('name', 'keywords', 'keywords' in PAGE ? PAGE.keywords.join(', ') : null);
     setSocialImage(SITE_URL + PAGE.image, PAGE.imageAlt);
     setPageJsonLd(PAGE.jsonLd);
     return () => {

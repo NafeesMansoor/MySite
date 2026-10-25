@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink } from 'lucide-react';
+import { usePageMeta } from '../../seo/usePageMeta';
 
 const DESIGNER_URL = '/tools/fsm-designer/index.html';
 
@@ -16,13 +16,7 @@ const TIPS = [
 ];
 
 export default function FsmDesigner() {
-  useEffect(() => {
-    document.title = 'FSM Designer | Nafees Mansoor';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Draw finite state machines in the browser, run DFAs and NFAs on an input string step by step, and export diagrams as PNG, SVG, or LaTeX.');
-    }
-  }, []);
+  usePageMeta('/gnu-projects/fsm-designer');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
