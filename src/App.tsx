@@ -1,5 +1,6 @@
 import { Fragment, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { MotionConfig } from 'motion/react';
 import Layout from './components/Layout';
 import redirects from './seo/redirects.json';
 
@@ -33,43 +34,50 @@ function CatchAll() {
 
 export default function App() {
   return (
-    <Router>
-      <Layout>
-        <Suspense fallback={<div className="min-h-screen" />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about/degrees" element={<Degrees />} />
-            <Route path="/about/interests" element={<Interests />} />
-            <Route path="/about/mentions" element={<Mentions />} />
-            <Route path="/projects/funded" element={<Funded />} />
-            <Route path="/projects/awards" element={<Awards />} />
-            <Route path="/services/professional" element={<Professional />} />
-            <Route path="/services/qa" element={<QA />} />
-            <Route path="/services/community" element={<Community />} />
-            <Route path="/publications" element={<AllPublications />} />
-            <Route path="/publications/journals" element={<Journals />} />
-            <Route path="/publications/proceedings" element={<Proceedings />} />
-            <Route path="/publications/book-chapters" element={<BookChapters />} />
-            <Route path="/publications/patent" element={<Patents />} />
-            <Route path="/publications/paper/:slug" element={<PublicationDetail />} />
-            {Object.entries(redirects).map(([from, to]) => (
-              <Fragment key={from}>
-                <Route path={from} element={<Navigate to={to} replace />} />
-              </Fragment>
-            ))}
-            <Route path="/gnu-projects/fsm-designer" element={<FsmDesigner />} />
-            <Route
-              path="/gnu-projects/statetrace"
-              element={<StateTracePage key="statetrace" name="StateTrace" route="/gnu-projects/statetrace" workspaceUrl="/tools/statetrace/index.html" />}
-            />
-            <Route
-              path="/gnu-projects/statetrace2"
-              element={<StateTracePage key="statetrace2" name="StateTrace2" route="/gnu-projects/statetrace2" workspaceUrl="/tools/statetrace2/index.html" />}
-            />
-            <Route path="*" element={<CatchAll />} />
-          </Routes>
-        </Suspense>
-      </Layout>
-    </Router>
+    // Visitors who ask for reduced motion get content at once, without entrance animations.
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <Layout>
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about/degrees" element={<Degrees />} />
+              <Route path="/about/interests" element={<Interests />} />
+              <Route path="/about/mentions" element={<Mentions />} />
+              <Route path="/projects/funded" element={<Funded />} />
+              <Route path="/projects/awards" element={<Awards />} />
+              <Route path="/services/professional" element={<Professional />} />
+              <Route path="/services/qa" element={<QA />} />
+              <Route path="/services/community" element={<Community />} />
+              <Route path="/publications" element={<AllPublications />} />
+              <Route path="/publications/journals" element={<Journals />} />
+              <Route path="/publications/proceedings" element={<Proceedings />} />
+              <Route path="/publications/book-chapters" element={<BookChapters />} />
+              <Route path="/publications/patent" element={<Patents />} />
+              <Route path="/publications/paper/:slug" element={<PublicationDetail />} />
+              {/* React Router ignores a trailing slash, so "/publications/" -> "/publications" would also match
+                  "/publications" and loop forever; the host's forwarding page handles those addresses instead. */}
+              {Object.entries(redirects)
+                .filter(([from, to]) => from.replace(/\/+$/, '') !== to)
+                .map(([from, to]) => (
+                  <Fragment key={from}>
+                    <Route path={from} element={<Navigate to={to} replace />} />
+                  </Fragment>
+                ))}
+              <Route path="/gnu-projects/fsm-designer" element={<FsmDesigner />} />
+              <Route
+                path="/gnu-projects/statetrace"
+                element={<StateTracePage key="statetrace" name="StateTrace" route="/gnu-projects/statetrace" workspaceUrl="/tools/statetrace/index.html" />}
+              />
+              <Route
+                path="/gnu-projects/statetrace2"
+                element={<StateTracePage key="statetrace2" name="StateTrace2" route="/gnu-projects/statetrace2" workspaceUrl="/tools/statetrace2/index.html" />}
+              />
+              <Route path="*" element={<CatchAll />} />
+            </Routes>
+          </Suspense>
+        </Layout>
+      </Router>
+    </MotionConfig>
   );
 }

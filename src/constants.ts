@@ -169,25 +169,28 @@ export const AWARDS: Award[] = [
 
 export const GRANTS: Grant[] = [
   {
-    role: 'Principle Investigator',
+    role: 'Principal Investigator',
     title: 'A Lightweight Encryption Scheme for Document Verification Integrated with Blockchain Technology',
     body: 'Ministry of Science and Technology (MoST), Government of the People\'s Republic of Bangladesh',
     amount: '250,000 BDT',
-    period: '2023 – 2024'
+    period: '2023 – 2024',
+    scope: 'National'
   },
   {
     role: 'Co-Investigator and ULAB Lead',
     title: 'Portable Video Conferencing Toolkits and Online Applications for Engaging Learning Experience Design in Higher Education Classroom (EdViCon)',
     body: 'Erasmus+ Programme, European Union',
     amount: '369,569 Euro',
-    period: '2022 – 2025'
+    period: '2022 – 2025',
+    scope: 'International'
   },
   {
     role: 'Co-Investigator',
     title: 'Development of An IoT Based Intelligent Vaccine Carrier Monitoring Module for the Unreached',
     body: 'Information and Communication Technology (ICT) Division, Ministry of Posts, Telecommunications and Information Technology',
     amount: '1,200,000 BDT',
-    period: '2019 – 2020'
+    period: '2019 – 2020',
+    scope: 'National'
   }
 ];
 

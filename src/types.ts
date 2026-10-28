@@ -70,6 +70,7 @@ export interface Grant {
   body: string;
   amount: string;
   period: string;
+  scope: 'International' | 'National';
 }
 
 export interface ProfessionalService {
