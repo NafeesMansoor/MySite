@@ -11,7 +11,7 @@ interface Profile {
 }
 
 const brandMark = (path: string) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-9 h-9 md:w-10 md:h-10 shrink-0">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 shrink-0">
     <path d={path} />
   </svg>
 );
@@ -25,12 +25,12 @@ const PROFILES: Profile[] = [
   {
     name: 'ULAB',
     href: 'https://cse.ulab.edu.bd/faculty/nafees-mansoor-phd',
-    mark: <span className="text-3xl md:text-4xl font-bold tracking-tighter leading-none" aria-hidden="true">ULAB</span>,
+    mark: <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter leading-none" aria-hidden="true">ULAB</span>,
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/nafeesmansoor/',
-    mark: <Linkedin className="w-9 h-9 md:w-10 md:h-10 shrink-0" aria-hidden="true" />,
+    mark: <Linkedin className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 shrink-0" aria-hidden="true" />,
   },
 ];
 
@@ -44,11 +44,11 @@ function ProfileLink({ profile }: { profile: Profile }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${profile.name} profile`}
-      className="flex items-center justify-center gap-3 w-full h-full text-white/70 hover:text-white focus-visible:text-white focus-visible:outline-none transition-colors"
+      className="flex items-center justify-center gap-2 sm:gap-3 w-full h-full min-w-0 rounded-2xl focus-visible:ring-2 focus-visible:ring-indigo-400/70 text-white/70 hover:text-white focus-visible:text-white focus-visible:outline-none transition-colors"
     >
       {profile.mark}
       {profile.name !== 'ULAB' && (
-        <span className="text-lg md:text-xl font-semibold tracking-tight whitespace-nowrap">{profile.name}</span>
+        <span className="text-sm sm:text-lg md:text-xl font-semibold tracking-tight whitespace-nowrap">{profile.name}</span>
       )}
     </a>
   );
@@ -69,7 +69,7 @@ export default function ProfileWall() {
   // Without motion, show every profile at once instead of rotating.
   if (reducedMotion) {
     return (
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-2">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-2">
         {PROFILES.map((profile) => (
           <li key={profile.name} className="h-24">
             <ProfileLink profile={profile} />
@@ -86,7 +86,7 @@ export default function ProfileWall() {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-2" aria-label="Academic and professional profiles">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-2" aria-label="Academic and professional profiles">
         {Array.from({ length: VISIBLE }, (_, slot) => {
           const profile = PROFILES[(offset + slot) % PROFILES.length];
           return (

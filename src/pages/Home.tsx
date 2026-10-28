@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { 
   Trophy, 
   Star, 
@@ -14,7 +15,7 @@ import {
   BookOpen, 
   Briefcase, 
   ChevronRight, 
-  ExternalLink,
+  ArrowRight,
   Search,
   Database,
   Globe,
@@ -29,7 +30,7 @@ import {
 import { PUBLICATIONS } from '../constants';
 import ProfileWall from '../components/ProfileWall';
 import InteractiveBackground from '../components/InteractiveBackground';
-import { publicationPath } from '../seo/site';
+import { publicationPath, typeLabel } from '../seo/site';
 import { usePageMeta } from '../seo/usePageMeta';
 
 const AnalyticsDashboard = lazy(() => import('../components/AnalyticsDashboard'));
@@ -44,8 +45,10 @@ const STATS = [
 export default function Home() {
   const textX = useSpring(useMotionValue(0), { stiffness: 100, damping: 30 });
   const textY = useSpring(useMotionValue(0), { stiffness: 100, damping: 30 });
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
@@ -58,7 +61,7 @@ export default function Home() {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [textX, textY]);
+  }, [textX, textY, reducedMotion]);
 
   usePageMeta('/');
 
@@ -139,50 +142,50 @@ export default function Home() {
         <AnalyticsDashboard />
       </Suspense>
 
-      {/* Stats Section */}
-      <section className="bg-zinc-950/50 border-y border-white/10 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
-            {STATS.map((stat, index) => {
-              const colors = ["text-indigo-400", "text-violet-400", "text-purple-400", "text-sky-400"];
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center space-y-2"
-                >
-                  <div className={`text-4xl md:text-5xl font-bold tracking-tighter ${colors[index]}`}>
-                    {stat.value}
-                  </div>
-                  <div className="text-sm uppercase tracking-widest text-gray-500 font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+      {/* Stats Section (layout adapted from the 21st.dev "Stats" component by meschacirung) */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <ul
+          aria-label="Research in numbers"
+          className="grid grid-cols-2 md:grid-cols-4 bg-zinc-950/60 border border-white/10 rounded-3xl divide-white/10 max-md:[&>li:nth-child(n+3)]:border-t md:divide-x [&>li:nth-child(even)]:max-md:border-l"
+        >
+          {STATS.map((stat, index) => {
+            const colors = ["text-indigo-400", "text-violet-400", "text-purple-400", "text-sky-400"];
+            return (
+              <motion.li
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center justify-center gap-2 px-3 py-8 md:py-10 text-center border-white/10"
+              >
+                <div className={`text-[clamp(2rem,6vw,3rem)] leading-none font-bold tracking-tighter tabular-nums ${colors[index]}`}>
+                  {stat.value}
+                </div>
+                <div className="text-xs sm:text-sm uppercase tracking-widest text-gray-400 font-medium">
+                  {stat.label}
+                </div>
+              </motion.li>
+            );
+          })}
+        </ul>
       </section>
 
       {/* Recent Publications Preview */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="space-y-12">
-          <div className="flex justify-between items-end">
+          <div className="flex flex-wrap justify-between items-end gap-4">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter text-white">Recent Publications</h2>
               <p className="text-gray-500">A selection of the most recent research contributions.</p>
             </div>
-            <motion.a 
-              href="/publications/journals"
-              whileHover={{ x: 5 }}
-              className="flex items-center space-x-2 text-sm font-medium text-white hover:text-gray-300 transition-colors"
+            <Link
+              to="/publications"
+              className="group/all shrink-0 inline-flex items-center gap-2 min-h-11 px-4 rounded-full text-sm font-medium text-white hover:bg-white/5 transition-colors"
             >
-              <span>View All</span>
-              <ChevronRight className="w-4 h-4" />
-            </motion.a>
+              <span>View all publications</span>
+              <ChevronRight className="w-4 h-4 transition-transform group-hover/all:translate-x-1" aria-hidden="true" />
+            </Link>
           </div>
 
           <div className="grid gap-6">
@@ -199,12 +202,14 @@ export default function Home() {
                   <div className="space-y-2">
                     <div className="flex items-center space-x-3">
                       <span className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 text-white rounded">
-                        {pub.type}
+                        {typeLabel(pub.type)}
                       </span>
                       <span className="text-xs text-gray-500 font-mono">{pub.year}</span>
                     </div>
-                    <h3 className="text-lg font-medium text-white group-hover:text-white/90 transition-colors">
-                      {pub.title}
+                    <h3 className="text-lg font-medium text-white leading-snug">
+                      <Link to={publicationPath(pub)} className="hover:text-indigo-300 focus-visible:text-indigo-300 focus-visible:outline-none transition-colors">
+                        {pub.title}
+                      </Link>
                     </h3>
                     <p className="text-sm text-gray-500 italic">{pub.authors}</p>
                   </div>
@@ -213,13 +218,13 @@ export default function Home() {
                       <div className="text-xs text-gray-500 uppercase tracking-widest">Venue</div>
                       <div className="text-sm text-gray-400 max-w-[200px] truncate">{pub.venue}</div>
                     </div>
-                    <a
-                      href={publicationPath(pub)}
-                      aria-label={`Open: ${pub.title}`}
-                      className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
+                    <Link
+                      to={publicationPath(pub)}
+                      aria-label={`Details: ${pub.title}`}
+                      className="w-11 h-11 inline-flex items-center justify-center bg-white/5 rounded-full hover:bg-indigo-500/20 focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-none transition-colors"
                     >
-                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white" aria-hidden="true" />
-                    </a>
+                      <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-white" aria-hidden="true" />
+                    </Link>
                   </div>
                 </div>
               </motion.div>

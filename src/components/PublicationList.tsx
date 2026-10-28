@@ -227,7 +227,7 @@ export default function PublicationList({
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">{heading}</h1>
-            <p className="text-gray-500 max-w-2xl">{description}</p>
+            <p className="text-gray-400 max-w-2xl">{description}</p>
           </div>
 
           <form role="search" onSubmit={(event) => event.preventDefault()} className="space-y-4">
@@ -331,7 +331,7 @@ export default function PublicationList({
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="text-xs text-gray-500 hover:text-white flex items-center space-x-1 transition-colors"
+                  className="text-xs text-gray-400 hover:text-white flex items-center space-x-1 transition-colors"
                 >
                   <X className="w-3 h-3" aria-hidden="true" />
                   <span>Clear filters</span>
@@ -339,7 +339,7 @@ export default function PublicationList({
               )}
             </div>
 
-            <p className="text-xs text-gray-500" role="status" aria-live="polite">
+            <p className="text-xs text-gray-400" role="status" aria-live="polite">
               {results.length === 0
                 ? `No ${emptyLabel} match`
                 : `Showing ${firstIndex + 1}–${firstIndex + pageItems.length} of ${results.length} ${emptyLabel}`}
@@ -368,7 +368,7 @@ export default function PublicationList({
                       {pub.title}
                     </Link>
                   </h2>
-                  <p className="text-sm text-gray-500 italic">{pub.authors}</p>
+                  <p className="text-sm text-gray-400 italic">{pub.authors}</p>
                   <div>
                     <div className="text-xs text-violet-400/70 uppercase tracking-widest mb-1">{venueLabel}</div>
                     <div className="text-sm text-gray-400">{pub.venue}</div>
@@ -387,7 +387,7 @@ export default function PublicationList({
           ))}
 
           {results.length === 0 && (
-            <div className="text-center py-20 text-gray-500 space-y-4">
+            <div className="text-center py-20 text-gray-400 space-y-4">
               <p>No {emptyLabel} found matching your search and filters.</p>
               {isFiltered && (
                 <button
