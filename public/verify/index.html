@@ -1,0 +1,102 @@
+<!doctype html>
+<!-- Verification page for letters of recommendation (www.nafees.info/verify).
+     It asks the LoR app for the answer; the app allows this only from nafees.info. Edit APP below.
+     Self-contained: no external scripts, styles or fonts. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify a Letter of Recommendation | Prof. Dr. Nafees Mansoor</title>
+<style>
+  :root { --ink:#1d2433; --muted:#5d6576; --line:#dcd9d0; --accent:#23407a; --ok:#1f6b45; --bad:#9b2222; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#f6f5f1; color:var(--ink); font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:560px; margin:0 auto; padding:48px 16px; }
+  h1 { font-family:"Times New Roman",Georgia,serif; color:var(--accent); font-size:1.6rem; margin:0 0 8px; }
+  p { color:var(--muted); margin:0 0 16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px; margin-top:16px; }
+  label { display:block; font-size:.75rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .row { display:flex; gap:8px; }
+  input[type=text] { flex:1; min-height:44px; padding:8px 12px; border:1px solid var(--line); border-radius:6px; font:inherit; font-family:ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; }
+  button, .file { min-height:44px; padding:8px 16px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; font:inherit; cursor:pointer; }
+  .file { display:inline-flex; align-items:center; background:#fff; color:var(--ink); border-color:var(--line); }
+  .file input { position:absolute; width:1px; height:1px; opacity:0; }
+  .result { margin-top:16px; border-radius:8px; padding:16px; border:1px solid; }
+  .ok { background:#effaf3; border-color:#9fd3b6; } .ok strong { color:var(--ok); }
+  .bad { background:#fdf0f0; border-color:#e5b3b3; } .bad strong { color:var(--bad); }
+  dl { display:grid; grid-template-columns:auto 1fr; gap:4px 16px; margin:12px 0 0; font-size:.9rem; }
+  dt { color:var(--muted); } dd { margin:0; overflow-wrap:anywhere; }
+  .mono { font-family:ui-monospace,monospace; font-size:.8rem; }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Verify a letter of recommendation</h1>
+  <p>Letters issued by Prof. Dr. Nafees Mansoor carry a verification code at the bottom of the page.
+     Enter the code, or check the PDF file itself. Any change to the file, however small, makes the file check fail.</p>
+
+  <form class="card" id="codeForm">
+    <label for="code">Verification code</label>
+    <div class="row">
+      <input id="code" type="text" placeholder="ABCD-EFGH" maxlength="20" autocomplete="off" required>
+      <button type="submit">Check</button>
+    </div>
+  </form>
+
+  <div class="card">
+    <label for="pdf">Or check the PDF file</label>
+    <span class="file"><input id="pdf" type="file" accept="application/pdf">Choose PDF</span>
+    <p style="margin:8px 0 0;font-size:.8rem">The file is compared byte for byte with the issued original. It is not stored.</p>
+  </div>
+
+  <div id="out" aria-live="polite"></div>
+</main>
+<script>
+  var APP = "https://lorprofnaf.onrender.com";
+  var out = document.getElementById("out");
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function show(ok, title, d) {
+    var rows = ok ? [["Student", d.student_name], ["Recommender", d.recommender], ["Issued on", d.issued_on],
+      ["Version", d.output_type], ["Code", d.code], ["File size", d.file_size && d.file_size.toLocaleString() + " bytes"],
+      ["SHA-256", '<span class="mono">' + esc(d.file_sha256) + "</span>"]] : [];
+    out.innerHTML = '<div class="result ' + (ok ? "ok" : "bad") + '"><strong>' + esc(title) + "</strong>" +
+      (rows.length ? "<dl>" + rows.map(function (r) {
+        return "<dt>" + r[0] + "</dt><dd>" + (r[0] === "SHA-256" ? r[1] : esc(r[1])) + "</dd>"; }).join("") + "</dl>" : "") +
+      "</div>";
+  }
+
+  function fail(e) { out.innerHTML = '<div class="result bad"><strong>The check could not be completed. Please try again later.</strong></div>'; }
+
+  function checkCode(code) {
+    fetch(APP + "/api/v1/verify/code", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code: code }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { show(d.found, d.found ? "This code belongs to an issued letter." : "No issued letter has this code.", d); })
+      .catch(fail);
+  }
+
+  document.getElementById("codeForm").addEventListener("submit", function (e) {
+    e.preventDefault(); checkCode(document.getElementById("code").value);
+  });
+
+  document.getElementById("pdf").addEventListener("change", function (e) {
+    var f = e.target.files[0]; if (!f) return;
+    var fd = new FormData(); fd.append("file", f);
+    fetch(APP + "/api/v1/verify/file", { method: "POST", body: fd })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { show(d.authentic, d.authentic ? "Authentic: this file is exactly as issued."
+        : "Not authentic: this file does not match any issued letter. It may have been altered.", d); })
+      .catch(fail);
+    e.target.value = "";
+  });
+
+  // Links such as /verify?code=ABCD-EFGH are checked straight away.
+  var q = new URLSearchParams(location.search).get("code");
+  if (q) { document.getElementById("code").value = q; checkCode(q); }
+</script>
+</body>
+</html>
